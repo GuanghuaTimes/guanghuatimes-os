@@ -1,11 +1,11 @@
 export const aboutConfig = {
-  title: "Introduction to Laoshi Village",
-  titleCn: "老市村简介",
+  title: "Introduction to Guanghua Times",
+  titleCn: "光华时代简介",
   imgSrc: "/hero_about.jpeg",
   description:
     "老市村, located in 海头镇 of 儋州市, transitioned from its traditional salt farming to become a beacon of ecological sustainability and community renewal. The village faced ecological and social decline due to the shift from salt fields to shrimp ponds in the 1990s, leading to environmental damage and an aging population. In response, the 海南省蓝丝带海洋环境保护协会 initiated a restoration project, rehabilitating wetlands, planting mangroves, and promoting community involvement in conservation. Efforts expanded to cultural and economic revitalization, including the revival of ancient salt farming integrated with eco-tourism. These initiatives have earned international recognition, showcasing a successful model of combining ecological conservation with economic and cultural development for rural vitality.",
   descriptionCn:
-    "儋州海头镇的老市村是一个坐落在珠碧江边的村庄小组。当地的湿地滩涂蕴藏着多样的生物物种, 生存了百年的古酸豆树为居民提供着烈日下的庇护。目前村子开展了湿地生态修复, 古河道恢复, 生态养殖, 红树林种植, 自然教育等与生态保育和社区培力相关的实践探索。基于这些探索, 老市希望能够进一步将人和人凝聚起来, 一起推动更多村子在生态, 生计以及关系层面的实践, 增强社区韧性。",
+    "光华时代（海南）生物科技有限公司，是一家专注于高品质聚谷氨酸（γ-PGA）应用研发，集农业生产原料进出口贸易、其它农业生产资料研发生产及配套应用技术开发、咨询、服务、推广的农业应用型服务公司。\\ 集团总公司为武汉光华时代生物科技有限公司，总公司成立于2013年，是一家集科研、生产、销售、服务于一体的综合型高新技术企业。\\ 公司以华中农业大学、湖北大学、武汉轻工业大学为技术依托（以陈守文教授为核心的技术团队100余人，拥有发明专利30多项，拥有全套的聚谷氨酸、褐藻寡糖产品柔性生产线），专业从事聚谷氨酸（γ-PGA）、褐藻寡糖（AOS）及功能性微生物菌的研发、生产、技术应用及渠道销售。",
   navs: [
     {
       imgSrc: "/hero_temple.jpeg",
