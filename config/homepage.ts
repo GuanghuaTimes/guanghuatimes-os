@@ -22,7 +22,7 @@ export const homepageConfig = {
   ],
   navs: [
     {
-      imgSrc: "/hero_about.jpeg",
+      imgSrc: "/8871718163756_.pic.jpg",
       title: "About Guanghua Times",
       titleCn: "关于光华时代",
       href: "/about",
