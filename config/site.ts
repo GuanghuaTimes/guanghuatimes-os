@@ -3,8 +3,8 @@ import type { FooterItem, MainNavItem } from "@/types";
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Guanghua Times",
-  nameCn: "光华时代生物科技",
+  name: "Guanghua Times Bio",
+  nameCn: "光华时代生物",
   heroSlogan: "Welcome to Guanghua Times",
   heroSubSlogan: "Innovation-driven, quality creates the future; Technology empowers, service creates value!",
   heroSubSloganCn: "创新驱动 品质铸就未来； 技术赋能，服务创造价值！",
