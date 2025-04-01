@@ -22,7 +22,7 @@ export default function Icon() {
           height: 32,
         }}
       >
-        老
+        G
       </div>
     ),
     // ImageResponse options
