@@ -15,7 +15,7 @@ export const metadata = {
     template: `%s - ${siteConfig.name}`,
   },
   description: "The best place to visit",
-  keywords: ["laoshi", "老市", "海头镇老市"],
+  keywords: ["Guanghuatimes","Guanghua Times", "光华时代生物","光华时代", "光华生物"],
   authors: [
     {
       name: "msrks",
