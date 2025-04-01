@@ -2,8 +2,8 @@ export const homepageConfig = {
   carouselItems: [
     {
       imgSrc: "/hero1_new.jpeg",
-      title: "Hello from 海头老市村",
-      titleCn: "Hello from 海头老市村",
+      title: "Welcome to Guanghua Times",
+      titleCn: "Welcome to 光华时代",
       description:
         "For justice, love neighbor, wise living, be the best of yourself",
       descriptionCn: "为正义, 爱邻居, 明智生活, 做最好的自己",
