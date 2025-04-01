@@ -3,11 +3,11 @@ import type { FooterItem, MainNavItem } from "@/types";
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Laoshi Village",
-  nameCn: "海头老市村",
-  heroSlogan: "Hello from 海头老市村",
-  heroSubSlogan: "For justice, love thy neighbor, wise living, be the best you",
-  heroSubSloganCn: "为正义, 爱邻居, 明智生活, 做最好的自己",
+  name: "Guanghua Times",
+  nameCn: "光华时代生物科技",
+  heroSlogan: "Welcome to Guanghua Times",
+  heroSubSlogan: "Innovation-driven, quality creates the future; Technology empowers, service creates value!",
+  heroSubSloganCn: "创新驱动 品质铸就未来； 技术赋能，服务创造价值！",
   description: "The best place to visit",
   descriptionCn: "终身学习的生态社区",
   url: "https://alan-webpage.vercel.app",
@@ -19,9 +19,9 @@ export const siteConfig = {
       items: [
         {
           title: "About",
-          titleCn: "关于老市",
+          titleCn: "关于光华时代",
           href: "/about",
-          description: "About Laoshi",
+          description: "About Guanghua Times",
           items: [],
         },
         {
