@@ -5,8 +5,8 @@ export const homepageConfig = {
       title: "Welcome to Guanghua Times",
       titleCn: "Welcome to 光华时代",
       description:
-        "For justice, love neighbor, wise living, be the best of yourself",
-      descriptionCn: "为正义, 爱邻居, 明智生活, 做最好的自己",
+        "Innovation-driven, quality creates the future; Technology empowers, service creates value!",
+      descriptionCn: "创新驱动 品质铸就未来； 技术赋能，服务创造价值！",
       href: "/about",
     },
     {
@@ -23,8 +23,8 @@ export const homepageConfig = {
   navs: [
     {
       imgSrc: "/hero_about.jpeg",
-      title: "About the village",
-      titleCn: "关于老市村",
+      title: "About Guanghua Times",
+      titleCn: "关于光华时代",
       href: "/about",
     },
     {
