@@ -1,7 +1,7 @@
 export const homepageConfig = {
   carouselItems: [
     {
-      imgSrc: "/hero_temple.jpeg",
+      imgSrc: "/hero1_new.jpeg",
       title: "Welcome to Guanghua Times",
       titleCn: "Welcome to 光华时代",
       description:
