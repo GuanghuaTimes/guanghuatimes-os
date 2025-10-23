@@ -16,6 +16,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+// removed: import { Palmtree } from "lucide-react";
 import { CC } from "@/app/[cc]/page";
 
 interface MainNavProps {
@@ -24,18 +25,27 @@ interface MainNavProps {
 }
 
 export function MainNav({ items, lang }: MainNavProps) {
+  // choose logo url from siteConfig (fallback to /logo.png)
+  const logoSrc = lang === "cn" ? siteConfig.logoCn ?? siteConfig.logo : siteConfig.logo;
+
   return (
     <div className="hidden md:flex justify-between w-full text-lg">
-      <Link
-        href={`/${lang}`}
-        className="mr-auto hidden items-center space-x-2 md:flex"
-      >
-        <Palmtree className="size-6" />
+      <Link href={`/${lang}`} className="mr-auto hidden items-center space-x-2 md:flex">
+        {/* Next Image: width/height are required */}
+        <Image
+          src={logoSrc ?? "/logo.png"}
+          alt={lang === "cn" ? siteConfig.nameCn : siteConfig.name}
+          width={28}
+          height={28}
+          className="w-7 h-7"
+          priority={false}
+        />
         <span className="hidden font-bold md:inline-block">
           {lang === "cn" ? siteConfig.nameCn : siteConfig.name}
         </span>
         <span className="sr-only">Home</span>
       </Link>
+
       <NavigationMenu>
         <NavigationMenuList>
           {items?.[0]?.items ? (
@@ -51,14 +61,19 @@ export function MainNav({ items, lang }: MainNavProps) {
                         href={`/${lang}`}
                         className="flex size-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                       >
-                        <Palmtree className="size-6" />
+                        {/* Small logo inside the menu card */}
+                        <Image
+                          src={logoSrc ?? "/logo.png"}
+                          alt={lang === "cn" ? siteConfig.nameCn : siteConfig.name}
+                          width={32}
+                          height={32}
+                          className="w-8 h-8"
+                        />
                         <div className="mb-2 mt-4 text-md font-medium">
                           {lang === "cn" ? siteConfig.nameCn : siteConfig.name}
                         </div>
                         <p className="text-sm leading-tight text-muted-foreground">
-                          {lang === "cn"
-                            ? siteConfig.descriptionCn
-                            : siteConfig.description}
+                          {lang === "cn" ? siteConfig.descriptionCn : siteConfig.description}
                         </p>
                         <span className="sr-only">Home</span>
                       </Link>
@@ -77,6 +92,7 @@ export function MainNav({ items, lang }: MainNavProps) {
               </NavigationMenuContent>
             </NavigationMenuItem>
           ) : null}
+
           {items
             ?.filter((item) => item.title !== items[0]?.title)
             .map((item) =>
@@ -102,14 +118,8 @@ export function MainNav({ items, lang }: MainNavProps) {
               ) : (
                 item.href && (
                   <NavigationMenuItem key={item.title}>
-                    <Link
-                      href={`/${lang}/${item.href}`}
-                      legacyBehavior
-                      passHref
-                    >
-                      <NavigationMenuLink
-                        className={cn(navigationMenuTriggerStyle(), "h-auto")}
-                      >
+                    <Link href={`/${lang}/${item.href}`} legacyBehavior passHref>
+                      <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "h-auto")}>
                         {lang === "cn" ? item.titleCn : item.title}
                       </NavigationMenuLink>
                     </Link>
