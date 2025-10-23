@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import type { MainNavItem } from "@/types";
 
 import { siteConfig } from "@/config/site";
@@ -15,7 +16,6 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { Palmtree } from "lucide-react";
 import { CC } from "@/app/[cc]/page";
 
 interface MainNavProps {
