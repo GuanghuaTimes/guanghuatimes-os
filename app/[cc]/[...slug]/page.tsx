@@ -63,18 +63,26 @@ export default async function PagePage({ params }: PageProps) {
         <h1 className="inline-block text-3xl font-bold leading-tight lg:text-4xl mr-auto">
           {page.title}
         </h1>
-        {/* <Button size="icon" variant="ghost" asChild>
-          <Link href={basePath + "-en"}>🇺🇸</Link>
-        </Button>
-        <Button size="icon" variant="ghost" asChild>
-          <Link href={basePath + "-cn"}>🇨🇳</Link>
-        </Button>
-        <Button size="icon" variant="ghost" asChild>
-          <Link href={basePath + "-ja"}>🇯🇵</Link>
-        </Button> */}
+        
+        <div className="flex items-center gap-1">
+          <Button size="icon" variant="ghost" asChild>
+            <Link href={`/${basePath}-en`} className="flex items-center justify-center">
+              🇺🇸
+            </Link>
+          </Button>
+          <Button size="icon" variant="ghost" asChild>
+            <Link href={`/${basePath}-cn`} className="flex items-center justify-center">
+              🇨🇳
+            </Link>
+          </Button>
+          <Button size="icon" variant="ghost" asChild>
+            <Link href={`/${basePath}-ja`} className="flex items-center justify-center">
+              🇯🇵
+            </Link>
+          </Button>
+        </div>
       </div>
 
-      {/* {page.description && <p className="text-xl">{page.description}</p>} */}
       {page.image && (
         <AspectRatio ratio={16 / 9}>
           <Image
