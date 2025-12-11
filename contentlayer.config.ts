@@ -173,6 +173,7 @@ export const Article = defineDocumentType(() => ({
     date: { type: "date", required: true },
     published: { type: "boolean", default: true },
     image: { type: "string", required: true },
+    wechatUrl: { type: "string" }, // 新增微信公众号链接字段
   },
   computedFields: baseComputedFields,
 }));

@@ -1,7 +1,7 @@
 export const aboutConfig = {
   title: "Introduction to Guanghua Times",
   titleCn: "光华时代简介",
-  imgSrc: "/hero_about.jpeg",
+  imgSrc: "/text/about.jpg",
   description:
     "老市村, located in 海头镇 of 儋州市, transitioned from its traditional salt farming to become a beacon of ecological sustainability and community renewal. The village faced ecological and social decline due to the shift from salt fields to shrimp ponds in the 1990s, leading to environmental damage and an aging population. In response, the 海南省蓝丝带海洋环境保护协会 initiated a restoration project, rehabilitating wetlands, planting mangroves, and promoting community involvement in conservation. Efforts expanded to cultural and economic revitalization, including the revival of ancient salt farming integrated with eco-tourism. These initiatives have earned international recognition, showcasing a successful model of combining ecological conservation with economic and cultural development for rural vitality.",
   descriptionCn:
@@ -10,7 +10,7 @@ export const aboutConfig = {
     {
       imgSrc: "/hero_temple.jpeg",
       title: "History, What to see and do",
-      titleCn: "老市村的总体介绍",
+      titleCn: "光华时代的总体介绍",
       href: "/history",
     },
     {

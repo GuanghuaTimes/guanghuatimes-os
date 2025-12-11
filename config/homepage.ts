@@ -1,7 +1,7 @@
 export const homepageConfig = {
   carouselItems: [
     {
-      imgSrc: "/hero1_new.jpeg",
+      imgSrc: "/banner1.jpg",
       title: "Welcome to Guanghua Times",
       titleCn: "Welcome to 光华时代",
       description:
@@ -10,13 +10,13 @@ export const homepageConfig = {
       href: "/about",
     },
     {
-      imgSrc: "/crab.jpeg",
-      title: "Laoshi Nature School",
-      titleCn: "老市自然学校",
+      imgSrc: "/banner2.jpg",
+      title: "Welcome to Guanghua Times",
+      titleCn: "Welcome to 光华时代",
       description:
-        "Let the “village” become a school. Let more children grow up healthy and happy in the “village”, and let more people see the vitality of local communities and nature, and see the beauty that everyone is born with",
+        "Innovation-driven, quality creates the future; Technology empowers, service creates value!",
       descriptionCn:
-        "让“村”, 成为一所学校。让更多的孩子在“村”里健康快乐成长, 让更多人看见地方社区与自然的生命力, 看见自己与每一个人与生俱来的美好",
+        "创新驱动，品质铸就未来；技术赋能，服务创造价值！",
       href: "/nature-school",
     },
   ],

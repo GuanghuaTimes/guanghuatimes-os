@@ -44,7 +44,7 @@ export default function CarouselComponent({
                   className="relative overflow-hidden"
                 >
                   <div className="absolute inset-0 z-10 bg-black/20 flex justify-center items-center">
-                    <Link href={`${lang}/${item.href}`}>
+                    <Link href={`${lang}${item.href}`}>
                       <h1 className="hover:underline text-xl md:text-3xl font-bold text-white text-center p-2 max-w-6xl">
                         {lang === "cn" ? item.titleCn : item.title}
                         <br />

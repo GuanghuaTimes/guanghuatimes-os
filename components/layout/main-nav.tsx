@@ -2,7 +2,9 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import type { MainNavItem } from "@/types";
+
 
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
@@ -30,7 +32,14 @@ export function MainNav({ items, lang }: MainNavProps) {
         href={`/${lang}`}
         className="mr-auto hidden items-center space-x-2 md:flex"
       >
-        <Palmtree className="size-6" />
+        {/*<Palmtree className="size-6" />*/}
+          <Image
+              src="/Logo.png"  // 你的logo文件路径
+              alt={lang === "cn" ? siteConfig.nameCn : siteConfig.name}
+              width={24}
+              height={24}
+              className="size-6"
+          />
         <span className="hidden font-bold md:inline-block">
           {lang === "cn" ? siteConfig.nameCn : siteConfig.name}
         </span>
@@ -51,7 +60,14 @@ export function MainNav({ items, lang }: MainNavProps) {
                         href={`/${lang}`}
                         className="flex size-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                       >
-                        <Palmtree className="size-6" />
+                        {/*<Palmtree className="size-6" />*/}
+                          <Image
+                              src="/Logo.png"  // 你的logo文件路径
+                              alt={lang === "cn" ? siteConfig.nameCn : siteConfig.name}
+                              width={24}
+                              height={24}
+                              className="size-6"
+                          />
                         <div className="mb-2 mt-4 text-md font-medium">
                           {lang === "cn" ? siteConfig.nameCn : siteConfig.name}
                         </div>
