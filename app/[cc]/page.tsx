@@ -61,10 +61,10 @@ export default function LandingPage({
       <AnnouncementPage params={{ cc: params.cc }} asSubsection />
       <div className="sm:grid grid-cols-2">
         <div className="block">
-          <ArticlePage params={{ cc: params.cc }} asSubsection />
+          <ArticlePage params={{ cc: params.cc }} />
         </div>
         <div className="hidden sm:block">
-          <EventPages params={{ cc: params.cc }} asSubsection />
+          <EventPages params={{ cc: params.cc }} />
         </div>
       </div>
     </div>
