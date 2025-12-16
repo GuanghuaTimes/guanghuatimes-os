@@ -20,7 +20,7 @@ export const homepageConfig = {
   } 
 ],
   navs: [,
-    {,
+    {
       imgSrc: "/8871718163756_.pic.jpg",
       title: "About Guanghua Times",
       titleCn: "关于光华时代",
