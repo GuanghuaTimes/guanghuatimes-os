@@ -1,29 +1,29 @@
 export const aboutConfig = {
-  title: "Introduction to Guanghua Times",
-  titleCn: "光华时代简介",
-  imgSrc: "/text/about.jpg",
-  description:
-    "老市村, located in 海头镇 of 儋州市, transitioned from its traditional salt farming to become a beacon of ecological sustainability and community renewal. The village faced ecological and social decline due to the shift from salt fields to shrimp ponds in the 1990s, leading to environmental damage and an aging population. In response, the 海南省蓝丝带海洋环境保护协会 initiated a restoration project, rehabilitating wetlands, planting mangroves, and promoting community involvement in conservation. Efforts expanded to cultural and economic revitalization, including the revival of ancient salt farming integrated with eco-tourism. These initiatives have earned international recognition, showcasing a successful model of combining ecological conservation with economic and cultural development for rural vitality.",
-  descriptionCn:
-    "光华时代（海南）生物科技有限公司，是一家专注于高品质聚谷氨酸（γ-PGA）应用研发，集农业生产原料进出口贸易、其它农业生产资料研发生产及配套应用技术开发、咨询、服务、推广的农业应用型服务公司。<br><br>集团总公司为武汉光华时代生物科技有限公司，总公司成立于2013年，是一家集科研、生产、销售、服务于一体的综合型高新技术企业。<br><br>公司以华中农业大学、湖北大学、武汉轻工业大学为技术依托（以陈守文教授为核心的技术团队100余人，拥有发明专利30多项，拥有全套的聚谷氨酸、褐藻寡糖产品柔性生产线），专业从事聚谷氨酸（γ-PGA）、褐藻寡糖（AOS）及功能性微生物菌的研发、生产、技术应用及渠道销售。",
-  navs: [
+  title: '关于光华时代',
+  titleEn: 'About Guanghua Times',
+  // 核心简介：体现绿色、天然、可持续发展理念
+  descriptionCn: '光华时代致力于农业科技创新，专注于土壤改良与生态农业建设。我们始终秉承“绿色、天然、可持续发展”的经营理念，通过生物技术赋能，为现代农业提供高效、环保的系统解决方案。',
+  descriptionEn: 'Guanghua Times is committed to agricultural science and technology innovation, focusing on soil improvement and ecological agriculture. We always adhere to the business philosophy of "Green, Natural, and Sustainable Development".',
+  
+  // 公司历史与里程碑
+  history: [
     {
-      imgSrc: "/hero_temple.jpeg",
-      title: "History, What to see and do",
-      titleCn: "公司历史",
-      href: "/history",
-    },
-    {
-      imgSrc: "/hero_organization.jpeg",
-      title: "Village organization",
-      titleCn: "研发团队",
-      href: "",
-    },
-    {
-      imgSrc: "/hero_woman.jpeg",
-      title: "Annual events",
-      titleCn: "企业文化",
-      href: "",
-    },
+      year: '发展历程',
+      content: '详细阐述公司的发展阶段，包括各个发展阶段的重要事件、里程碑式的成就等。',
+    }
   ],
+
+  // 研发团队与企业文化
+  sections: [
+    {
+      title: '研发团队',
+      titleEn: 'R&D Team',
+      content: '展示公司强大的科技支撑与专家团队实力。',
+    },
+    {
+      title: '企业文化',
+      titleEn: 'Corporate Culture',
+      content: '以绿色农业为核心，倡导人与自然和谐共生的可持续发展之路。',
+    }
+  ]
 };
