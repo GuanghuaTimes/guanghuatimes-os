@@ -1,14 +1,11 @@
 export type AboutConfig = {
   title: string;
   descriptionCn: string;
-  descriptionEn: string;
 };
 
 export const aboutConfig: AboutConfig = {
   title: '关于光华时代',
-  // 核心介绍：注入“绿色、天然、可持续发展”理念
-  descriptionCn: '光华时代致力于农业科技创新，专注于土壤改良与生态农业建设。我们始终秉承“绿色、天然、可持续发展”的经营理念，通过生物技术赋能，为现代农业提供高效、环保的系统解决方案。',
-  descriptionEn: 'Guanghua Times is committed to agricultural science and technology innovation, focusing on soil improvement and ecological agriculture. We always adhere to the business philosophy of "Green, Natural, and Sustainable Development".',
+  descriptionCn: '光华时代致力于农业科技创新，专注于土壤改良与生态农业建设。我们始终秉承“绿色、天然、可持续发展”的经营理念，通过生物技术赋能，为现代农业提供高效、环保的系统解决方案。'
 };
   // 公司历史与里程碑
   history: [
