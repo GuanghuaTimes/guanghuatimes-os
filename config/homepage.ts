@@ -17,8 +17,8 @@ export const homepageConfig = {
     description: "Innovation-driven, quality creates the future; Technology empowers, service creates value!",
     descriptionCn: '富含聚谷氨酸、有机质, 促进根系生长, 增强土壤肥力.',
     href: '/nature-school',
-  } // <--- 最后一个数组元素，无需逗号
-], // <--- 这里是属性分隔，必须有逗号 (分隔 navs)
+  } 
+],
   navs: [,
     {,
       imgSrc: "/8871718163756_.pic.jpg",
