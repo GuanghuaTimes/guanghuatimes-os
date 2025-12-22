@@ -5,9 +5,9 @@ export type AboutConfig = {
 
 export const aboutConfig: AboutConfig = {
   title: '关于光华时代',
-  descriptionCn: '光华时代致力于农业科技创新，专注于土壤改良与生态农业建设。我们始终秉承“绿色、天然、可持续发展”的经营理念，通过生物技术赋能，为现代农业提供高效、环保的系统解决方案。'
+  descriptionCn: '光华时代致力于农业科技创新，专注于土壤改良与生态农业建设。我们始终秉承“绿色、天然、可持续发展”的经营理念，通过生物技术赋能，为现代农业提供高效、环保的系统解决方案。',
 };
-  // 公司历史与里程碑
+  // //公司历史与里程碑
   history: [
     {
       year: '发展历程',
@@ -15,7 +15,7 @@ export const aboutConfig: AboutConfig = {
     }
   ],
 
-  // 研发团队与企业文化
+  // //研发团队与企业文化
   sections: [
     {
       title: '研发团队',
