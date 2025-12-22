@@ -1,17 +1,24 @@
 export type AboutConfig = {
   titleCn: string;
-  title: string;       // 对应网页的 aboutConfig.title
+  title: string;
   descriptionCn: string;
-  description: string; // 对应网页的 aboutConfig.description
+  description: string;
   imgSrc: string;
+  navs: { href: string; name: string }[]; // 补齐这个缺失的定义
 };
 
 export const aboutConfig: AboutConfig = {
   titleCn: '关于光华时代',
   title: 'About Guanghua Times',
   descriptionCn: '光华时代致力于农业科技创新，专注于土壤改良与生态农业建设。我们始终秉承“绿色、天然、可持续发展”的经营理念，通过生物技术赋能，为现代农业提供高效、环保的系统解决方案。',
-  description: 'Guanghua Times is committed to agricultural science and technology innovation, focusing on soil improvement and ecological agriculture construction. We adhere to the philosophy of "Green, Natural, and Sustainable Development".',
+  description: 'Guanghua Times is committed to agricultural science and technology innovation, focusing on soil improvement and ecological agriculture. We provide efficient and environmentally friendly system solutions for modern agriculture.',
   imgSrc: '/images/about-hero.jpg',
+  
+  // 补齐网页底部需要的导航按钮数据
+  navs: [
+    { href: '/about', name: '关于我们' },
+    { href: '/activities', name: '最新动态' }
+  ],
 
   // 公司历史与里程碑
   history: [
