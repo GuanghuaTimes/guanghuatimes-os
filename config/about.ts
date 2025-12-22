@@ -1,13 +1,13 @@
 export type AboutConfig = {
-  title: string;
+  titleCn: string; // 修改这里，增加 Cn
   descriptionCn: string;
-  imgSrc: string; // 1. 在类型定义这里增加这一行
+  imgSrc: string;
 };
 
 export const aboutConfig: AboutConfig = {
-  title: '关于光华时代',
+  titleCn: '关于光华时代', // 修改这里，增加 Cn
   descriptionCn: '光华时代致力于农业科技创新，专注于土壤改良与生态农业建设。我们始终秉承“绿色、天然、可持续发展”的经营理念，通过生物技术赋能，为现代农业提供高效、环保的系统解决方案。',
-  imgSrc: '/images/about-hero.jpg', // 2. 在这里增加图片路径（请确保路径与您项目中的图片文件名一致）
+  imgSrc: '/images/about-hero.jpg',
 
   // 公司历史与里程碑
   history: [
