@@ -4,7 +4,7 @@ export type AboutConfig = {
   descriptionCn: string;
   description: string;
   imgSrc: string;
-  navs: { href: string; titleCn: string; title: string }[]; // 修正这里的定义
+  navs: { href: string; titleCn: string; title: string; imgSrc: string }[]; // 补齐了导航项的图片定义
 };
 
 export const aboutConfig: AboutConfig = {
@@ -14,10 +14,20 @@ export const aboutConfig: AboutConfig = {
   description: 'Guanghua Times is committed to agricultural science and technology innovation, focusing on soil improvement and ecological agriculture. We provide efficient and environmentally friendly system solutions for modern agriculture.',
   imgSrc: '/images/about-hero.jpg',
   
-  // 修正导航项的数据结构，补齐 titleCn 和 title
+  // 为每个导航项都补齐了 imgSrc 属性
   navs: [
-    { href: '/about', titleCn: '关于我们', title: 'About Us' },
-    { href: '/activities', titleCn: '最新动态', title: 'Latest News' }
+    { 
+      href: '/about', 
+      titleCn: '关于我们', 
+      title: 'About Us', 
+      imgSrc: '/images/nav-about.jpg' 
+    },
+    { 
+      href: '/activities', 
+      titleCn: '最新动态', 
+      title: 'Latest News', 
+      imgSrc: '/images/nav-activities.jpg' 
+    }
   ],
 
   history: [
