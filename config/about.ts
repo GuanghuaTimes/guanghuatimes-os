@@ -1,59 +1,59 @@
-export type AboutConfig = {
-  titleCn: string;
-  title: string;
-  descriptionCn: string;
-  description: string;
-  imgSrc: string;
-  navs: { href: string; titleCn: string; title: string; imgSrc: string }[];
-  history: { year: string; content: string }[];
-  sections: { title: string; titleEn: string; content: string }[];
-};
-
-export const aboutConfig: AboutConfig = {
-  // 核心价值观与理念 [cite: 6]
-  titleCn: '关于光华时代',
-  title: 'About Guanghua Times',
-  descriptionCn: '光华时代致力于农业科技创新，专注于土壤改良与生态农业建设。我们始终秉承“绿色、天然、可持续发展”的经营理念，通过生物技术赋能，为现代农业提供高效、环保的系统解决方案。',
-  description: 'Guanghua Times is committed to agricultural technology innovation, focusing on soil improvement and ecological agriculture. We always adhere to the philosophy of "Green, Natural, and Sustainable Development".',
-  
-  // 建议稍后更新为公司大楼或基地实拍图 [cite: 5, 8]
-  imgSrc: '/images/about-hero.jpg', 
-  
-  // 底部导航关联 [cite: 9, 10]
+export const aboutConfig = {
+  title: "Introduction to Guanghua Times",
+  titleCn: "光华时代简介",
+  imgSrc: "/text/about.jpg",
+  description:
+    "老市村, located in 海头镇 of 儋州市, transitioned from its traditional salt farming to become a beacon of ecological sustainability and community renewal. The village faced ecological and social decline due to the shift from salt fields to shrimp ponds in the 1990s, leading to environmental damage and an aging population. In response, the 海南省蓝丝带海洋环境保护协会 initiated a restoration project, rehabilitating wetlands, planting mangroves, and promoting community involvement in conservation. Efforts expanded to cultural and economic revitalization, including the revival of ancient salt farming integrated with eco-tourism. These initiatives have earned international recognition, showcasing a successful model of combining ecological conservation with economic and cultural development for rural vitality.",
+  descriptionCn:
+    "光华时代（海南）生物科技有限公司，是一家专注于高品质聚谷氨酸（γ-PGA）应用研发，集农业生产原料进出口贸易、其它农业生产资料研发生产及配套应用技术开发、咨询、服务、推广的农业应用型服务公司。<br><br>集团总公司为武汉光华时代生物科技有限公司，总公司成立于2013年，是一家集科研、生产、销售、服务于一体的综合型高新技术企业。<br><br>公司以华中农业大学、湖北大学、武汉轻工业大学为技术依托（以陈守文教授为核心的技术团队100余人，拥有发明专利30多项，拥有全套的聚谷氨酸、褐藻寡糖产品柔性生产线），专业从事聚谷氨酸（γ-PGA）、褐藻寡糖（AOS）及功能性微生物菌的研发、生产、技术应用及渠道销售。",
   navs: [
-    { 
-      href: '/products', 
-      titleCn: '产品与服务', 
-      title: 'Products & Services', 
-      imgSrc: '/images/nav-products.jpg' 
-    },
-    { 
-      href: '/news', 
-      titleCn: '新闻活动', 
-      title: 'News & Events', 
-      imgSrc: '/images/nav-news.jpg' 
-    }
-  ],
-
-  // 详细阐述公司发展历程 [cite: 21, 22]
-  history: [
     {
-      year: '发展历程',
-      content: '详细阐述光华时代的各个发展阶段，记录从成立至今的重要事件、技术突破及里程碑式的成就。',
-    }
-  ],
-
-  // 完善板块内容 [cite: 23, 24]
-  sections: [
-    {
-      title: '研发团队',
-      titleEn: 'R&D Team',
-      content: '展示公司强大的科技支撑与专家团队实力，致力于生物技术与农业应用的深度融合。',
+      imgSrc: "/hero_temple.jpeg",
+      title: "History, What to see and do",
+      titleCn: "光华时代的总体介绍",
+      href: "/history",
     },
     {
-      title: '企业文化',
-      titleEn: 'Corporate Culture',
-      content: '以绿色农业为核心，倡导人与自然和谐共生，通过持续创新推动行业健康发展。',
-    }
-  ]
+      imgSrc: "/hero_organization.jpeg",
+      title: "Village organization",
+      titleCn: "社区组织架构",
+      href: "",
+    },
+    {
+      imgSrc: "/hero_woman.jpeg",
+      title: "Annual events",
+      titleCn: "社区大事记",
+      href: "",
+    },
+    {
+      imgSrc: "/hero_volunteer.jpeg",
+      title: "Volunteers wanted",
+      titleCn: "招募志愿者",
+      href: "",
+    },
+    {
+      imgSrc: "/hero_woman.jpeg",
+      title: "Article about us",
+      titleCn: "关于我们的文章",
+      href: "",
+    },
+    {
+      imgSrc: "/hero_woman.jpeg",
+      title: "Finantial Reoprt",
+      titleCn: "财务报告",
+      href: "",
+    },
+    {
+      imgSrc: "/hero_woman.jpeg",
+      title: "Donations",
+      titleCn: "捐赠",
+      href: "",
+    },
+    {
+      imgSrc: "/hero_travel_information.jpeg",
+      title: "Travel Informations",
+      titleCn: "交通信息",
+      href: "/travel-information",
+    },
+  ],
 };

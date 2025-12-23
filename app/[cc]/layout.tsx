@@ -4,7 +4,7 @@ import { MainNav } from "@/components/layout/main-nav";
 import { siteConfig } from "@/config/site";
 import { MobileNav } from "@/components/layout/mobile-nav";
 import { PropsWithChildren, Suspense } from "react";
-import { AudioPlayer } from "./audio-player";
+// import { AudioPlayer } from "./audio-player";
 import LangToggle from "@/components/layout/lang-toggle";
 
 export default function Layout({
@@ -22,9 +22,9 @@ export default function Layout({
             // sidebarNavItems={dashboardConfig.sidebarNav}
           />
           <ModeToggle />
-          <Suspense fallback={<div>Loading...</div>}>
+          {/* <Suspense fallback={<div>Loading...</div>}>
             <AudioPlayer />
-          </Suspense>
+          </Suspense> */}
           <LangToggle />
         </div>
       </header>

@@ -1,57 +1,49 @@
 export const homepageConfig = {
-  // 首页大图轮播：根据文档展示核心产品系列
   carouselItems: [
     {
-      imgSrc: '/product-images/sanbanfu-hero.jpg', // 建议后续上传三板斧系列大图
-      title: 'Triple-Axe Series',
-      titleCn: '三板斧系列',
-      description: "Core effective bio-solutions for modern agriculture.",
-      descriptionCn: '核心效能系列：生物技术赋能，助力作物高产质优。',
-      href: '/products'
-    },
-    {
-      imgSrc: '/product-images/（AGRARIUS）小粒低聚型20kg袋装370X750X80mm（效果图）20250324.jpg',
-      title: 'AGRARIUS Series',
-      titleCn: 'AGRARIUS 系列',
-      description: "Innovation-driven organic water-soluble fertilizer.",
-      descriptionCn: '小粒低聚型有机水溶肥料：营养全面，全水快溶，调理土壤。',
-      href: '/products'
-    },
-    {
-      imgSrc: '/product-images/（AGRARIUS）生物蛋白肽20kg（效果图）20250324.png',
-      title: 'Biotech Protein Peptide',
-      titleCn: '生物蛋白肽系列',
-      description: "Enhance root growth and soil fertility with polyglutamic acid.",
-      descriptionCn: '富含聚谷氨酸、有机质，强力促根，显著增强土壤肥力。',
-      href: '/products'
-    }
-  ],
-
-  // 首页快速导航：对齐文档要求的五大分类与服务
-  navs: [
-    {
-      imgSrc: "/images/nav-about.jpg",
-      title: "About Us",
-      titleCn: "公司简介",
+      imgSrc: "/banner1.jpg",
+      title: "Welcome to Guanghua Times",
+      titleCn: "Welcome to 光华时代",
+      description:
+        "Innovation-driven, quality creates the future; Technology empowers, service creates value!",
+      descriptionCn: "创新驱动，品质铸就未来；技术赋能，服务创造价值！",
       href: "/about",
     },
     {
-      imgSrc: "/images/nav-products.jpg",
-      title: "Product Categories",
-      titleCn: "产品分类",
-      href: "/products",
+      imgSrc: "/banner2.jpg",
+      title: "Welcome to Guanghua Times",
+      titleCn: "Welcome to 光华时代",
+      description:
+        "Innovation-driven, quality creates the future; Technology empowers, service creates value!",
+      descriptionCn:
+        "创新驱动，品质铸就未来；技术赋能，服务创造价值！",
+      href: "/nature-school",
+    },
+  ],
+  navs: [
+    {
+      imgSrc: "/8871718163756_.pic.jpg",
+      title: "About Guanghua Times",
+      titleCn: "关于光华时代",
+      href: "/about",
     },
     {
-      imgSrc: "/images/nav-services.jpg",
-      title: "Technical Services",
-      titleCn: "服务介绍",
-      href: "/products", // 建议后期指向服务专门的板块
+      imgSrc: "/hero3.jpeg",
+      title: "The education hub of the community",
+      titleCn: "艺文阅读",
+      href: "/education-hub",
     },
     {
-      imgSrc: "/images/nav-news.jpg",
-      title: "Company News",
-      titleCn: "公司动态",
-      href: "/news",
+      imgSrc: "/hero_diversity.jpeg",
+      title: "Ecologic and diversity livelihodds",
+      titleCn: "生态与多元生计",
+      href: "/ecology-diversity",
+    },
+    {
+      imgSrc: "/hero_charity.jpeg",
+      title: "Charity Program",
+      titleCn: "社区关怀计划",
+      href: "/donate",
     },
   ],
 };

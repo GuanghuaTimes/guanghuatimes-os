@@ -1,5 +1,6 @@
 import * as React from "react";
 import { type Metadata } from "next";
+import Link from "next/link";
 import { allArticles } from "@/.contentlayer/generated";
 import { Separator } from "@/components/ui/separator";
 import { PageHeader, PageHeaderDescription } from "@/components/page-header";
@@ -8,6 +9,7 @@ import { EventCardSkeleton } from "./_components/event-card-skeleton";
 import { ArticleCard } from "./_components/event-card";
 import { CC } from "../page";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
     metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL!),
@@ -31,21 +33,28 @@ export async function generateStaticParams(): Promise<PageProps["params"][]> {
     return [{ cc: "cn" }, { cc: "en" }];
 }
 
-export default function ArticlePage({ params = { cc: "cn" } }: { params: { cc?: CC } }) {
-    const articles = (allArticles || [])
+export default function ArticlePage({ 
+    params = { cc: "cn" }, 
+    limit, 
+    showReadMore = false 
+}: { 
+    params: { cc?: CC }; 
+    limit?: number; 
+    showReadMore?: boolean; 
+}) {
+    const allFilteredArticles = (allArticles || [])
         .filter((article: any) => article.published)
         .sort((a: any, b: any) => b.date.localeCompare(a.date));
-
-    console.log('=== DEBUG ===');
-    console.log('文章总数:', articles.length);
+    
+    const articles = limit ? allFilteredArticles.slice(0, limit) : allFilteredArticles;
 
     return (
         <Shell className="md:pb-10 min-h-[calc(100vh-156px)]">
             <PageHeader>
-                <div className="text-2xl md:text-4xl font-bold text-gray-900">
+                <div className="text-2xl md:text-4xl font-bold text-gray-900 dark:text-white">
                     {params.cc === "cn" ? config.titleCn : config.title}
                 </div>
-                <PageHeaderDescription className="text-lg text-gray-600">
+                <PageHeaderDescription className="text-lg text-gray-600 dark:text-gray-300">
                     {config.description}
                 </PageHeaderDescription>
             </PageHeader>
@@ -74,6 +83,16 @@ export default function ArticlePage({ params = { cc: "cn" } }: { params: { cc?: 
                     </div>
                 )}
             </section>
+            
+            {showReadMore && (
+                <div className="flex justify-center mt-8">
+                    <Link href={`/${params.cc}/articles`}>
+                        <Button variant="outline" size="lg" className="text-lg">
+                            {params.cc === "cn" ? "阅读更多" : "Read More"}
+                        </Button>
+                    </Link>
+                </div>
+            )}
         </Shell>
     );
 }

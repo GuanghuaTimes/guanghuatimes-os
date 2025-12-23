@@ -201,7 +201,52 @@ export const Event = defineDocumentType(() => ({
   },
 }));
 
+export const AgrariusSeries = defineDocumentType(() => ({
+  name: "AgrariusSeries",
+  filePathPattern: `agrarius-series/**/*.mdx`,
+  contentType: "mdx",
+  fields: {
+    title: { type: "string", required: true },
+    description: { type: "string" },
+    date: { type: "date", required: true },
+    published: { type: "boolean", default: true },
+    image: { type: "string", required: true },
+    wechatUrl: { type: "string" },
+  },
+  computedFields: baseComputedFields,
+}));
+
+export const GuanghuaBioSeries = defineDocumentType(() => ({
+  name: "GuanghuaBioSeries",
+  filePathPattern: `guanghua-bio-series/**/*.mdx`,
+  contentType: "mdx",
+  fields: {
+    title: { type: "string", required: true },
+    description: { type: "string" },
+    date: { type: "date", required: true },
+    published: { type: "boolean", default: true },
+    image: { type: "string", required: true },
+    wechatUrl: { type: "string" },
+  },
+  computedFields: baseComputedFields,
+}));
+
+export const DailyChemicalSeries = defineDocumentType(() => ({
+  name: "DailyChemicalSeries",
+  filePathPattern: `daily-chemical-series/**/*.mdx`,
+  contentType: "mdx",
+  fields: {
+    title: { type: "string", required: true },
+    description: { type: "string" },
+    date: { type: "date", required: true },
+    published: { type: "boolean", default: true },
+    image: { type: "string", required: true },
+    wechatUrl: { type: "string" },
+  },
+  computedFields: baseComputedFields,
+}));
+
 export default makeSource({
   contentDirPath: "./content",
-  documentTypes: [Event, Page, Article, Announcement, Activity],
+  documentTypes: [Event, Page, Article, Announcement, Activity, AgrariusSeries, GuanghuaBioSeries, DailyChemicalSeries],
 });

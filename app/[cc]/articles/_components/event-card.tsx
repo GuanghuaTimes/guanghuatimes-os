@@ -71,28 +71,13 @@ function CardContent({ article, i, lang, hasWechatLink }: CardContentProps) {
                     )}
                 </AspectRatio>
 
-                <div className="absolute top-3 left-3">
-                    <Badge variant="secondary" className="bg-white/90 backdrop-blur-sm text-gray-900 border-0 font-medium">
-                        {hasWechatLink ? (lang === 'cn' ? '公众号' : 'WeChat') : (lang === 'cn' ? '文章' : 'Article')}
-                    </Badge>
-                </div>
-
                 {hasWechatLink && (
-                    <div className="absolute top-3 right-10">
+                    <div className="absolute top-3 right-3">
                         <Badge variant="outline" className="bg-blue-500/20 backdrop-blur-sm text-white border-0 text-xs">
                             ↗
                         </Badge>
                     </div>
                 )}
-
-                <div className="absolute top-3 right-3">
-                    <Badge variant="outline" className="bg-black/20 backdrop-blur-sm text-white border-0 text-xs">
-                        {formatDate(article.date, {
-                            month: '2-digit',
-                            day: '2-digit'
-                        })}
-                    </Badge>
-                </div>
             </div>
 
             <div className="p-4 flex-1 flex flex-col">
@@ -108,13 +93,7 @@ function CardContent({ article, i, lang, hasWechatLink }: CardContentProps) {
                 </CardHeader>
 
                 <div className="mt-auto pt-3 border-t border-gray-100">
-                    <div className="flex items-center justify-between text-xs text-gray-500">
-            <span className="flex items-center gap-1">
-              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-                {lang === 'cn' ? '5分钟阅读' : '5 min read'}
-            </span>
+                    <div className="flex items-center justify-end text-xs text-gray-500">
                         <span className="text-green-600 font-medium group-hover:underline flex items-center gap-1">
               {hasWechatLink
                   ? (lang === 'cn' ? '阅读原文' : 'Read Original')

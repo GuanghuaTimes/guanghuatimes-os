@@ -4,9 +4,10 @@ import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import ArticlePage from "./articles/page";
 import { homepageConfig } from "@/config/homepage";
-import EventPages from "./events/page";
+import AgrariusSeriesPage from "./agrarius-series/page";
+import GuanghuaBioSeriesPage from "./guanghua-bio-series/page";
+import DailyChemicalSeriesPage from "./daily-chemical-series/page";
 import CarouselComponent from "./carousel";
-import AnnouncementPage from "./announcements/page";
 
 export type CC = "en" | "cn";
 
@@ -58,14 +59,20 @@ export default function LandingPage({
         </div>
       </div>
       <Separator className="container hidden md:block my-2" />
-      <AnnouncementPage params={{ cc: params.cc }} asSubsection />
-      <div className="sm:grid grid-cols-2">
-        <div className="block">
-          <ArticlePage params={{ cc: params.cc }} />
-        </div>
-        <div className="hidden sm:block">
-          <EventPages params={{ cc: params.cc }} />
-        </div>
+      <div className="w-full">
+        <ArticlePage params={{ cc: params.cc }} limit={4} showReadMore={true} />
+      </div>
+      <Separator className="container hidden md:block my-2" />
+      <div className="w-full">
+        <AgrariusSeriesPage params={{ cc: params.cc }} limit={4} showReadMore={true} />
+      </div>
+      <Separator className="container hidden md:block my-2" />
+      <div className="w-full">
+        <GuanghuaBioSeriesPage params={{ cc: params.cc }} limit={4} showReadMore={true} />
+      </div>
+      <Separator className="container hidden md:block my-2" />
+      <div className="w-full">
+        <DailyChemicalSeriesPage params={{ cc: params.cc }} limit={4} showReadMore={true} />
       </div>
     </div>
   );
