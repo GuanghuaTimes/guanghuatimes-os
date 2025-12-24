@@ -8,19 +8,42 @@ import { PlaceholderImage } from "@/components/placeholder-image";
 import { CC } from "../../page";
 import { Badge } from "@/components/ui/badge";
 
-interface ArticleCardProps {
-    article: Article;
-    i: number;
-    lang: CC;
+type CardItem = Pick<Article, "title" | "description" | "image" | "wechatUrl" | "slug" | "slugAsParams">;
+
+function getSlugAsParams(article: any, basePath: string) {
+    if (typeof article?.slugAsParams === "string" && article.slugAsParams.length > 0) {
+        return article.slugAsParams;
+    }
+
+    if (typeof article?.slug === "string" && article.slug.length > 0) {
+        const s = article.slug.replace(/^\//, "");
+        const bp = basePath.replace(/^\//, "");
+        if (s.startsWith(`${bp}/`)) {
+            return s.slice(bp.length + 1);
+        }
+        return s;
+    }
+
+    return "";
 }
 
-export function ArticleCard({ article, i, lang }: ArticleCardProps) {
+interface ArticleCardProps {
+    article: CardItem;
+    i: number;
+    lang: CC;
+    basePath?: string;
+}
+
+export function ArticleCard({ article, i, lang, basePath = "/articles" }: ArticleCardProps) {
     // 修复：明确判断 wechatUrl 是否存在且是有效的 URL
     const hasWechatLink = Boolean(
         article.wechatUrl &&
         typeof article.wechatUrl === 'string' &&
         article.wechatUrl.startsWith('http')
     );
+
+    const normalizedBasePath = basePath.startsWith("/") ? basePath : `/${basePath}`;
+    const slugAsParams = getSlugAsParams(article, normalizedBasePath);
 
     return (
         <article className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 h-full flex flex-col group">
@@ -35,7 +58,7 @@ export function ArticleCard({ article, i, lang }: ArticleCardProps) {
                 </a>
             ) : (
                 <Link
-                    href={`/${lang}/articles/${article.slug}`}
+                    href={`/${lang}${normalizedBasePath}/${slugAsParams}`}
                     className="block transition-all duration-300 hover:-translate-y-1 flex flex-col flex-1"
                 >
                     <CardContent article={article} i={i} lang={lang} hasWechatLink={hasWechatLink} />
@@ -46,7 +69,7 @@ export function ArticleCard({ article, i, lang }: ArticleCardProps) {
 }
 
 interface CardContentProps {
-    article: Article;
+    article: CardItem;
     i: number;
     lang: CC;
     hasWechatLink: boolean;

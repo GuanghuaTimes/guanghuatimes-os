@@ -22,8 +22,9 @@ async function getBrowser() {
     });
   } else {
     browser = await puppeteer.launch({
-      args: ["--no-sandbox", "--disable-setuid-sandbox"],
-      headless: true,
+      args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
+      headless: "new",
+      ignoreHTTPSErrors: true,
     });
   }
   return browser;
@@ -31,15 +32,11 @@ async function getBrowser() {
 
 async function fetchOpenGraphData(url: string) {
   try {
-    const browser = await getBrowser();
-    const page = await browser.newPage();
-    await page.goto(url, { waitUntil: "networkidle2" });
-    const content = await page.content();
-    await page.close();
-
+    // 直接使用OGS进行抓取，避免Puppeteer的问题
     const { result } = await ogs({
-      html: content,
+      url: url,
       onlyGetOpenGraphInfo: true,
+      timeout: 5000,
     });
     return result;
   } catch (error) {
@@ -209,7 +206,6 @@ export const AgrariusSeries = defineDocumentType(() => ({
     title: { type: "string", required: true },
     description: { type: "string" },
     date: { type: "date", required: true },
-    published: { type: "boolean", default: true },
     image: { type: "string", required: true },
     wechatUrl: { type: "string" },
   },
@@ -224,7 +220,6 @@ export const GuanghuaBioSeries = defineDocumentType(() => ({
     title: { type: "string", required: true },
     description: { type: "string" },
     date: { type: "date", required: true },
-    published: { type: "boolean", default: true },
     image: { type: "string", required: true },
     wechatUrl: { type: "string" },
   },
@@ -239,7 +234,6 @@ export const DailyChemicalSeries = defineDocumentType(() => ({
     title: { type: "string", required: true },
     description: { type: "string" },
     date: { type: "date", required: true },
-    published: { type: "boolean", default: true },
     image: { type: "string", required: true },
     wechatUrl: { type: "string" },
   },

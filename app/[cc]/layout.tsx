@@ -32,7 +32,7 @@ export default function Layout({
       <footer className="hidden md:block w-full border-t bg-secondary ">
         <div className="container flex  py-4 items-center  justify-around gap-4">
           {siteConfig.footerNav.map((c) => (
-            <Link href={c.href} className="flex flex-col" key={c.href}>
+            <Link href={`/${params.cc}/${c.href}`} className="flex flex-col" key={c.href}>
               <h2 className="text-lg font-semibold">
                 {params.cc === "cn" ? c.titleCn : c.title}
               </h2>

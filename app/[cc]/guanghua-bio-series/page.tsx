@@ -44,7 +44,7 @@ export default function GuanghuaBioSeriesPage({
     showReadMore?: boolean; 
 }) {
     const allFilteredArticles = (allGuanghuaBioSeries || [])
-        .filter((article: any) => article.published)
+        .filter((article: any) => article.published !== false)
         .sort((a: any, b: any) => b.date.localeCompare(a.date));
     
     const articles = limit ? allFilteredArticles.slice(0, limit) : allFilteredArticles;
@@ -70,6 +70,7 @@ export default function GuanghuaBioSeriesPage({
                             article={article}
                             i={i}
                             lang={params.cc!}
+                            basePath="/guanghua-bio-series"
                         />
                     ))
                 ) : (
