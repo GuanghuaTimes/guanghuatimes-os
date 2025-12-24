@@ -6,7 +6,7 @@ import { formatDate } from "@/lib/utils";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { PlaceholderImage } from "@/components/placeholder-image";
-import { CC } from "../../page";
+import type { CC } from "../../page";
 
 interface EventCardProps {
   event: Event;
@@ -26,7 +26,7 @@ export function EventCard({ event, i, lang }: EventCardProps) {
           {event.ogImage ? (
             <Image
               src={event.ogImage}
-              alt={event.title}
+              alt={event.title ?? ""}
               fill
               sizes="(min-width: 1024px) 384px, (min-width: 768px) 288px, (min-width: 640px) 224px, 100vw"
               className="rounded-lg object-cover hover:scale-105"

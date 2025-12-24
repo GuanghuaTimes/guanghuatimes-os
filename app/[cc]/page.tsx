@@ -2,11 +2,11 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
-import ArticlePage from "./articles/page";
+import { ArticlesSection } from "./articles/section";
 import { homepageConfig } from "@/config/homepage";
-import AgrariusSeriesPage from "./agrarius-series/page";
-import GuanghuaBioSeriesPage from "./guanghua-bio-series/page";
-import DailyChemicalSeriesPage from "./daily-chemical-series/page";
+import { AgrariusSeriesSection } from "./agrarius-series/section";
+import { GuanghuaBioSeriesSection } from "./guanghua-bio-series/section";
+import { DailyChemicalSeriesSection } from "./daily-chemical-series/section";
 import CarouselComponent from "./carousel";
 
 export type CC = "en" | "cn";
@@ -60,19 +60,19 @@ export default function LandingPage({
       </div>
       <Separator className="container hidden md:block my-2" />
       <div className="w-full">
-        <ArticlePage params={{ cc: params.cc }} limit={4} showReadMore={true} />
+        <ArticlesSection params={{ cc: params.cc }} limit={4} showReadMore={true} />
       </div>
       <Separator className="container hidden md:block my-2" />
       <div className="w-full">
-        <AgrariusSeriesPage params={{ cc: params.cc }} limit={4} showReadMore={true} />
+        <AgrariusSeriesSection params={{ cc: params.cc }} limit={4} showReadMore={true} />
       </div>
       <Separator className="container hidden md:block my-2" />
       <div className="w-full">
-        <GuanghuaBioSeriesPage params={{ cc: params.cc }} limit={4} showReadMore={true} />
+        <GuanghuaBioSeriesSection params={{ cc: params.cc }} limit={4} showReadMore={true} />
       </div>
       <Separator className="container hidden md:block my-2" />
       <div className="w-full">
-        <DailyChemicalSeriesPage params={{ cc: params.cc }} limit={4} showReadMore={true} />
+        <DailyChemicalSeriesSection params={{ cc: params.cc }} limit={4} showReadMore={true} />
       </div>
     </div>
   );

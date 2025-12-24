@@ -5,7 +5,7 @@ import { formatDate } from "@/lib/utils";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { PlaceholderImage } from "@/components/placeholder-image";
-import { CC } from "../../page";
+import type { CC } from "../../page";
 import { Badge } from "@/components/ui/badge";
 
 type CardItem = Pick<Article, "title" | "description" | "image" | "wechatUrl" | "slug" | "slugAsParams">;

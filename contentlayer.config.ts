@@ -23,8 +23,7 @@ async function getBrowser() {
   } else {
     browser = await puppeteer.launch({
       args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
-      headless: "new",
-      ignoreHTTPSErrors: true,
+      headless: true,
     });
   }
   return browser;
@@ -180,16 +179,19 @@ export const Event = defineDocumentType(() => ({
   filePathPattern: `events/**/*.mdx`,
   contentType: "mdx",
   fields: {
+    title: { type: "string" },
+    description: { type: "string" },
     date: { type: "date", required: true },
+    image: { type: "string" },
     published: { type: "boolean", default: true },
     externalLink: { type: "string" },
   },
   computedFields: {
     ...baseComputedFields,
-    ...createOpenGraphFields("externalLink"),
     ogImage: {
       type: "string",
       resolve: async (doc: any) => {
+        if (doc.image) return doc.image;
         if (!doc.externalLink) return null;
         const result = await fetchOpenGraphData(doc.externalLink);
         return result.ogImage?.[0]?.url || null;
@@ -206,6 +208,7 @@ export const AgrariusSeries = defineDocumentType(() => ({
     title: { type: "string", required: true },
     description: { type: "string" },
     date: { type: "date", required: true },
+    published: { type: "json" },
     image: { type: "string", required: true },
     wechatUrl: { type: "string" },
   },
@@ -220,6 +223,7 @@ export const GuanghuaBioSeries = defineDocumentType(() => ({
     title: { type: "string", required: true },
     description: { type: "string" },
     date: { type: "date", required: true },
+    published: { type: "json" },
     image: { type: "string", required: true },
     wechatUrl: { type: "string" },
   },
@@ -234,6 +238,7 @@ export const DailyChemicalSeries = defineDocumentType(() => ({
     title: { type: "string", required: true },
     description: { type: "string" },
     date: { type: "date", required: true },
+    published: { type: "json" },
     image: { type: "string", required: true },
     wechatUrl: { type: "string" },
   },
