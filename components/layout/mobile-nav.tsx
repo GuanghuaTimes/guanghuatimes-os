@@ -76,7 +76,26 @@ export function MobileNav({ mainNavItems, lang }: MobileNavProps) {
                     <AccordionContent>
                       <div className="flex flex-col space-y-2">
                         {item.items?.map((subItem, index) =>
-                          subItem.href ? (
+                          subItem.items && subItem.items.length > 0 ? (
+                            <div key={index} className="space-y-2">
+                              <div className="font-semibold text-sm text-foreground">
+                                {lang === "cn" ? subItem.titleCn : subItem.title}
+                              </div>
+                              <div className="flex flex-col space-y-2 ml-4">
+                                {subItem.items.map((nestedItem, nestedIndex) => (
+                                  <MobileLink
+                                    key={nestedIndex}
+                                    href={`/${lang}/${nestedItem.href}`}
+                                    segment={String(segment)}
+                                    setIsOpen={setIsOpen}
+                                    disabled={nestedItem.disabled}
+                                  >
+                                    {lang === "cn" ? nestedItem.titleCn : nestedItem.title}
+                                  </MobileLink>
+                                ))}
+                              </div>
+                            </div>
+                          ) : subItem.href ? (
                             <MobileLink
                               key={index}
                               href={`/${lang}/${subItem.href}`}
@@ -91,7 +110,7 @@ export function MobileNav({ mainNavItems, lang }: MobileNavProps) {
                               key={index}
                               className="text-foreground/70 transition-colors"
                             >
-                              {lang === "cn" ? item.titleCn : item.title}
+                              {lang === "cn" ? subItem.titleCn : subItem.title}
                             </div>
                           )
                         )}

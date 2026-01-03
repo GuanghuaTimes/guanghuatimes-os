@@ -4,8 +4,7 @@ import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import { ArticlesSection } from "./articles/section";
 import { homepageConfig } from "@/config/homepage";
-import { AgrariusSeriesSection } from "./agrarius-series/section";
-import { GuanghuaBioSeriesSection } from "./guanghua-bio-series/section";
+import { ReagentProductsSection } from "./reagent-products/section";
 import { DailyChemicalSeriesSection } from "./daily-chemical-series/section";
 import CarouselComponent from "./carousel";
 
@@ -60,15 +59,11 @@ export default function LandingPage({
       </div>
       <Separator className="container hidden md:block my-2" />
       <div className="w-full">
+        <ReagentProductsSection params={{ cc: params.cc }} showReadMore={true} />
+      </div>
+      <Separator className="container hidden md:block my-2" />
+      <div className="w-full">
         <ArticlesSection params={{ cc: params.cc }} limit={4} showReadMore={true} />
-      </div>
-      <Separator className="container hidden md:block my-2" />
-      <div className="w-full">
-        <AgrariusSeriesSection params={{ cc: params.cc }} limit={4} showReadMore={true} />
-      </div>
-      <Separator className="container hidden md:block my-2" />
-      <div className="w-full">
-        <GuanghuaBioSeriesSection params={{ cc: params.cc }} limit={4} showReadMore={true} />
       </div>
       <Separator className="container hidden md:block my-2" />
       <div className="w-full">

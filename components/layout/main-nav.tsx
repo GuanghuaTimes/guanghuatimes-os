@@ -103,15 +103,51 @@ export function MainNav({ items, lang }: MainNavProps) {
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 ">
-                      {item.items.map((item) => (
-                        <ListItem
-                          key={item.title}
-                          title={lang === "cn" ? item.titleCn : item.title}
-                          href={`/${lang}/${item.href}`}
-                        >
-                          {item.description}
-                        </ListItem>
-                      ))}
+                      {item.href && (
+                        <li className="col-span-2 mb-2">
+                          <Link
+                            href={`/${lang}/${item.href}`}
+                            className="block px-4 py-2 rounded-md bg-green-50 hover:bg-green-100 dark:bg-green-900/20 dark:hover:bg-green-900/30 transition-colors"
+                          >
+                            <div className="flex items-center justify-between">
+                              <span className="font-semibold text-green-700 dark:text-green-400">
+                                {lang === "cn" ? `查看全部${item.titleCn}` : `View All ${item.title}`}
+                              </span>
+                              <svg className="w-4 h-4 text-green-700 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                              </svg>
+                            </div>
+                          </Link>
+                        </li>
+                      )}
+                      {item.items.map((subItem) => 
+                        subItem.items && subItem.items.length > 0 ? (
+                          <li key={subItem.title} className="col-span-2">
+                            <div className="mb-2 text-sm font-semibold text-slate-900">
+                              {lang === "cn" ? subItem.titleCn : subItem.title}
+                            </div>
+                            <ul className="grid grid-cols-1 gap-2 ml-2">
+                              {subItem.items.map((nestedItem) => (
+                                <ListItem
+                                  key={nestedItem.title}
+                                  title={lang === "cn" ? nestedItem.titleCn : nestedItem.title}
+                                  href={`/${lang}/${nestedItem.href}`}
+                                >
+                                  {nestedItem.description}
+                                </ListItem>
+                              ))}
+                            </ul>
+                          </li>
+                        ) : (
+                          <ListItem
+                            key={subItem.title}
+                            title={lang === "cn" ? subItem.titleCn : subItem.title}
+                            href={`/${lang}/${subItem.href}`}
+                          >
+                            {subItem.description}
+                          </ListItem>
+                        )
+                      )}
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
