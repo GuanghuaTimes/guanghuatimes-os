@@ -28,19 +28,19 @@ export const homepageConfig = {
       href: "products",
     },
     {
-      imgSrc: "/hero3.jpeg",
+      imgSrc: "/8871718163756_.pic.jpg",
       title: "Farming Knowledge Base",
       titleCn: "农业科普",
       href: "articles",
     },
     {
-      imgSrc: "/hero_diversity.jpeg",
+      imgSrc: "/8871718163756_.pic.jpg",
       title: "Online Service",
       titleCn: "在线客服",
       href: "volunteer",
     },
     {
-      imgSrc: "/hero_charity.jpeg",
+      imgSrc: "/8871718163756_.pic.jpg",
       title: "About Us",
       titleCn: "关于我们",
       href: "about",

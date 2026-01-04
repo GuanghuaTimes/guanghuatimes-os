@@ -14,6 +14,16 @@ interface PageProps {
   };
 }
 
+type Location = {
+  id: string;
+  name: string;
+  address: string;
+  addressEn?: string;
+  latitude?: number;
+  longitude?: number;
+  region?: string;
+};
+
 const config = {
   title: "Map Navigation",
   titleCn: "地图导航",
@@ -26,9 +36,28 @@ const config = {
   longitude: 110.3298,
 };
 
+const locations: Location[] = [
+  {
+    id: "wuhan",
+    name: "武汉光华集团",
+    address: "武汉市东西湖区径河街道通源南路6号",
+    region: "武汉",
+  },
+  {
+    id: "hainan",
+    name: "海南光华生物科技有限公司",
+    address: config.address,
+    addressEn: config.addressEn,
+    latitude: config.latitude,
+    longitude: config.longitude,
+    region: "海口",
+  },
+];
+
 export default function MapNavigationPage({ params = { cc: "cn" } }: PageProps) {
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
   const [locationError, setLocationError] = useState<string>("");
+  const [selectedLocation, setSelectedLocation] = useState<Location>(locations[0]);
 
   useEffect(() => {
     // 获取用户当前位置
@@ -54,25 +83,44 @@ export default function MapNavigationPage({ params = { cc: "cn" } }: PageProps) 
 
   // 打开高德地图导航
   const openAmap = () => {
-    const url = `https://uri.amap.com/navigation?to=${config.longitude},${config.latitude},${encodeURIComponent(config.address)}&mode=car&policy=1&src=myapp&coordinate=gaode&callnative=1`;
+    let url = "";
+    if (selectedLocation.latitude && selectedLocation.longitude) {
+      url = `https://uri.amap.com/navigation?to=${selectedLocation.longitude},${selectedLocation.latitude},${encodeURIComponent(selectedLocation.name || selectedLocation.address)}&mode=car&policy=1&src=myapp&coordinate=gaode&callnative=1`;
+    } else {
+      // 无坐标时，使用搜索页作为降级方案
+      url = `https://www.amap.com/search?query=${encodeURIComponent(selectedLocation.address)}`;
+    }
     window.open(url, "_blank");
   };
 
   // 打开百度地图导航
   const openBaiduMap = () => {
-    const url = `https://api.map.baidu.com/direction?destination=name:${encodeURIComponent(config.address)}|latlng:${config.latitude},${config.longitude}&mode=driving&region=海口&output=html&src=webapp.baidu.openAPIdemo`;
+    let url = "";
+    if (selectedLocation.latitude && selectedLocation.longitude) {
+      url = `https://api.map.baidu.com/direction?destination=name:${encodeURIComponent(selectedLocation.name || selectedLocation.address)}|latlng:${selectedLocation.latitude},${selectedLocation.longitude}&mode=driving&region=${encodeURIComponent(selectedLocation.region || "海口")}&output=html&src=webapp.baidu.openAPIdemo`;
+    } else {
+      url = `https://api.map.baidu.com/direction?destination=name:${encodeURIComponent(selectedLocation.address)}&mode=driving&region=${encodeURIComponent(selectedLocation.region || "全国")}&output=html&src=webapp.baidu.openAPIdemo`;
+    }
     window.open(url, "_blank");
   };
 
   // 打开腾讯地图导航
   const openTencentMap = () => {
-    const url = `https://apis.map.qq.com/uri/v1/routeplan?type=drive&to=${encodeURIComponent(config.address)}&tocoord=${config.latitude},${config.longitude}&policy=0&referer=myapp`;
+    let url = `https://apis.map.qq.com/uri/v1/routeplan?type=drive&to=${encodeURIComponent(selectedLocation.address)}&policy=0&referer=myapp`;
+    if (selectedLocation.latitude && selectedLocation.longitude) {
+      url += `&tocoord=${selectedLocation.latitude},${selectedLocation.longitude}`;
+    }
     window.open(url, "_blank");
   };
 
   // 打开Google地图导航
   const openGoogleMaps = () => {
-    const url = `https://www.google.com/maps/dir/?api=1&destination=${config.latitude},${config.longitude}&travelmode=driving`;
+    let url = "";
+    if (selectedLocation.latitude && selectedLocation.longitude) {
+      url = `https://www.google.com/maps/dir/?api=1&destination=${selectedLocation.latitude},${selectedLocation.longitude}&travelmode=driving`;
+    } else {
+      url = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(selectedLocation.address)}&travelmode=driving`;
+    }
     window.open(url, "_blank");
   };
 
@@ -88,26 +136,57 @@ export default function MapNavigationPage({ params = { cc: "cn" } }: PageProps) 
       </PageHeader>
 
       <div className="mt-8 space-y-8">
-        {/* 地址信息卡片 */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700">
-          <div className="flex items-start gap-4">
-            <div className="bg-blue-100 p-3 rounded-full">
-              <MapPin className="w-6 h-6 text-blue-600" />
-            </div>
-            <div className="flex-1">
-              <h3 className="text-xl font-semibold mb-2 dark:text-white">
-                {params.cc === "cn" ? "办公地址" : "Office Address"}
-              </h3>
-              <p className="text-gray-700 dark:text-gray-200 text-lg">
-                {params.cc === "cn" ? config.address : config.addressEn}
-              </p>
-              <div className="mt-4 text-sm text-gray-500 dark:text-gray-400">
-                <p>
-                  {params.cc === "cn" ? "坐标：" : "Coordinates: "}
-                  {config.latitude}, {config.longitude}
-                </p>
+        {/* 地址选择 */}
+        <div className="space-y-4">
+          <h3 className="text-xl font-semibold mb-2 dark:text-white">
+            {params.cc === "cn" ? "选择地址" : "Choose Location"}
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {locations.map((loc) => (
+              <div
+                key={loc.id}
+                role="button"
+                tabIndex={0}
+                onClick={() => setSelectedLocation(loc)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") setSelectedLocation(loc);
+                }}
+                className={[
+                  "bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border",
+                  "transition-colors",
+                  selectedLocation.id === loc.id
+                    ? "border-blue-500 dark:border-blue-500"
+                    : "border-gray-200 dark:border-gray-700",
+                ].join(" ")}
+              >
+                <div className="flex items-start gap-4">
+                  <div className="bg-blue-100 p-3 rounded-full">
+                    <MapPin className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-semibold mb-2 dark:text-white">
+                      {loc.name}
+                    </h3>
+                    <p className="text-gray-700 dark:text-gray-200 text-lg">
+                      {loc.address}
+                    </p>
+                    {loc.latitude && loc.longitude ? (
+                      <div className="mt-4 text-sm text-gray-500 dark:text-gray-400">
+                        <p>
+                          {params.cc === "cn" ? "坐标：" : "Coordinates: "}
+                          {loc.latitude}, {loc.longitude}
+                        </p>
+                      </div>
+                    ) : null}
+                    {selectedLocation.id === loc.id ? (
+                      <div className="mt-2 text-sm text-blue-600 dark:text-blue-400">
+                        {params.cc === "cn" ? "当前选择" : "Selected"}
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
 

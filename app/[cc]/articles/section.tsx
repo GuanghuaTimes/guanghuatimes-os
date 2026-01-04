@@ -68,7 +68,7 @@ export function ArticlesSection({
         <div className="flex justify-center mt-8">
           <Link href={`/${params.cc}/articles`}>
             <Button variant="outline" size="lg" className="text-lg">
-              {params.cc === "cn" ? "阅读更多" : "Read More"}
+              {params.cc === "cn" ? "了解更多" : "Read More"}
             </Button>
           </Link>
         </div>

@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useSelectedLayoutSegment } from "next/navigation";
 import type { MainNavItem, SidebarNavItem } from "@/types";
 import { ViewVerticalIcon } from "@radix-ui/react-icons";
@@ -49,7 +50,13 @@ export function MobileNav({ mainNavItems, lang }: MobileNavProps) {
               className="flex items-center"
               onClick={() => setIsOpen(false)}
             >
-              <Palmtree className="size-6" />
+              <Image
+                src="/Logo.png"
+                alt={lang === "cn" ? siteConfig.nameCn : siteConfig.name}
+                width={24}
+                height={24}
+                className="size-6"
+              />
               <span className="font-bold">
                 {lang === "cn" ? siteConfig.nameCn : siteConfig.name}
               </span>
@@ -127,7 +134,13 @@ export function MobileNav({ mainNavItems, lang }: MobileNavProps) {
         href="/"
         className="mr-auto flex items-center space-x-2 md:hidden min-w-20 ml-2"
       >
-        <Palmtree className="size-6" />
+        <Image
+          src="/Logo.png"
+          alt={lang === "cn" ? siteConfig.nameCn : siteConfig.name}
+          width={24}
+          height={24}
+          className="size-6"
+        />
         <span className=" font-bold  inline-block md:hidden">
           {lang === "cn" ? siteConfig.nameCn : siteConfig.name}
         </span>
