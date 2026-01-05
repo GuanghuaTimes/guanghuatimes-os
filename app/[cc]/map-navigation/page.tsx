@@ -27,8 +27,8 @@ type Location = {
 const config = {
   title: "Map Navigation",
   titleCn: "地图导航",
-  description: "Navigate to our office",
-  descriptionCn: "导航到我们的办公室",
+  description: "Navigate to Guanghua Times",
+  descriptionCn: "导航到光华时代",
   address: "海南省海口市龙华区龙昆北路景瑞大厦A座6楼621",
   addressEn: "Room 621, 6th Floor, Block A, Jingrui Building, Longkun North Road, Longhua District, Haikou City, Hainan Province",
   // 目标地址坐标 (海口市龙华区龙昆北路景瑞大厦)
@@ -39,17 +39,17 @@ const config = {
 const locations: Location[] = [
   {
     id: "wuhan",
-    name: "武汉光华集团",
-    address: "武汉市东西湖区径河街道通源南路6号",
+    name: "武汉光华时代生物科技有限公司",
+    address: "湖北省武汉市东西湖区通源南路武汉泰和工业园西侧约50米",
     region: "武汉",
+    // latitude: ,
+    // longitude: ,
   },
   {
     id: "hainan",
-    name: "海南光华生物科技有限公司",
+    name: "光华时代(海南)生物科技有限公司",
     address: config.address,
     addressEn: config.addressEn,
-    latitude: config.latitude,
-    longitude: config.longitude,
     region: "海口",
   },
 ];

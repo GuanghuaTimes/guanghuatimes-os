@@ -107,8 +107,8 @@ export const siteConfig = {
           description: "Reagent Products",
           items: [
             {
-              title: "Raw Material Products",
-              titleCn: "原料产品",
+              title: "Triple-Axe Series",
+              titleCn: "三板斧系列",
               href: "reagent-raw-materials",
               description: "Raw Material Products for Reagents",
               items: [],
@@ -167,7 +167,7 @@ export const siteConfig = {
       ],
     },
     {
-      title:"服务",
+      title:"Services",
       titleCn:"服务",
       items:[
         {
@@ -190,13 +190,6 @@ export const siteConfig = {
       title: "Nature School",
       titleCn: "应用案例",
       items: [
-        {
-          title: "Introduction to Nature School",
-          titleCn: "自然学校介绍",
-          href: "nature-school",
-          description: "Introduction to Nature School",
-          items: [],
-        },
         {
           title: "Activities & Courses",
           titleCn: "全部活動",
