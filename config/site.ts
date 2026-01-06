@@ -5,12 +5,12 @@ export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
   name: "GuanghuaTimes Bio",
-  nameCn: "光华时代生物",
+  nameCn: "光华时代",
   heroSlogan: "Welcome to Guanghua Times",
   heroSubSlogan: "Innovation-driven, quality creates the future; Technology empowers, service creates value!",
   heroSubSloganCn: "创新驱动 品质铸就未来； 技术赋能，服务创造价值！",
   description: "The best place to visit",
-  descriptionCn: "终身学习的生态社区",
+  descriptionCn: "",
   url: "https://alan-webpage.vercel.app",
   ogImage: "https://alan-webpage.vercel.app/opengraph-image.png",
   mainNav: [
@@ -20,23 +20,9 @@ export const siteConfig = {
       items: [
         {
           title: "About",
-          titleCn: "关于光华时代",
+          titleCn: "光华时代",
           href: "about",
           description: "About Guanghua Times",
-          items: [],
-        },
-        {
-          title: "R&D Team",
-          titleCn: "研发团队",
-          href: "history",
-          description: "R&D Team",
-          items: [],
-        },
-        {
-          title: "Corporate culture",
-          titleCn: "企业文化",
-          href: "travel-information",
-          description: "Corporate culture",
           items: [],
         },
         // {

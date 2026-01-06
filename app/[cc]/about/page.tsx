@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { aboutConfig } from "@/config/about";
 import { CC } from "../page";
+import AboutTabs from "./tabs";
 
 export const metadata: Metadata = {
   // metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL!),
@@ -68,32 +69,9 @@ export default function Page({
         </div>
       </div>
 
-      <section className="container">
-        <div className="grid grid-cols-2 md:grid-cols-4 my-2 gap-2">
-          {aboutConfig.navs.map((m, i) => (
-            <Link
-              href={`/${params.cc}/${m.href}`}
-              className="col-span-1 relative group overflow-hidden"
-              key={i}
-            >
-              <div className="absolute inset-0 z-10 bg-black/30 flex justify-center items-center">
-                <h1 className="text-xl font-bold text-white text-center p-2">
-                  {params.cc === "cn" ? m.titleCn : m.title}
-                </h1>
-              </div>
-              <AspectRatio ratio={16 / 13}>
-                <Image
-                  src={m.imgSrc}
-                  alt=""
-                  fill
-                  className="object-cover group-hover:scale-105"
-                  priority
-                />
-              </AspectRatio>
-            </Link>
-          ))}
-        </div>
-      </section>
+      {/* tabbed company profile sections */}
+      <AboutTabs cc={params.cc || "cn"} />
+
     </>
   );
 }

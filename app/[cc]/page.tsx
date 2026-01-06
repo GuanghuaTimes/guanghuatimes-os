@@ -33,28 +33,44 @@ export default function LandingPage({
       <CarouselComponent lang={params.cc!} />
       <div className="container relative">
         <div className="hidden md:grid grid-cols-4 my-2 gap-2">
-          {homepageConfig.navs.map((m, i) => (
-            <Link
-              href={`/${params.cc}/${m.href}`}
-              className="col-span-1 relative group overflow-hidden"
-              key={i}
-            >
-              <div className="absolute inset-0 z-10 bg-black/30 flex justify-center items-center">
-                <h1 className="text-xl font-bold text-white text-center p-2">
-                  {params.cc === "cn" ? m.titleCn : m.title}
-                </h1>
+          {homepageConfig.navs.map((m, i) => {
+            const disabled = m.href === "articles" || m.href === "volunteer";
+            const content = (
+              <>
+                <div className="absolute inset-0 z-10 bg-black/30 flex justify-center items-center">
+                  <h1 className="text-xl font-bold text-white text-center p-2">
+                    {params.cc === "cn" ? m.titleCn : m.title}
+                  </h1>
+                </div>
+                <AspectRatio ratio={16 / 13}>
+                  <Image
+                    src={m.imgSrc}
+                    alt=""
+                    fill
+                    className="object-cover group-hover:scale-105"
+                    priority
+                  />
+                </AspectRatio>
+              </>
+            );
+            return disabled ? (
+              <div
+                className="col-span-1 relative group overflow-hidden cursor-not-allowed opacity-95"
+                key={i}
+                title="即将上线/敬请期待"
+              >
+                {content}
               </div>
-              <AspectRatio ratio={16 / 13}>
-                <Image
-                  src={m.imgSrc}
-                  alt=""
-                  fill
-                  className="object-cover group-hover:scale-105"
-                  priority
-                />
-              </AspectRatio>
-            </Link>
-          ))}
+            ) : (
+              <Link
+                href={`/${params.cc}/${m.href}`}
+                className="col-span-1 relative group overflow-hidden"
+                key={i}
+              >
+                {content}
+              </Link>
+            );
+          })}
         </div>
       </div>
       <Separator className="container hidden md:block my-2" />

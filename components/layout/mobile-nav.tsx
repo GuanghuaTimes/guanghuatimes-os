@@ -30,6 +30,11 @@ interface MobileNavProps {
 export function MobileNav({ mainNavItems, lang }: MobileNavProps) {
   const segment = useSelectedLayoutSegment();
   const [isOpen, setIsOpen] = React.useState(false);
+  const disabledGroups = new Set(["News", "Services", "Nature School"]);
+  const isGroupDisabled = (groupTitle?: string) =>
+    groupTitle ? disabledGroups.has(groupTitle) : false;
+  const isSupportUs = (groupTitle?: string) => groupTitle === "Support Us";
+  const isAllowedSupportUsHref = (href?: string) => href === "map-navigation";
 
   return (
     <div className="flex md:hidden justify-between w-full">
@@ -95,7 +100,10 @@ export function MobileNav({ mainNavItems, lang }: MobileNavProps) {
                                     href={`/${lang}/${nestedItem.href}`}
                                     segment={String(segment)}
                                     setIsOpen={setIsOpen}
-                                    disabled={nestedItem.disabled}
+                                    disabled={
+                                      isGroupDisabled(item.title) ||
+                                      (isSupportUs(item.title) && !isAllowedSupportUsHref(nestedItem.href))
+                                    }
                                   >
                                     {lang === "cn" ? nestedItem.titleCn : nestedItem.title}
                                   </MobileLink>
@@ -108,7 +116,10 @@ export function MobileNav({ mainNavItems, lang }: MobileNavProps) {
                               href={`/${lang}/${subItem.href}`}
                               segment={String(segment)}
                               setIsOpen={setIsOpen}
-                              disabled={subItem.disabled}
+                              disabled={
+                                isGroupDisabled(item.title) ||
+                                (isSupportUs(item.title) && !isAllowedSupportUsHref(subItem.href))
+                              }
                             >
                               {lang === "cn" ? subItem.titleCn : subItem.title}
                             </MobileLink>
@@ -172,6 +183,7 @@ function MobileLink({
         href.includes(segment) && "text-foreground",
         disabled && "pointer-events-none opacity-60"
       )}
+      title={disabled ? "即将上线/敬请期待" : undefined}
       onClick={() => setIsOpen(false)}
     >
       {children}

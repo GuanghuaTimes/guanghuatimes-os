@@ -26,6 +26,11 @@ interface MainNavProps {
 }
 
 export function MainNav({ items, lang }: MainNavProps) {
+  const disabledGroups = new Set(["News", "Services", "Nature School"]);
+  const isGroupDisabled = (groupTitle?: string) =>
+    groupTitle ? disabledGroups.has(groupTitle) : false;
+  const isSupportUs = (groupTitle?: string) => groupTitle === "Support Us";
+  const isAllowedSupportUsHref = (href?: string) => href === "map-navigation";
   return (
     <div className="hidden md:flex justify-between w-full text-lg">
       <Link
@@ -103,7 +108,7 @@ export function MainNav({ items, lang }: MainNavProps) {
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 ">
-                      {item.href && (
+                      {item.href && !isGroupDisabled(item.title) && !isSupportUs(item.title) && (
                         <li className="col-span-2 mb-2">
                           <Link
                             href={`/${lang}/${item.href}`}
@@ -127,32 +132,72 @@ export function MainNav({ items, lang }: MainNavProps) {
                               {lang === "cn" ? subItem.titleCn : subItem.title}
                             </div>
                             <ul className="grid grid-cols-1 gap-2 ml-2">
-                              {subItem.items.map((nestedItem) => (
-                                <ListItem
-                                  key={nestedItem.title}
-                                  title={lang === "cn" ? nestedItem.titleCn : nestedItem.title}
-                                  href={`/${lang}/${nestedItem.href}`}
-                                >
-                                  {nestedItem.description}
-                                </ListItem>
-                              ))}
+                              {subItem.items.map((nestedItem) => {
+                                const disabled =
+                                  isGroupDisabled(item.title) ||
+                                  (isSupportUs(item.title) && !isAllowedSupportUsHref(nestedItem.href));
+                                return disabled ? (
+                                  <li key={nestedItem.title}>
+                                    <div
+                                      className="block select-none space-y-1 rounded-md p-3 leading-none text-muted-foreground cursor-not-allowed opacity-70"
+                                      title="即将上线/敬请期待"
+                                    >
+                                      <div className="text-sm font-medium leading-none">
+                                        {lang === "cn" ? nestedItem.titleCn : nestedItem.title}
+                                      </div>
+                                      <p className="line-clamp-2 text-sm leading-snug">
+                                        {nestedItem.description}
+                                      </p>
+                                    </div>
+                                  </li>
+                                ) : (
+                                  <ListItem
+                                    key={nestedItem.title}
+                                    title={lang === "cn" ? nestedItem.titleCn : nestedItem.title}
+                                    href={`/${lang}/${nestedItem.href}`}
+                                  >
+                                    {nestedItem.description}
+                                  </ListItem>
+                                );
+                              })}
                             </ul>
                           </li>
                         ) : (
-                          <ListItem
-                            key={subItem.title}
-                            title={lang === "cn" ? subItem.titleCn : subItem.title}
-                            href={`/${lang}/${subItem.href}`}
-                          >
-                            {subItem.description}
-                          </ListItem>
+                          (() => {
+                            const disabled =
+                              isGroupDisabled(item.title) ||
+                              (isSupportUs(item.title) && !isAllowedSupportUsHref(subItem.href));
+                            return disabled ? (
+                              <li key={subItem.title}>
+                                <div
+                                  className="block select-none space-y-1 rounded-md p-3 leading-none text-muted-foreground cursor-not-allowed opacity-70"
+                                  title="即将上线/敬请期待"
+                                >
+                                  <div className="text-sm font-medium leading-none">
+                                    {lang === "cn" ? subItem.titleCn : subItem.title}
+                                  </div>
+                                  <p className="line-clamp-2 text-sm leading-snug">
+                                    {subItem.description}
+                                  </p>
+                                </div>
+                              </li>
+                            ) : (
+                              <ListItem
+                                key={subItem.title}
+                                title={lang === "cn" ? subItem.titleCn : subItem.title}
+                                href={`/${lang}/${subItem.href}`}
+                              >
+                                {subItem.description}
+                              </ListItem>
+                            );
+                          })()
                         )
                       )}
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
               ) : (
-                item.href && (
+                item.href && !isGroupDisabled(item.title) && !isSupportUs(item.title) && (
                   <NavigationMenuItem key={item.title}>
                     <Link
                       href={`/${lang}/${item.href}`}
