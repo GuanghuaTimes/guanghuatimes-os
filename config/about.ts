@@ -1,4 +1,8 @@
 export const aboutConfig = {
+  title: "About Us",
+  titleCn: "关于我们",
+  description: "Learn more about Guanghua Times",
+  descriptionCn: "了解光华时代",
   imgSrc: "/text/about.jpg",
   navs: [
     {
