@@ -50,11 +50,11 @@ export default function ReagentProductsPage({ params }: { params: { cc: string }
       <section className="bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 py-20 px-6 text-center">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            {isCn ? "试剂产品系列" : "Reagent Product Series"}
+            {isCn ? "制剂产品系列" : "Reagent Product Series"}
           </h1>
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8">
             {isCn 
-              ? "专业生物试剂产品，为现代农业提供全方位解决方案" 
+              ? "专业生物制剂产品，为现代农业提供全方位解决方案" 
               : "Professional biological reagent products providing comprehensive solutions for modern agriculture"}
           </p>
           <div className="flex flex-wrap justify-center gap-3">
@@ -136,7 +136,7 @@ export default function ReagentProductsPage({ params }: { params: { cc: string }
 
                 {/* 了解更多按钮 */}
                 <div>
-                  <Link href={`/${params.cc}/${product.id === 'sanbanfu' ? 'articles' : product.id === 'agrarius' ? 'agrarius-series' : 'guanghua-bio-series'}`}>
+                  <Link href={`/${params.cc}/${product.id === 'sanbanfu' ? 'triple-axe-series' : product.id === 'agrarius' ? 'agrarius-series' : 'guanghua-bio-series'}`}>
                     <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white">
                       {isCn ? "了解更多详情" : "Learn More"}
                       <svg 

@@ -1,5 +1,14 @@
 import { productsConfig } from "@/config/products";
 import Image from "next/image";
+import Link from "next/link";
+
+const categoryLinks: Record<string, string> = {
+  sanbanfu: "triple-axe-series",
+  agrarius: "agrarius-series",
+  biotech: "guanghua-bio-series",
+  "daily-chemical": "daily-chemical-series",
+  "raw-materials": "articles",
+};
 
 export default function ProductsPage({ params }: { params: { cc: string } }) {
   const isCn = params.cc === "cn";
@@ -20,20 +29,22 @@ export default function ProductsPage({ params }: { params: { cc: string } }) {
       <section className="max-w-7xl mx-auto py-16 px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {productsConfig.categories.map((item) => (
-            <div key={item.id} className="group border rounded-2xl overflow-hidden hover:shadow-xl transition-all">
-              <div className="aspect-[4/3] relative bg-slate-100">
-                <Image 
-                  src={item.imgSrc} 
-                  alt={item.titleCn} 
-                  fill 
-                  className="object-cover group-hover:scale-105 transition-transform"
-                />
+            <Link key={item.id} href={`/${params.cc}/${categoryLinks[item.id] || 'products'}`}>
+              <div className="group border rounded-2xl overflow-hidden hover:shadow-xl transition-all cursor-pointer">
+                <div className="aspect-[4/3] relative bg-slate-100">
+                  <Image 
+                    src={item.imgSrc} 
+                    alt={item.titleCn} 
+                    fill 
+                    className="object-cover group-hover:scale-105 transition-transform"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-2">{isCn ? item.titleCn : item.titleEn}</h3>
+                  <p className="text-slate-500 text-sm leading-relaxed">{item.description}</p>
+                </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2">{isCn ? item.titleCn : item.titleEn}</h3>
-                <p className="text-slate-500 text-sm leading-relaxed">{item.description}</p>
-              </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>

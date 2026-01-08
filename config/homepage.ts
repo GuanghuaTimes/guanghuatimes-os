@@ -17,7 +17,7 @@ export const homepageConfig = {
         "Innovation-driven, quality creates the future; Technology empowers, service creates value!",
       descriptionCn:
         "创新驱动，品质铸就未来；技术赋能，服务创造价值！",
-      href: "/nature-school",
+      href: "/about",
     },
   ],
   navs: [
@@ -35,9 +35,9 @@ export const homepageConfig = {
     },
     {
       imgSrc: "/8871718163756_.pic.jpg",
-      title: "Online Service",
-      titleCn: "在线客服",
-      href: "volunteer",
+      title: "Contact Us",
+      titleCn: "联系我们",
+      href: "contact",
     },
     {
       imgSrc: "/8871718163756_.pic.jpg",

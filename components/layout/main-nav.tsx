@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Palmtree } from "lucide-react";
 import { CC } from "@/app/[cc]/page";
+import { Button } from "@/components/ui/button";
 
 interface MainNavProps {
   items?: MainNavItem[];
@@ -29,9 +30,7 @@ export function MainNav({ items, lang }: MainNavProps) {
   const disabledGroups = new Set(["News", "Services", "Nature School"]);
   const isGroupDisabled = (groupTitle?: string) =>
     groupTitle ? disabledGroups.has(groupTitle) : false;
-  const isSupportUs = (groupTitle?: string) => groupTitle === "Support Us";
-  const isAllowedSupportUsHref = (href?: string) => href === "map-navigation";
-  return (
+    return (
     <div className="hidden md:flex justify-between w-full text-lg">
       <Link
         href={`/${lang}`}
@@ -108,7 +107,7 @@ export function MainNav({ items, lang }: MainNavProps) {
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 ">
-                      {item.href && !isGroupDisabled(item.title) && !isSupportUs(item.title) && (
+                      {item.href && !isGroupDisabled(item.title) && item.title !== "Contact Us" && (
                         <li className="col-span-2 mb-2">
                           <Link
                             href={`/${lang}/${item.href}`}
@@ -133,9 +132,7 @@ export function MainNav({ items, lang }: MainNavProps) {
                             </div>
                             <ul className="grid grid-cols-1 gap-2 ml-2">
                               {subItem.items.map((nestedItem) => {
-                                const disabled =
-                                  isGroupDisabled(item.title) ||
-                                  (isSupportUs(item.title) && !isAllowedSupportUsHref(nestedItem.href));
+                                const disabled = isGroupDisabled(item.title);
                                 return disabled ? (
                                   <li key={nestedItem.title}>
                                     <div
@@ -164,9 +161,7 @@ export function MainNav({ items, lang }: MainNavProps) {
                           </li>
                         ) : (
                           (() => {
-                            const disabled =
-                              isGroupDisabled(item.title) ||
-                              (isSupportUs(item.title) && !isAllowedSupportUsHref(subItem.href));
+                            const disabled = isGroupDisabled(item.title);
                             return disabled ? (
                               <li key={subItem.title}>
                                 <div
@@ -197,7 +192,7 @@ export function MainNav({ items, lang }: MainNavProps) {
                   </NavigationMenuContent>
                 </NavigationMenuItem>
               ) : (
-                item.href && !isGroupDisabled(item.title) && !isSupportUs(item.title) && (
+                item.href && !isGroupDisabled(item.title) && (
                   <NavigationMenuItem key={item.title}>
                     <Link
                       href={`/${lang}/${item.href}`}

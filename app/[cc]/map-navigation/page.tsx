@@ -40,7 +40,7 @@ const locations: Location[] = [
   {
     id: "wuhan",
     name: "武汉光华时代生物科技有限公司",
-    address: "湖北省武汉市东西湖区通源南路武汉泰和工业园西侧约50米",
+    address: "武汉市东西湖区径河办事处通源南路6号2号楼1层",
     region: "武汉",
     // latitude: ,
     // longitude: ,

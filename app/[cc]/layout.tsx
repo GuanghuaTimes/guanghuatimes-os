@@ -31,30 +31,14 @@ export default function Layout({
       {children}
       <footer className="hidden md:block w-full border-t bg-secondary ">
         <div className="container flex  py-4 items-center  justify-around gap-4">
-          {siteConfig.footerNav.map((c) => {
-            const disabled = c.href === "volunteer";
-            const content = (
-              <>
+          {siteConfig.footerNav.map((c) => (
+              <Link href={`/${params.cc}/${c.href}`} className="flex flex-col hover:opacity-80 transition-opacity" key={c.href}>
                 <h2 className="text-lg font-semibold">
                   {params.cc === "cn" ? c.titleCn : c.title}
                 </h2>
                 <p>{params.cc === "cn" ? c.descriptionCn : c.description}</p>
-              </>
-            );
-            return disabled ? (
-              <div
-                key={c.href}
-                className="flex flex-col pointer-events-none opacity-70 cursor-not-allowed"
-                title="即将上线/敬请期待"
-              >
-                {content}
-              </div>
-            ) : (
-              <Link href={`/${params.cc}/${c.href}`} className="flex flex-col" key={c.href}>
-                {content}
               </Link>
-            );
-          })}
+            ))}
         </div>
       </footer>
     </div>
