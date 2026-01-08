@@ -245,7 +245,22 @@ export const DailyChemicalSeries = defineDocumentType(() => ({
   computedFields: baseComputedFields,
 }));
 
+export const TripleAxeSeries = defineDocumentType(() => ({
+  name: "TripleAxeSeries",
+  filePathPattern: `triple-axe-series/**/*.mdx`,
+  contentType: "mdx",
+  fields: {
+    title: { type: "string", required: true },
+    description: { type: "string" },
+    date: { type: "date", required: true },
+    published: { type: "json" },
+    image: { type: "string", required: true },
+    wechatUrl: { type: "string" },
+  },
+  computedFields: baseComputedFields,
+}));
+
 export default makeSource({
   contentDirPath: "./content",
-  documentTypes: [Event, Page, Article, Announcement, Activity, AgrariusSeries, GuanghuaBioSeries, DailyChemicalSeries],
+  documentTypes: [Event, Page, Article, Announcement, Activity, AgrariusSeries, GuanghuaBioSeries, DailyChemicalSeries, TripleAxeSeries],
 });
