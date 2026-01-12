@@ -27,7 +27,7 @@ interface MainNavProps {
 }
 
 export function MainNav({ items, lang }: MainNavProps) {
-  const disabledGroups = new Set(["News", "Services", "Nature School"]);
+  const disabledGroups = new Set(["Services", "Nature School"]);
   const isGroupDisabled = (groupTitle?: string) =>
     groupTitle ? disabledGroups.has(groupTitle) : false;
     return (
@@ -107,7 +107,7 @@ export function MainNav({ items, lang }: MainNavProps) {
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 ">
-                      {item.href && !isGroupDisabled(item.title) && item.title !== "Contact Us" && (
+                      {item.href && !isGroupDisabled(item.title) && item.title !== "Contact Us" && item.title !== "News" && (
                         <li className="col-span-2 mb-2">
                           <Link
                             href={`/${lang}/${item.href}`}

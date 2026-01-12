@@ -14,6 +14,7 @@ export function EventsSection({
   params,
   limit,
   showReadMore = false,
+  asSubsection = false,
 }: {
   params: { cc?: CC };
   limit?: number;
@@ -26,26 +27,36 @@ export function EventsSection({
 
   const events = limit ? allFilteredEvents.slice(0, limit) : allFilteredEvents;
 
-  return (
-    <Shell className="md:pb-10 min-h-[calc(100vh-156px)]">
-      <PageHeader>
-        <div className="text-2xl md:text-4xl font-bold text-gray-900 dark:text-white">
-          {params.cc === "cn" ? "最新活动" : "Events"}
-        </div>
-        <PageHeaderDescription className="text-lg text-gray-600 dark:text-gray-300">
-          Explore the latest news and updates from the community
-        </PageHeaderDescription>
-      </PageHeader>
-      <Separator className="hidden md:block my-2" />
+  const content = (
+    <>
+      {!asSubsection && (
+        <>
+          <PageHeader>
+            <div className="text-2xl md:text-4xl font-bold text-gray-900 dark:text-white">
+              {params.cc === "cn" ? "行业动态" : "Industry News"}
+            </div>
+            <PageHeaderDescription className="text-lg text-gray-600 dark:text-gray-300">
+              {params.cc === "cn" ? "了解行业最新趋势和发展动态" : "Stay updated with the latest industry trends"}
+            </PageHeaderDescription>
+          </PageHeader>
+          <Separator className="hidden md:block my-2" />
+        </>
+      )}
       <section className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
         <React.Suspense
           fallback={Array.from({ length: 3 }).map((_, i) => (
             <EventCardSkeleton key={i} />
           ))}
         >
-          {events.map((event, i) => (
-            <EventCard key={event.slug} event={event} i={i} lang={params.cc!} />
-          ))}
+          {events.length > 0 ? (
+            events.map((event, i) => (
+              <EventCard key={event.slug} event={event} i={i} lang={params.cc!} />
+            ))
+          ) : (
+            <div className="col-span-full text-center py-12 text-gray-500">
+              {params.cc === "cn" ? "暂无行业动态" : "No industry news yet"}
+            </div>
+          )}
         </React.Suspense>
       </section>
       {showReadMore && (
@@ -57,6 +68,16 @@ export function EventsSection({
           </Link>
         </div>
       )}
+    </>
+  );
+
+  if (asSubsection) {
+    return <div className="space-y-6">{content}</div>;
+  }
+
+  return (
+    <Shell className="md:pb-10 min-h-[calc(100vh-156px)]">
+      {content}
     </Shell>
   );
 }

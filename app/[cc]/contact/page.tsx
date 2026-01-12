@@ -127,72 +127,83 @@ export default function ContactPage({ params = { cc: "cn" } }: PageProps) {
         </PageHeaderDescription>
       </PageHeader>
 
-      {/* 上方区域：联系方式 + 在线客服 */}
-      <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* 左上：联系方式 */}
-        <div id="contact-info" className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 border border-gray-200 dark:border-gray-700 scroll-mt-20">
+      {/* 上方区域：联系方式 + 在线客服（上下布局） */}
+      <div className="mt-8 flex flex-col gap-6">
+        {/* 上方：联系方式 - 三个小卡片横向布局 */}
+        <div id="contact-info" className="scroll-mt-20">
           <h3 className="text-xl font-bold mb-6 flex items-center gap-2 text-gray-900 dark:text-white">
             <Phone className="w-5 h-5 text-green-600" />
             {isCn ? "联系方式" : "Contact Information"}
           </h3>
-          <div className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {locations.map((loc) => (
-              <div key={loc.id} className="border-l-4 border-green-500 pl-4">
+              <div key={loc.id} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-5 border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-shadow">
+                <div className="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mb-3">
+                  <Phone className="w-5 h-5 text-green-600" />
+                </div>
                 <h4 className="font-semibold text-gray-900 dark:text-white mb-1">
                   {isCn ? loc.nameCn : loc.name}
                 </h4>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
                   {isCn ? loc.address : loc.addressEn}
                 </p>
                 <a 
                   href={`tel:${loc.phone.replace(/-/g, "")}`}
-                  className="inline-flex items-center gap-2 text-xl font-bold text-green-600 hover:text-green-700 transition-colors"
+                  className="inline-flex items-center gap-2 text-lg font-bold text-green-600 hover:text-green-700 transition-colors"
                 >
-                  <Phone className="w-5 h-5" />
                   {loc.phone}
                 </a>
               </div>
             ))}
-            {/* 企业邮箱 */}
-            <div className="border-l-4 border-blue-500 pl-4 pt-2">
+            {/* 企业邮箱卡片 */}
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-5 border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-shadow">
+              <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-3">
+                <Mail className="w-5 h-5 text-blue-600" />
+              </div>
               <h4 className="font-semibold text-gray-900 dark:text-white mb-1">
                 {isCn ? "企业邮箱" : "Business Email"}
               </h4>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
+                {isCn ? "商务合作咨询" : "Business inquiries"}
+              </p>
               <a 
                 href="mailto:pga@ghpga.com"
-                className="inline-flex items-center gap-2 text-xl font-bold text-blue-600 hover:text-blue-700 transition-colors"
+                className="inline-flex items-center gap-2 text-lg font-bold text-blue-600 hover:text-blue-700 transition-colors"
               >
-                <Mail className="w-5 h-5" />
                 pga@ghpga.com
               </a>
             </div>
           </div>
         </div>
 
-        {/* 右上：在线客服 */}
+        {/* 下方：在线客服 */}
         <div id="online-service" className="bg-gradient-to-br from-green-500 to-green-600 rounded-xl shadow-lg p-6 text-white scroll-mt-20">
-          <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-            <MessageCircle className="w-5 h-5" />
-            {isCn ? "在线客服" : "Online Customer Service"}
-          </h3>
-          <p className="mb-6 text-green-100">
-            {isCn 
-              ? "点击下方按钮，通过企业微信与我们的客服团队实时沟通" 
-              : "Click the button below to chat with our customer service team via WeChat Work"}
-          </p>
-          <a
-            href={WECHAT_CUSTOMER_SERVICE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 bg-white text-green-600 px-6 py-4 rounded-xl font-bold text-lg hover:bg-green-50 transition-colors shadow-md"
-          >
-            <MessageCircle className="w-6 h-6" />
-            {isCn ? "立即咨询" : "Start Chat"}
-            <ExternalLink className="w-4 h-4" />
-          </a>
-          <p className="mt-4 text-sm text-green-100">
-            {isCn ? "工作时间：周一至周五 9:00-18:30" : "Working hours: Mon-Fri 9:00-18:30"}
-          </p>
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div>
+              <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
+                <MessageCircle className="w-5 h-5" />
+                {isCn ? "在线客服" : "Online Customer Service"}
+              </h3>
+              <p className="text-green-100">
+                {isCn 
+                  ? "点击按钮，通过企业微信与我们的客服团队实时沟通" 
+                  : "Click the button to chat with our customer service team via WeChat Work"}
+              </p>
+              <p className="mt-2 text-sm text-green-100">
+                {isCn ? "工作时间：周一至周五 9:00-18:30" : "Working hours: Mon-Fri 9:00-18:30"}
+              </p>
+            </div>
+            <a
+              href={WECHAT_CUSTOMER_SERVICE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-white text-green-600 px-6 py-4 rounded-xl font-bold text-lg hover:bg-green-50 transition-colors shadow-md shrink-0"
+            >
+              <MessageCircle className="w-6 h-6" />
+              {isCn ? "立即咨询" : "Start Chat"}
+              <ExternalLink className="w-4 h-4" />
+            </a>
+          </div>
         </div>
       </div>
 

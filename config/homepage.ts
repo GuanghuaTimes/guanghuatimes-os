@@ -3,7 +3,7 @@ export const homepageConfig = {
     {
       imgSrc: "/banner1.jpg",
       title: "Welcome to Guanghua Times",
-      titleCn: "Welcome to 光华时代",
+      titleCn: "欢迎来到光华时代",
       description:
         "Innovation-driven, quality creates the future; Technology empowers, service creates value!",
       descriptionCn: "创新驱动，品质铸就未来；技术赋能，服务创造价值！",
@@ -12,7 +12,7 @@ export const homepageConfig = {
     {
       imgSrc: "/banner2.jpg",
       title: "Welcome to Guanghua Times",
-      titleCn: "Welcome to 光华时代",
+      titleCn: "欢迎来到光华时代",
       description:
         "Innovation-driven, quality creates the future; Technology empowers, service creates value!",
       descriptionCn:
