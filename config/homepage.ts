@@ -29,9 +29,9 @@ export const homepageConfig = {
     },
     {
       imgSrc: "/8871718163756_.pic.jpg",
-      title: "Farming Knowledge Base",
-      titleCn: "农业科普",
-      href: "articles",
+      title: "News",
+      titleCn: "新闻资讯",
+      href: "news",
     },
     {
       imgSrc: "/8871718163756_.pic.jpg",

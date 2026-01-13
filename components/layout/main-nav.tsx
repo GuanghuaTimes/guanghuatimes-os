@@ -127,7 +127,7 @@ export function MainNav({ items, lang }: MainNavProps) {
                       {item.items.map((subItem) => 
                         subItem.items && subItem.items.length > 0 ? (
                           <li key={subItem.title} className="col-span-2">
-                            <div className="mb-2 text-sm font-semibold text-slate-900">
+                            <div className="mb-2 text-sm font-semibold text-slate-900 dark:text-white">
                               {lang === "cn" ? subItem.titleCn : subItem.title}
                             </div>
                             <ul className="grid grid-cols-1 gap-2 ml-2">

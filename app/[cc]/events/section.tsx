@@ -53,7 +53,7 @@ export function EventsSection({
               <EventCard key={event.slug} event={event} i={i} lang={params.cc!} />
             ))
           ) : (
-            <div className="col-span-full text-center py-12 text-gray-500">
+            <div className="col-span-full text-center py-12 text-gray-500 dark:text-gray-400">
               {params.cc === "cn" ? "暂无行业动态" : "No industry news yet"}
             </div>
           )}

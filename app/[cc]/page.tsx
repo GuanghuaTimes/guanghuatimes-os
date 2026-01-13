@@ -2,7 +2,7 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
-import { ArticlesSection } from "./articles/section";
+import { RawMaterialsSection } from "./raw-materials/section";
 import { homepageConfig } from "@/config/homepage";
 import { ReagentProductsSection } from "./reagent-products/section";
 import { DailyChemicalSeriesSection } from "./daily-chemical-series/section";
@@ -63,11 +63,11 @@ export default function LandingPage({
       </div>
       <Separator className="container hidden md:block my-2" />
       <div className="w-full">
-        <ArticlesSection params={{ cc: params.cc }} limit={4} showReadMore={true} />
+        <RawMaterialsSection params={{ cc: params.cc }} limit={4} showReadMore={true} asHomepage={true} />
       </div>
       <Separator className="container hidden md:block my-2" />
       <div className="w-full">
-        <DailyChemicalSeriesSection params={{ cc: params.cc }} limit={4} showReadMore={true} />
+        <DailyChemicalSeriesSection params={{ cc: params.cc }} limit={4} showReadMore={true} asHomepage={true} />
       </div>
     </div>
   );

@@ -18,18 +18,20 @@ export function AnnouncementCard({
   i,
   lang,
 }: AnnouncementCardProps) {
+  const href = a.url || `/${lang}/announcements/${a.slugAsParams}`;
+  
   return (
-    <Link key={a.slug} href={a.url}>
+    <Link key={a.slug} href={href}>
       <span className="sr-only">{a.title}</span>
-      <article className="space-y-4">
+      <article className="space-y-4 group">
         <AspectRatio ratio={16 / 9} className="overflow-hidden relative">
-          {a.image ? (
+          {a.ogImage ? (
             <Image
-              src={a.image}
-              alt={a.title}
+              src={a.ogImage}
+              alt={a.title ?? ""}
               fill
               sizes="(min-width: 1024px) 384px, (min-width: 768px) 288px, (min-width: 640px) 224px, 100vw"
-              className="rounded-lg object-cover hover:scale-105"
+              className="rounded-lg object-cover group-hover:scale-105 transition-transform"
               priority={i <= 1}
             />
           ) : (
@@ -38,13 +40,13 @@ export function AnnouncementCard({
         </AspectRatio>
         <div className="space-y-2">
           <CardHeader className="space-y-2.5 p-0">
-            <CardTitle className="line-clamp-1">{a.title}</CardTitle>
-            <CardDescription className="line-clamp-2">
+            <CardTitle className="line-clamp-1 dark:text-white">{a.title}</CardTitle>
+            <CardDescription className="line-clamp-2 dark:text-gray-300">
               {a.description}
             </CardDescription>
           </CardHeader>
-          <CardDescription>
-            {a.author} {formatDate(a.date)}
+          <CardDescription className="dark:text-gray-400">
+            {formatDate(a.date)}
           </CardDescription>
         </div>
       </article>

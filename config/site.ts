@@ -62,7 +62,7 @@ export const siteConfig = {
         {
           title: "Raw Material Products",
           titleCn: "原料产品",
-          href: "articles",
+          href: "raw-materials",
           description: "Raw Material Products",
           items: [],
         },

@@ -119,13 +119,14 @@ export const Announcement = defineDocumentType(() => ({
   filePathPattern: `announcements/**/*.mdx`,
   contentType: "mdx",
   fields: {
+    title: { type: "string", required: true },
+    description: { type: "string" },
     date: { type: "date", required: true },
-    url: { type: "string", required: true },
+    ogImage: { type: "string" },
+    published: { type: "boolean", default: true },
+    url: { type: "string" },
   },
-  computedFields: {
-    ...baseComputedFields,
-    ...createOpenGraphFields("url"),
-  },
+  computedFields: baseComputedFields,
 }));
 
 export const Activity = defineDocumentType(() => ({
@@ -167,9 +168,9 @@ export const Article = defineDocumentType(() => ({
     title: { type: "string", required: true },
     description: { type: "string" },
     date: { type: "date", required: true },
-    published: { type: "boolean", default: true },
+    published: { type: "json" },
     image: { type: "string", required: true },
-    wechatUrl: { type: "string" }, // 新增微信公众号链接字段
+    wechatUrl: { type: "string" },
   },
   computedFields: baseComputedFields,
 }));
@@ -260,7 +261,22 @@ export const TripleAxeSeries = defineDocumentType(() => ({
   computedFields: baseComputedFields,
 }));
 
+export const RawMaterials = defineDocumentType(() => ({
+  name: "RawMaterials",
+  filePathPattern: `raw-materials/**/*.mdx`,
+  contentType: "mdx",
+  fields: {
+    title: { type: "string", required: true },
+    description: { type: "string" },
+    date: { type: "date", required: true },
+    published: { type: "json" },
+    image: { type: "string", required: true },
+    wechatUrl: { type: "string" },
+  },
+  computedFields: baseComputedFields,
+}));
+
 export default makeSource({
   contentDirPath: "./content",
-  documentTypes: [Event, Page, Article, Announcement, Activity, AgrariusSeries, GuanghuaBioSeries, DailyChemicalSeries, TripleAxeSeries],
+  documentTypes: [Event, Page, Article, Announcement, Activity, AgrariusSeries, GuanghuaBioSeries, DailyChemicalSeries, TripleAxeSeries, RawMaterials],
 });

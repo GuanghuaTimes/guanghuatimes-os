@@ -195,7 +195,7 @@ export default function NewsPage({ params = { cc: "cn" } }: PageProps) {
         id={`panel-${active}`}
         role="tabpanel"
         aria-labelledby={active}
-        className={`pt-6 transition-all duration-300 ease-out ${enter ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"}`}
+        className={`pt-4 transition-all duration-300 ease-out ${enter ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"}`}
       >
         {renderContent()}
       </div>

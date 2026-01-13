@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { PageHeader, PageHeaderDescription } from "@/components/page-header";
 import { Separator } from "@/components/ui/separator";
 import { Shell } from "@/components/shells/shell";
-import { ArticleCard } from "../articles/_components/event-card";
+import { ProductCard } from "@/components/product-card";
 import type { CC } from "../page";
 
 export function AgrariusSeriesSection({
@@ -41,12 +41,12 @@ export function AgrariusSeriesSection({
 
       <Separator className="my-6" />
 
-      <section className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <section className="flex flex-col gap-6">
         {articles.length > 0 ? (
           articles.map((article: any, i: number) => (
-            <ArticleCard
+            <ProductCard
               key={article.slug}
-              article={article}
+              product={article}
               i={i}
               lang={params.cc!}
               basePath="/agrarius-series"
@@ -54,7 +54,7 @@ export function AgrariusSeriesSection({
           ))
         ) : (
           <div className="col-span-full text-center py-20">
-            <div className="text-gray-400 mb-4">
+            <div className="text-gray-400 dark:text-gray-500 mb-4">
               <svg
                 className="w-16 h-16 mx-auto"
                 fill="none"
@@ -69,8 +69,8 @@ export function AgrariusSeriesSection({
                 />
               </svg>
             </div>
-            <h3 className="text-xl font-medium text-gray-600 mb-2">暂无产品</h3>
-            <p className="text-gray-500">敬请期待更多AGRARIUS系列产品</p>
+            <h3 className="text-xl font-medium text-gray-600 dark:text-gray-400 mb-2">暂无产品</h3>
+            <p className="text-gray-500 dark:text-gray-400">敬请期待更多AGRARIUS系列产品</p>
           </div>
         )}
       </section>

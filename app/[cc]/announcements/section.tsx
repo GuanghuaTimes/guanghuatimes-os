@@ -23,9 +23,9 @@ export function AnnouncementsSection({
   showReadMore?: boolean;
   asSubsection?: boolean;
 }) {
-  const allFilteredAnnouncements = allAnnouncements.sort((a, b) =>
-    b.date.localeCompare(a.date)
-  );
+  const allFilteredAnnouncements = allAnnouncements
+    .filter((a: any) => a.published !== false)
+    .sort((a, b) => b.date.localeCompare(a.date));
 
   const announcements = limit
     ? allFilteredAnnouncements.slice(0, limit)
@@ -46,7 +46,7 @@ export function AnnouncementsSection({
           <Separator className="hidden md:block my-2" />
         </>
       )}
-      <section className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+      <section className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
         <React.Suspense
           fallback={Array.from({ length: 3 }).map((_, i) => (
             <EventCardSkeleton key={i} />
@@ -62,7 +62,7 @@ export function AnnouncementsSection({
               />
             ))
           ) : (
-            <div className="col-span-full text-center py-12 text-gray-500">
+            <div className="col-span-full text-center py-12 text-gray-500 dark:text-gray-400">
               {params.cc === "cn" ? "暂无公司新闻" : "No company news yet"}
             </div>
           )}
