@@ -30,7 +30,7 @@ interface MobileNavProps {
 export function MobileNav({ mainNavItems, lang }: MobileNavProps) {
   const segment = useSelectedLayoutSegment();
   const [isOpen, setIsOpen] = React.useState(false);
-  const disabledGroups = new Set(["News", "Services", "Nature School"]);
+  const disabledGroups = new Set(["Services", "Nature School"]);
   const isGroupDisabled = (groupTitle?: string) =>
     groupTitle ? disabledGroups.has(groupTitle) : false;
   const isSupportUs = (groupTitle?: string) => groupTitle === "Support Us";
@@ -89,27 +89,39 @@ export function MobileNav({ mainNavItems, lang }: MobileNavProps) {
                       <div className="flex flex-col space-y-2">
                         {item.items?.map((subItem, index) =>
                           subItem.items && subItem.items.length > 0 ? (
-                            <div key={index} className="space-y-2">
-                              <div className="font-semibold text-sm text-foreground">
-                                {lang === "cn" ? subItem.titleCn : subItem.title}
-                              </div>
-                              <div className="flex flex-col space-y-2 ml-4">
-                                {subItem.items.map((nestedItem, nestedIndex) => (
+                            <Accordion type="single" collapsible key={index} className="w-full">
+                              <AccordionItem value={subItem.title} className="border-0">
+                                <div className="flex items-center justify-between">
                                   <MobileLink
-                                    key={nestedIndex}
-                                    href={`/${lang}/${nestedItem.href}`}
+                                    href={`/${lang}/${subItem.href}`}
                                     segment={String(segment)}
                                     setIsOpen={setIsOpen}
-                                    disabled={
-                                      isGroupDisabled(item.title) ||
-                                      (isSupportUs(item.title) && !isAllowedSupportUsHref(nestedItem.href))
-                                    }
+                                    disabled={isGroupDisabled(item.title)}
                                   >
-                                    {lang === "cn" ? nestedItem.titleCn : nestedItem.title}
+                                    {lang === "cn" ? subItem.titleCn : subItem.title}
                                   </MobileLink>
-                                ))}
-                              </div>
-                            </div>
+                                  <AccordionTrigger className="py-0 px-2" />
+                                </div>
+                                <AccordionContent>
+                                  <div className="flex flex-col space-y-2 ml-4 mt-2">
+                                    {subItem.items.map((nestedItem, nestedIndex) => (
+                                      <MobileLink
+                                        key={nestedIndex}
+                                        href={`/${lang}/${nestedItem.href}`}
+                                        segment={String(segment)}
+                                        setIsOpen={setIsOpen}
+                                        disabled={
+                                          isGroupDisabled(item.title) ||
+                                          (isSupportUs(item.title) && !isAllowedSupportUsHref(nestedItem.href))
+                                        }
+                                      >
+                                        {lang === "cn" ? nestedItem.titleCn : nestedItem.title}
+                                      </MobileLink>
+                                    ))}
+                                  </div>
+                                </AccordionContent>
+                              </AccordionItem>
+                            </Accordion>
                           ) : subItem.href ? (
                             <MobileLink
                               key={index}

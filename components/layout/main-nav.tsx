@@ -106,9 +106,9 @@ export function MainNav({ items, lang }: MainNavProps) {
                     {lang === "cn" ? item.titleCn : item.title}
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 ">
+                    <ul className="grid w-[300px] gap-3 p-4 grid-cols-1">
                       {item.href && !isGroupDisabled(item.title) && item.title !== "Contact Us" && item.title !== "News" && (
-                        <li className="col-span-2 mb-2">
+                        <li className="mb-2">
                           <Link
                             href={`/${lang}/${item.href}`}
                             className="block px-4 py-2 rounded-md bg-green-50 hover:bg-green-100 dark:bg-green-900/20 dark:hover:bg-green-900/30 transition-colors"
@@ -126,11 +126,26 @@ export function MainNav({ items, lang }: MainNavProps) {
                       )}
                       {item.items.map((subItem) => 
                         subItem.items && subItem.items.length > 0 ? (
-                          <li key={subItem.title} className="col-span-2">
-                            <div className="mb-2 text-sm font-semibold text-slate-900 dark:text-white">
-                              {lang === "cn" ? subItem.titleCn : subItem.title}
-                            </div>
-                            <ul className="grid grid-cols-1 gap-2 ml-2">
+                          <li key={subItem.title} className="relative group/submenu">
+                            <Link
+                              href={`/${lang}/${subItem.href}`}
+                              className="flex items-center justify-between select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground"
+                            >
+                              <div>
+                                <div className="text-sm font-medium leading-none">
+                                  {lang === "cn" ? subItem.titleCn : subItem.title}
+                                </div>
+                                {subItem.description && (
+                                  <p className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
+                                    {subItem.description}
+                                  </p>
+                                )}
+                              </div>
+                              <svg className="w-4 h-4 ml-2 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                              </svg>
+                            </Link>
+                            <ul className="absolute left-full top-0 ml-1 w-[200px] rounded-md border bg-popover p-2 shadow-md opacity-0 invisible group-hover/submenu:opacity-100 group-hover/submenu:visible transition-all duration-200 z-50">
                               {subItem.items.map((nestedItem) => {
                                 const disabled = isGroupDisabled(item.title);
                                 return disabled ? (
@@ -142,19 +157,19 @@ export function MainNav({ items, lang }: MainNavProps) {
                                       <div className="text-sm font-medium leading-none">
                                         {lang === "cn" ? nestedItem.titleCn : nestedItem.title}
                                       </div>
-                                      <p className="line-clamp-2 text-sm leading-snug">
-                                        {nestedItem.description}
-                                      </p>
                                     </div>
                                   </li>
                                 ) : (
-                                  <ListItem
-                                    key={nestedItem.title}
-                                    title={lang === "cn" ? nestedItem.titleCn : nestedItem.title}
-                                    href={`/${lang}/${nestedItem.href}`}
-                                  >
-                                    {nestedItem.description}
-                                  </ListItem>
+                                  <li key={nestedItem.title}>
+                                    <Link
+                                      href={`/${lang}/${nestedItem.href}`}
+                                      className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground"
+                                    >
+                                      <div className="text-sm font-medium leading-none">
+                                        {lang === "cn" ? nestedItem.titleCn : nestedItem.title}
+                                      </div>
+                                    </Link>
+                                  </li>
                                 );
                               })}
                             </ul>

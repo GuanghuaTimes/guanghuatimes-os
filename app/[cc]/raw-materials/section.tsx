@@ -34,8 +34,14 @@ export function RawMaterialsSection({
 
   const products = limit ? allFilteredProducts.slice(0, limit) : allFilteredProducts;
 
-  const VerticalCard = ({ product, i }: { product: any; i: number }) => (
-    <Link href={`/${params.cc}/raw-materials/${product.slugAsParams}`}>
+  const VerticalCard = ({ product, i }: { product: any; i: number }) => {
+    const hasWechatLink = Boolean(
+      product.wechatUrl &&
+      typeof product.wechatUrl === 'string' &&
+      product.wechatUrl.startsWith('http')
+    );
+
+    const cardContent = (
       <article className="space-y-4 group">
         <AspectRatio ratio={16 / 9} className="overflow-hidden relative">
           {product.image ? (
@@ -60,8 +66,22 @@ export function RawMaterialsSection({
           </CardHeader>
         </div>
       </article>
-    </Link>
-  );
+    );
+
+    if (hasWechatLink) {
+      return (
+        <a href={product.wechatUrl} target="_blank" rel="noopener noreferrer">
+          {cardContent}
+        </a>
+      );
+    }
+
+    return (
+      <Link href={`/${params.cc}/raw-materials/${product.slugAsParams}`}>
+        {cardContent}
+      </Link>
+    );
+  };
 
   return (
     <Shell className={asHomepage ? "md:pb-10" : "md:pb-10 min-h-[calc(100vh-156px)]"}>
