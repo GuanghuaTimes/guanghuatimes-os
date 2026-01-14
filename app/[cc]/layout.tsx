@@ -6,6 +6,7 @@ import { MobileNav } from "@/components/layout/mobile-nav";
 import { PropsWithChildren, Suspense } from "react";
 // import { AudioPlayer } from "./audio-player";
 import LangToggle from "@/components/layout/lang-toggle";
+import { SiteFooter } from "@/components/layout/site-footer";
 
 export default function Layout({
   children,
@@ -41,6 +42,7 @@ export default function Layout({
             ))}
         </div>
       </footer>
+      <SiteFooter lang={params.cc} />
     </div>
   );
 }
