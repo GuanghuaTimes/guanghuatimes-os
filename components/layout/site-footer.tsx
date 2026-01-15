@@ -12,7 +12,11 @@ export function SiteFooter({ lang }: SiteFooterProps) {
       label: "快手",
       icon: (
         <svg viewBox="0 0 24 24" className="w-6 h-6 fill-current">
-          <path d="M12.027 2C6.489 2 2 6.489 2 12.027s4.489 10.027 10.027 10.027 10.027-4.489 10.027-10.027S17.565 2 12.027 2zm3.77 12.33c-.193.387-.58.58-1.16.58h-1.16c-.387 0-.773-.193-.967-.387l-1.353-1.74v1.547c0 .387-.193.58-.58.58H9.03c-.387 0-.58-.193-.58-.58V8.37c0-.387.193-.58.58-.58h1.547c.387 0 .58.193.58.58v3.867l1.353-1.74c.193-.193.58-.387.967-.387h1.16c.58 0 .967.193 1.16.58.193.387.193.773 0 1.16l-1.74 2.32 1.74 2.32c.193.387.193.773 0 .84z"/>
+          <rect x="2" y="2" width="20" height="20" rx="4" fill="currentColor"/>
+          <circle cx="7" cy="7" r="2" fill="#235283"/>
+          <rect x="11" y="5" width="8" height="4" rx="1" fill="#235283"/>
+          <rect x="5" y="12" width="14" height="8" rx="1" fill="#235283"/>
+          <path d="M9 15v3l4-1.5L9 15z" fill="currentColor"/>
         </svg>
       ),
       qrCode: "/qr-kuaishou.jpg",
@@ -37,24 +41,36 @@ export function SiteFooter({ lang }: SiteFooterProps) {
       ),
       qrCode: "/qr-wechat.png",
     },
+    {
+      name: "shipinhao",
+      label: "视频号",
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-6 h-6 fill-current">
+          <circle cx="12" cy="12" r="11" fill="currentColor"/>
+          <path d="M6 8.5C6 8.5 8 15 9.5 15C11 15 12 9 12 9C12 9 13 15 14.5 15C16 15 18 8.5 18 8.5" stroke="#235283" strokeWidth="2.5" strokeLinecap="round" fill="none"/>
+          <circle cx="17" cy="9" r="1.5" fill="#235283"/>
+        </svg>
+      ),
+      qrCode: "/qr-shipinhao.jpg",
+    },
   ];
 
   return (
-    <footer className="w-full bg-gray-900 text-gray-300 py-8">
+    <footer className="w-full bg-[#235283] text-gray-300 py-8">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div className="space-y-2 text-sm">
             <p>
-              <span className="text-gray-500">电&nbsp;&nbsp;话</span>
-              <span className="ml-4">400-067-6027</span>
+              <span className="text-gray-400">电&nbsp;&nbsp;话</span>
+              <span className="ml-4 text-white">400-067-6027</span>
             </p>
             <p>
-              <span className="text-gray-500">邮&nbsp;&nbsp;箱</span>
-              <span className="ml-4">pga@ghpga.com</span>
+              <span className="text-gray-400">邮&nbsp;&nbsp;箱</span>
+              <span className="ml-4 text-white">pga@ghpga.com</span>
             </p>
             <p>
-              <span className="text-gray-500">地&nbsp;&nbsp;址</span>
-              <span className="ml-4">海南省海口市龙华区龙昆北路景瑞大厦A座621</span>
+              <span className="text-gray-400">地&nbsp;&nbsp;址</span>
+              <span className="ml-4 text-white">海南省海口市龙华区龙昆北路景瑞大厦A座621</span>
             </p>
           </div>
           
@@ -68,9 +84,9 @@ export function SiteFooter({ lang }: SiteFooterProps) {
                   {social.icon}
                 </div>
                 
-                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 z-[100] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                  <div className="bg-white rounded-lg shadow-xl w-[160px] h-[180px] px-[5px] pt-[5px] pb-[5px] overflow-hidden flex flex-col">
-                    <div className="relative w-[150px] h-[150px] mx-auto">
+                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 z-[100] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 max-sm:fixed max-sm:bottom-auto max-sm:top-1/2 max-sm:left-1/2 max-sm:-translate-y-1/2">
+                  <div className="bg-white rounded-lg shadow-xl w-[140px] h-[160px] sm:w-[160px] sm:h-[180px] px-[5px] pt-[5px] pb-[5px] overflow-hidden flex flex-col">
+                    <div className="relative w-[130px] h-[130px] sm:w-[150px] sm:h-[150px] mx-auto">
                       <Image
                         src={social.qrCode}
                         alt={social.label}
@@ -82,7 +98,7 @@ export function SiteFooter({ lang }: SiteFooterProps) {
                       官方{social.label}
                     </div>
                   </div>
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1">
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 max-sm:hidden">
                     <div className="w-3 h-3 bg-white rotate-45 shadow-xl" />
                   </div>
                 </div>
