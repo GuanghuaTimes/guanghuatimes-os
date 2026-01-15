@@ -125,14 +125,14 @@ export const siteConfig = {
       ]
     },
     {
-      title: "Nature School",
+      title: "Application Cases",
       titleCn: "应用案例",
       items: [
         {
-          title: "Activities & Courses",
-          titleCn: "全部活動",
-          href: "activities-at-nature-school",
-          description: "Activities & Courses",
+          title: "All Cases",
+          titleCn: "全部案例",
+          href: "application-cases",
+          description: "All Application Cases",
           items: [],
         },
       ],

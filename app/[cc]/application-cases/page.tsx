@@ -1,0 +1,139 @@
+import { type Metadata } from "next";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import Image from "next/image";
+import { CC } from "../page";
+import { applicationCasesConfig } from "@/config/application-cases";
+import { allApplicationCases } from "@/.contentlayer/generated";
+import { CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { PlaceholderImage } from "@/components/placeholder-image";
+import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Application Cases",
+  description: "Explore our successful application cases",
+};
+
+interface PageProps {
+  params: {
+    cc: string;
+  };
+}
+
+export async function generateStaticParams(): Promise<PageProps["params"][]> {
+  return [{ cc: "cn" }, { cc: "en" }];
+}
+
+export default function Page({
+  params = { cc: "cn" },
+}: {
+  params: { cc?: CC };
+}) {
+  const isCn = params.cc === "cn";
+
+  const cases = allApplicationCases
+    .filter((c: any) => c.published !== false)
+    .sort((a: any, b: any) => b.date.localeCompare(a.date));
+
+  const CaseCard = ({ caseItem, index }: { caseItem: any; index: number }) => {
+    const hasWechatLink = Boolean(
+      caseItem.wechatUrl &&
+      typeof caseItem.wechatUrl === 'string' &&
+      caseItem.wechatUrl.startsWith('http')
+    );
+
+    const cardContent = (
+      <article className="space-y-4 group cursor-pointer">
+        <AspectRatio ratio={16 / 9} className="overflow-hidden relative">
+          {caseItem.image ? (
+            <Image
+              src={caseItem.image}
+              alt={caseItem.title}
+              fill
+              sizes="(min-width: 1024px) 384px, (min-width: 768px) 288px, (min-width: 640px) 224px, 100vw"
+              className="rounded-lg object-cover group-hover:scale-105 transition-transform"
+              priority={index <= 1}
+            />
+          ) : (
+            <PlaceholderImage asChild />
+          )}
+        </AspectRatio>
+        <div className="space-y-2">
+          <CardHeader className="space-y-2.5 p-0">
+            <CardTitle className="line-clamp-1 dark:text-white">
+              {caseItem.title}
+            </CardTitle>
+            <CardDescription className="line-clamp-2 dark:text-gray-300">
+              {caseItem.description}
+            </CardDescription>
+          </CardHeader>
+        </div>
+      </article>
+    );
+
+    if (hasWechatLink) {
+      return (
+        <a href={caseItem.wechatUrl} target="_blank" rel="noopener noreferrer">
+          {cardContent}
+        </a>
+      );
+    }
+
+    return (
+      <Link href={`/${params.cc}/application-cases/${caseItem.slugAsParams}`}>
+        {cardContent}
+      </Link>
+    );
+  };
+
+  return (
+    <>
+      {/* desktop */}
+      <div className="w-full max-w-[1400px] relative hidden sm:block">
+        <AspectRatio ratio={16 / 2}>
+          <Image
+            src={applicationCasesConfig.imgSrc}
+            alt=""
+            fill
+            className="object-cover"
+            priority
+          />
+        </AspectRatio>
+      </div>
+
+      {/* mobile */}
+      <div className="w-full max-w-[1400px] relative sm:hidden">
+        <AspectRatio ratio={2 / 1}>
+          <Image
+            src={applicationCasesConfig.imgSrc}
+            alt=""
+            fill
+            className="object-cover"
+            priority
+          />
+        </AspectRatio>
+      </div>
+
+      <div className="container py-6 space-y-6">
+        <h1 className="text-2xl md:text-4xl font-bold text-gray-900 dark:text-white">
+          {isCn ? applicationCasesConfig.titleCn : applicationCasesConfig.title}
+        </h1>
+
+        <p className="text-lg text-gray-600 dark:text-gray-300">
+          {isCn ? applicationCasesConfig.descriptionCn : applicationCasesConfig.description}
+        </p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          {cases.length > 0 ? (
+            cases.map((caseItem: any, index: number) => (
+              <CaseCard key={caseItem.slug} caseItem={caseItem} index={index} />
+            ))
+          ) : (
+            <div className="text-center text-gray-500 col-span-full py-12">
+              {isCn ? "暂无案例" : "No cases available"}
+            </div>
+          )}
+        </div>
+      </div>
+    </>
+  );
+}
