@@ -23,7 +23,11 @@ export function EventsSection({
 }) {
   const allFilteredEvents = allEvents
     .filter((event) => event.published)
-    .sort((a, b) => b.date.localeCompare(a.date));
+    .sort((a, b) => {
+      if (a.pinned && !b.pinned) return -1;
+      if (!a.pinned && b.pinned) return 1;
+      return b.date.localeCompare(a.date);
+    });
 
   const events = limit ? allFilteredEvents.slice(0, limit) : allFilteredEvents;
 

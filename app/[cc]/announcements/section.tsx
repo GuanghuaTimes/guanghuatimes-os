@@ -25,7 +25,11 @@ export function AnnouncementsSection({
 }) {
   const allFilteredAnnouncements = allAnnouncements
     .filter((a: any) => a.published !== false)
-    .sort((a, b) => b.date.localeCompare(a.date));
+    .sort((a: any, b: any) => {
+      if (a.pinned && !b.pinned) return -1;
+      if (!a.pinned && b.pinned) return 1;
+      return b.date.localeCompare(a.date);
+    });
 
   const announcements = limit
     ? allFilteredAnnouncements.slice(0, limit)

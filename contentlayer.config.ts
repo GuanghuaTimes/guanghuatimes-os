@@ -124,7 +124,8 @@ export const Announcement = defineDocumentType(() => ({
     date: { type: "date", required: true },
     ogImage: { type: "string" },
     published: { type: "boolean", default: true },
-    url: { type: "string" },
+    wechatUrl: { type: "string" },
+    pinned: { type: "boolean", default: false },
   },
   computedFields: baseComputedFields,
 }));
@@ -169,8 +170,9 @@ export const Article = defineDocumentType(() => ({
     description: { type: "string" },
     date: { type: "date", required: true },
     published: { type: "json" },
-    image: { type: "string", required: true },
+    ogImage: { type: "string" },
     wechatUrl: { type: "string" },
+    pinned: { type: "boolean", default: false },
   },
   computedFields: baseComputedFields,
 }));
@@ -185,7 +187,8 @@ export const Event = defineDocumentType(() => ({
     date: { type: "date", required: true },
     image: { type: "string" },
     published: { type: "boolean", default: true },
-    externalLink: { type: "string" },
+    wechatUrl: { type: "string" },
+    pinned: { type: "boolean", default: false },
   },
   computedFields: {
     ...baseComputedFields,
@@ -193,8 +196,8 @@ export const Event = defineDocumentType(() => ({
       type: "string",
       resolve: async (doc: any) => {
         if (doc.image) return doc.image;
-        if (!doc.externalLink) return null;
-        const result = await fetchOpenGraphData(doc.externalLink);
+        if (!doc.wechatUrl) return null;
+        const result = await fetchOpenGraphData(doc.wechatUrl);
         return result.ogImage?.[0]?.url || null;
       },
     },

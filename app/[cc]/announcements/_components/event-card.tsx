@@ -18,10 +18,11 @@ export function AnnouncementCard({
   i,
   lang,
 }: AnnouncementCardProps) {
-  const href = a.url || `/${lang}/announcements/${a.slugAsParams}`;
+  const isExternalUrl = a.wechatUrl && a.wechatUrl.startsWith('http');
+  const href = a.wechatUrl || `/${lang}/announcements/${a.slugAsParams}`;
   
-  return (
-    <Link key={a.slug} href={href}>
+  const cardContent = (
+    <>
       <span className="sr-only">{a.title}</span>
       <article className="space-y-4 group">
         <AspectRatio ratio={16 / 9} className="overflow-hidden relative">
@@ -50,6 +51,20 @@ export function AnnouncementCard({
           </CardDescription>
         </div>
       </article>
+    </>
+  );
+
+  if (isExternalUrl) {
+    return (
+      <a key={a.slug} href={href} target="_blank" rel="noopener noreferrer">
+        {cardContent}
+      </a>
+    );
+  }
+
+  return (
+    <Link key={a.slug} href={href}>
+      {cardContent}
     </Link>
   );
 }

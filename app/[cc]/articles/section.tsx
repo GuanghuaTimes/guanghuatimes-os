@@ -29,7 +29,11 @@ export function ArticlesSection({
   
   const allFilteredArticles = (allArticles || [])
     .filter((article: any) => article.published)
-    .sort((a: any, b: any) => b.date.localeCompare(a.date));
+    .sort((a: any, b: any) => {
+      if (a.pinned && !b.pinned) return -1;
+      if (!a.pinned && b.pinned) return 1;
+      return b.date.localeCompare(a.date);
+    });
 
   const articles = limit ? allFilteredArticles.slice(0, limit) : allFilteredArticles;
   

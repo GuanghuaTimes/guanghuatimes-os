@@ -15,13 +15,13 @@ interface EventCardProps {
 }
 
 export function EventCard({ event, i, lang }: EventCardProps) {
-  return (
-    <Link
-      key={event.slug}
-      href={event.externalLink ?? `/${lang}/${event.slug}`}
-    >
+  const isExternalUrl = event.wechatUrl && event.wechatUrl.startsWith('http');
+  const href = event.wechatUrl ?? `/${lang}/${event.slug}`;
+
+  const cardContent = (
+    <>
       <span className="sr-only">{event.title}</span>
-      <article className="space-y-4">
+      <article className="space-y-4 group">
         <AspectRatio ratio={16 / 9} className="overflow-hidden relative">
           {event.ogImage ? (
             <Image
@@ -29,7 +29,7 @@ export function EventCard({ event, i, lang }: EventCardProps) {
               alt={event.title ?? ""}
               fill
               sizes="(min-width: 1024px) 384px, (min-width: 768px) 288px, (min-width: 640px) 224px, 100vw"
-              className="rounded-lg object-cover hover:scale-105"
+              className="rounded-lg object-cover group-hover:scale-105 transition-transform"
               priority={i <= 1}
             />
           ) : (
@@ -46,6 +46,20 @@ export function EventCard({ event, i, lang }: EventCardProps) {
           <CardDescription>{formatDate(event.date)}</CardDescription>
         </div>
       </article>
+    </>
+  );
+
+  if (isExternalUrl) {
+    return (
+      <a key={event.slug} href={href} target="_blank" rel="noopener noreferrer">
+        {cardContent}
+      </a>
+    );
+  }
+
+  return (
+    <Link key={event.slug} href={href}>
+      {cardContent}
     </Link>
   );
 }

@@ -8,7 +8,7 @@ import { PlaceholderImage } from "@/components/placeholder-image";
 import type { CC } from "../../page";
 import { Badge } from "@/components/ui/badge";
 
-type CardItem = Pick<Article, "title" | "description" | "image" | "wechatUrl" | "slug" | "slugAsParams">;
+type CardItem = Pick<Article, "title" | "description" | "ogImage" | "wechatUrl" | "slug" | "slugAsParams">;
 
 function getSlugAsParams(article: any, basePath: string) {
     if (typeof article?.slugAsParams === "string" && article.slugAsParams.length > 0) {
@@ -47,9 +47,9 @@ export function ArticleCard({ article, i, lang, basePath = "/articles" }: Articl
     const cardContent = (
         <article className="space-y-4 group">
             <AspectRatio ratio={16 / 9} className="overflow-hidden relative">
-                {article.image ? (
+                {article.ogImage ? (
                     <Image
-                        src={article.image}
+                        src={article.ogImage}
                         alt={article.title}
                         fill
                         sizes="(min-width: 1024px) 384px, (min-width: 768px) 288px, (min-width: 640px) 224px, 100vw"
