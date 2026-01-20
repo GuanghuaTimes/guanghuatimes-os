@@ -14,7 +14,7 @@ export default function ReagentProductsPage({ params }: { params: { cc: string }
     {
       id: "triple-axe-series",
       title: isCn ? "三板斧系列" : "Triple-Axe Series",
-      image: "/product-images/sanbanfu.jpg",
+      image: "/Triple-Axe Series/三板斧封面.png",
       description: isCn 
         ? "核心效能系列，专注于提升作物产量与品质。采用先进的生物技术配方，为作物提供全方位营养支持。" 
         : "Core efficiency series focused on improving crop yield and quality with advanced biotech formulations.",
@@ -59,14 +59,14 @@ export default function ReagentProductsPage({ params }: { params: { cc: string }
             <Link key={product.id} href={`/${params.cc}/${product.id}`}>
               <article className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} gap-6 items-center group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-700`}>
                 {/* 产品图片 */}
-                <div className="w-full md:w-2/5 flex-shrink-0">
-                  <AspectRatio ratio={4/3} className="overflow-hidden">
+                <div className="w-full md:w-[30%] flex-shrink-0">
+                  <AspectRatio ratio={425/350} className="overflow-hidden bg-slate-50 dark:bg-slate-800">
                     <Image
                       src={product.image}
                       alt={product.title}
                       fill
-                      sizes="(min-width: 768px) 40vw, 100vw"
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="(min-width: 768px) 30vw, 100vw"
+                      className="object-contain group-hover:scale-105 transition-transform duration-500"
                       priority={i <= 2}
                     />
                   </AspectRatio>

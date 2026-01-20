@@ -85,15 +85,16 @@ export default async function DailyChemicalSeriesPostPage({ params }: PostPagePr
       </div>
 
       {post.image && (
-        <AspectRatio ratio={16 / 9}>
+        <div className="w-full">
           <Image
             src={post.image}
             alt={post.title}
-            fill
-            className="rounded-md border bg-muted"
+            width={1200}
+            height={800}
+            className="rounded-md border bg-muted w-full h-auto object-contain"
             priority
           />
-        </AspectRatio>
+        </div>
       )}
 
       <Mdx code={post.body.code} />

@@ -31,12 +31,12 @@ export default function ProductsPage({ params }: { params: { cc: string } }) {
           {productsConfig.categories.map((item) => (
             <Link key={item.id} href={`/${params.cc}/${categoryLinks[item.id] || 'products'}`}>
               <div className="group border rounded-2xl overflow-hidden hover:shadow-xl transition-all cursor-pointer">
-                <div className="aspect-[4/3] relative bg-slate-100">
+                <div className="aspect-square relative bg-slate-50 dark:bg-slate-800">
                   <Image 
                     src={item.imgSrc} 
                     alt={item.titleCn} 
                     fill 
-                    className="object-cover group-hover:scale-105 transition-transform"
+                    className="object-contain group-hover:scale-105 transition-transform"
                   />
                 </div>
                 <div className="p-6">

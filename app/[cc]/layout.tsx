@@ -29,7 +29,9 @@ export default function Layout({
           <LangToggle />
         </div>
       </header>
-      {children}
+      <div className="pt-8 sm:pt-0 w-full">
+        {children}
+      </div>
       <footer className="hidden md:block w-full border-t bg-secondary ">
         <div className="container flex  py-4 items-center  justify-around gap-4">
           {siteConfig.footerNav.map((c) => (

@@ -153,7 +153,7 @@ export default function NewsPage({ params = { cc: "cn" } }: PageProps) {
       <Separator className="hidden md:block my-4" />
 
       {/* 选项卡导航 */}
-      <div role="tablist" aria-label="News Tabs" className="sticky top-16 z-10 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div role="tablist" aria-label="News Tabs" className="bg-background">
         <div ref={containerRef} className="relative flex gap-2 overflow-x-auto px-2 pb-3 border-b border-border">
           <span
             className="absolute bottom-0 h-[2px] bg-primary transition-all duration-300"
