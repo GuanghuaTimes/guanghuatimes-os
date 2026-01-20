@@ -117,10 +117,10 @@ export default async function PostPage({ params }: PostPageProps) {
           {article.title}
         </h1>
       </div>
-      {article.image && (
+      {article.ogImage && (
         <AspectRatio ratio={16 / 9}>
           <Image
-            src={article.image}
+            src={article.ogImage}
             alt={article.title}
             fill
             className="rounded-md border bg-muted"
