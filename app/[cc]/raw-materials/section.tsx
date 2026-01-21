@@ -43,14 +43,14 @@ export function RawMaterialsSection({
 
     const cardContent = (
       <article className="space-y-4 group">
-        <AspectRatio ratio={16 / 9} className="overflow-hidden relative">
+        <AspectRatio ratio={1 / 1} className="overflow-hidden relative bg-slate-50 dark:bg-slate-800 rounded-lg">
           {product.image ? (
             <Image
               src={product.image}
               alt={product.title}
               fill
               sizes="(min-width: 1024px) 384px, (min-width: 768px) 288px, (min-width: 640px) 224px, 100vw"
-              className="rounded-lg object-cover group-hover:scale-105 transition-transform"
+              className="object-contain group-hover:scale-105 transition-transform"
               priority={i <= 1}
             />
           ) : (

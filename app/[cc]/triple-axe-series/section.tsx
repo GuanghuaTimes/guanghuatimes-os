@@ -41,7 +41,7 @@ export function TripleAxeSeriesSection({
 
       <Separator className="my-6" />
 
-      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <section className="flex flex-col gap-6">
         {articles.length > 0 ? (
           articles.map((article: any, i: number) => (
             <ProductCard
@@ -50,7 +50,6 @@ export function TripleAxeSeriesSection({
               i={i}
               lang={params.cc!}
               basePath="/triple-axe-series"
-              layout="vertical"
             />
           ))
         ) : (

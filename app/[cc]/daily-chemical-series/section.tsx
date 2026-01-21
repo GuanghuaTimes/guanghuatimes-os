@@ -59,7 +59,11 @@ export function DailyChemicalSeriesSection({
         </AspectRatio>
         <div className="space-y-2">
           <CardHeader className="space-y-2.5 p-0">
-            <CardTitle className="line-clamp-1 dark:text-white">{product.title}</CardTitle>
+            <CardTitle className="dark:text-white">
+              {product.title.split('\n').map((line: string, index: number) => (
+                <div key={index} className={index > 0 ? 'text-sm' : ''}>{line}</div>
+              ))}
+            </CardTitle>
             <CardDescription className="line-clamp-2 dark:text-gray-300">
               {product.description}
             </CardDescription>
@@ -87,10 +91,10 @@ export function DailyChemicalSeriesSection({
     <Shell className={asHomepage ? "md:pb-10" : "md:pb-10 min-h-[calc(100vh-156px)]"}>
       <PageHeader>
         <div className="text-2xl md:text-4xl font-bold text-gray-900 dark:text-white">
-          {params.cc === "cn" ? "日化系列" : "Daily Chemical Series"}
+          {params.cc === "cn" ? "日化系列" : "Daily-Chemical Series"}
         </div>
         <PageHeaderDescription className="text-lg text-gray-600 dark:text-gray-300">
-          {params.cc === "cn" ? "日化系列产品" : "Daily Chemical Series Products"}
+          {params.cc === "cn" ? "日化系列产品" : "Daily-Chemical Series Products"}
         </PageHeaderDescription>
       </PageHeader>
 

@@ -91,17 +91,6 @@ export default async function PostPage({ params }: PostPageProps) {
           {product.title}
         </h1>
       </div>
-      {product.image && (
-        <AspectRatio ratio={16 / 9}>
-          <Image
-            src={product.image}
-            alt={product.title}
-            fill
-            className="rounded-md border bg-muted"
-            priority
-          />
-        </AspectRatio>
-      )}
       <Mdx code={product.body.code} />
       <Separator className="my-4" />
       <MdxPager currentItem={product} allItems={allRawMaterials} />

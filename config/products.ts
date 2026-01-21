@@ -60,8 +60,8 @@ export const productsConfig: ProductConfig = {
     {
       id: "daily-chemical",
       titleCn: "日化系列",
-      titleEn: "Daily Chemical",
-      imgSrc: "/Daily Chemical/日化封面.png",
+      titleEn: "Daily-Chemical",
+      imgSrc: "/Daily-Chemical/日化封面.png",
       description: "提取天然精华，应用于健康日化产品。"
     },
     {

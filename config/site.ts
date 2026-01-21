@@ -96,10 +96,10 @@ export const siteConfig = {
           ],
         },
         {
-          title: "Daily Chemical Products",
+          title: "Daily-Chemical Products",
           titleCn: "日化产品",
           href: "daily-chemical-products",
-          description: "Daily Chemical Products",
+          description: "Daily-Chemical Products",
           items: [],
         },
       ],

@@ -84,18 +84,6 @@ export default async function GuanghuaBioSeriesPostPage({ params }: PostPageProp
         </h1>
       </div>
 
-      {post.image && (
-        <AspectRatio ratio={16 / 9}>
-          <Image
-            src={post.image}
-            alt={post.title}
-            fill
-            className="rounded-md border bg-muted"
-            priority
-          />
-        </AspectRatio>
-      )}
-
       <Mdx code={post.body.code} />
       <Separator className="my-4" />
     </Shell>
