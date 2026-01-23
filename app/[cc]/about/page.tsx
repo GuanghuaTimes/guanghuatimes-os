@@ -33,7 +33,7 @@ export default function Page({
   return (
     <>
       {/* desktop */}
-      <div className="w-full max-w-[1400px] relative hidden sm:block">
+      <div className="w-full max-w-[1400px] mx-auto relative hidden sm:block">
         <AspectRatio ratio={16 / 6}>
           <Image
             src={aboutConfig.imgSrc}
@@ -46,7 +46,7 @@ export default function Page({
       </div>
 
       {/* mobile */}
-      <div className="w-full max-w-[1400px] relative  sm:hidden">
+      <div className="w-full max-w-[1400px] mx-auto relative sm:hidden">
         <AspectRatio ratio={1 / 1}>
           <Image
             src={aboutConfig.imgSrc}
