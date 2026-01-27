@@ -40,7 +40,7 @@ export const productsConfig: ProductConfig = {
       id: "sanbanfu",
       titleCn: "三板斧系列",
       titleEn: "Triple-Axe Series",
-      imgSrc: "/Triple-Axe Series/产品页三板斧封面图.png",
+      imgSrc: "/Triple-Axe-Series/产品页三板斧封面图.png",
       description: "核心效能系列，专注于提升作物产量与品质。"
     },
     {

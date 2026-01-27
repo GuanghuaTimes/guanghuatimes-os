@@ -14,7 +14,7 @@ export default function ReagentProductsPage({ params }: { params: { cc: string }
     {
       id: "triple-axe-series",
       title: isCn ? "三板斧系列" : "Triple-Axe Series",
-      image: "/Triple-Axe Series/三板斧封面.png",
+      image: "/Triple-Axe-Series/三板斧封面.png",
       description: isCn 
         ? "核心效能系列，专注于提升作物产量与品质。采用先进的生物技术配方，为作物提供全方位营养支持。" 
         : "Core efficiency series focused on improving crop yield and quality with advanced biotech formulations.",
