@@ -79,9 +79,11 @@ export default async function TripleAxeSeriesPostPage({ params }: PostPageProps)
           {post.date ? <div>•</div> : null}
           <div>{post.readingTime}min</div>
         </div>
-        <h1 className="inline-block text-4xl font-bold leading-tight lg:text-5xl">
-          {post.title}
-        </h1>
+        {post.title && (
+          <h1 className="inline-block text-4xl font-bold leading-tight lg:text-5xl">
+            {post.title}
+          </h1>
+        )}
       </div>
 
       <Mdx code={post.body.code} />

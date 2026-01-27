@@ -40,16 +40,18 @@ export default function CarouselComponent({
             <Card>
               <CardContent className="flex items-center justify-center">
                 <AspectRatio
-                  ratio={!mobile ? 16 / 9 : 9 / 16}
+                  ratio={!mobile ? 16 / 9 : 4 / 5}
                   className="relative overflow-hidden"
                 >
-                  <div className="absolute inset-0 z-10 bg-black/20 flex justify-center items-center">
+                  <div className="absolute inset-0 z-10 bg-black/20 flex justify-center items-center p-4">
                     <Link href={`${lang}${item.href}`}>
-                      <h1 className="hover:underline text-xl md:text-3xl font-bold text-white text-center p-2 max-w-6xl">
+                      <h1 className={`hover:underline font-bold text-white text-center max-w-6xl ${mobile ? 'text-lg leading-tight' : 'text-xl md:text-3xl'}`}>
                         {lang === "cn" ? item.titleCn : item.title}
-                        <br />
-                        <br />
-                        {lang === "cn" ? item.descriptionCn : item.description}
+                        <br className={mobile ? 'block' : 'hidden'} />
+                        <br className={mobile ? 'hidden' : 'block'} />
+                        <span className={mobile ? 'text-sm font-normal' : ''}>
+                          {lang === "cn" ? item.descriptionCn : item.description}
+                        </span>
                       </h1>
                     </Link>
                   </div>
