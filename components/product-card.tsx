@@ -35,6 +35,19 @@ function getSlugAsParams(product: any, basePath: string) {
     return "";
 }
 
+function formatDescription(text: string) {
+    const parts = text.split(/([\u4e00-\u9fa5]+[：:]|®)/g);
+    return parts.map((part, index) => {
+        if (part.match(/^[\u4e00-\u9fa5]+[：:]$/)) {
+            return <strong key={index}>{part}</strong>;
+        }
+        if (part === '®') {
+            return <sup key={index} className="text-xs">®</sup>;
+        }
+        return part;
+    });
+}
+
 export function ProductCard({ product, i, lang, basePath = "/products", layout = "horizontal" }: ProductCardProps) {
     const normalizedBasePath = basePath.startsWith("/") ? basePath : `/${basePath}`;
     const slugAsParams = getSlugAsParams(product, normalizedBasePath);
@@ -72,8 +85,8 @@ export function ProductCard({ product, i, lang, basePath = "/products", layout =
                     {product.title}
                 </CardTitle>
                 {product.description && (
-                    <CardDescription className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed line-clamp-2 mb-3 flex-1">
-                        {product.description}
+                    <CardDescription className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed line-clamp-3 md:line-clamp-none mb-3 flex-1 whitespace-pre-line">
+                        {formatDescription(product.description)}
                     </CardDescription>
                 )}
                 <div className="flex items-center text-green-600 dark:text-green-400 font-medium text-sm mt-auto">
@@ -112,8 +125,8 @@ export function ProductCard({ product, i, lang, basePath = "/products", layout =
                     {product.title}
                 </CardTitle>
                 {product.description && (
-                    <CardDescription className="text-base text-gray-600 dark:text-gray-300 leading-relaxed line-clamp-3 mb-4">
-                        {product.description}
+                    <CardDescription className="text-base text-gray-600 dark:text-gray-300 leading-relaxed line-clamp-3 md:line-clamp-none mb-4 whitespace-pre-line">
+                        {formatDescription(product.description)}
                     </CardDescription>
                 )}
                 <div className="flex items-center text-green-600 dark:text-green-400 font-medium">
