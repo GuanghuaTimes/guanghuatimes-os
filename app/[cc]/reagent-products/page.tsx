@@ -14,25 +14,25 @@ export default function ReagentProductsPage({ params }: { params: { cc: string }
     {
       id: "triple-axe-series",
       title: isCn ? "三板斧系列" : "Triple-Axe Series",
-      image: "/Triple-Axe-Series/三板斧封面.png",
+      image: "/Triple-Axe-Series/三板斧封面图.png",
       description: isCn 
-        ? "核心效能系列，专注于提升作物产量与品质。采用先进的生物技术配方，为作物提供全方位营养支持。" 
+        ? "功能经作系列，主打“专而精”并非“大而全”" 
         : "Core efficiency series focused on improving crop yield and quality with advanced biotech formulations.",
     },
     {
       id: "agrarius-series",
       title: isCn ? "AGRARIUS系列" : "AGRARIUS Series",
-      image: "/product-images/agrarius-main.jpg",
+      image: "/agrarius-series/阿格瑞封面图.png",
       description: isCn
-        ? "国际领先的有机水溶肥料，全水快溶，调理土壤。采用进口原料，确保产品质量和效果。"
+        ? "经济大田系列，营养全面、相互增效。"
         : "Internationally leading organic water-soluble fertilizer with fast dissolution and soil conditioning properties.",
     },
     {
       id: "guanghua-bio-series",
       title: isCn ? "光华生物系列" : "Guanghua Biotech Series",
-      image: "/product-images/biotech-contrast.jpg",
+      image: "/guanghua-bio-series/光华生物封面图.png",
       description: isCn
-        ? "生物技术深度赋能，提供显著的作物对比改良效果。结合微生物技术，激发作物自身潜力。"
+        ? "双向平衡系列，协同长效、使用灵活。"
         : "Deeply empowered by biotechnology, providing significant crop improvement effects with microbial technology.",
     }
   ];
@@ -60,13 +60,13 @@ export default function ReagentProductsPage({ params }: { params: { cc: string }
               <article className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} gap-6 items-center group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-700`}>
                 {/* 产品图片 */}
                 <div className="w-full md:w-[30%] flex-shrink-0">
-                  <AspectRatio ratio={425/350} className="overflow-hidden bg-slate-50 dark:bg-slate-800">
+                  <AspectRatio ratio={1} className="overflow-hidden bg-slate-50 dark:bg-slate-800">
                     <Image
                       src={product.image}
                       alt={product.title}
                       fill
                       sizes="(min-width: 768px) 30vw, 100vw"
-                      className="object-contain group-hover:scale-105 transition-transform duration-500"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
                       priority={i <= 2}
                     />
                   </AspectRatio>

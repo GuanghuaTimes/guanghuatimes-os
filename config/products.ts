@@ -40,22 +40,22 @@ export const productsConfig: ProductConfig = {
       id: "sanbanfu",
       titleCn: "三板斧系列",
       titleEn: "Triple-Axe Series",
-      imgSrc: "/Triple-Axe-Series/产品页三板斧封面图.png",
-      description: "核心效能系列，专注于提升作物产量与品质。"
+      imgSrc: "/Triple-Axe-Series/三板斧封面图.png",
+      description: "功能经作系列，主打“专而精”并非“大而全”"
     },
     {
       id: "agrarius",
       titleCn: "AGRARIUS系列",
       titleEn: "AGRARIUS Series",
-      imgSrc: "/agrarius-series/产品页阿格瑞封面图.png",
-      description: "国际领先的有机水溶肥料，全水快溶，调理土壤。"
+      imgSrc: "/agrarius-series/阿格瑞封面图.png",
+      description: "经济大田系列，营养全面、相互增效。"
     },
     {
       id: "biotech",
       titleCn: "光华生物系列",
       titleEn: "Guanghua Biotech",
-      imgSrc: "/guanghua-bio-series/产品页光华生物封面图.png",
-      description: "生物技术深度赋能，提供显著的作物对比改良效果。"
+      imgSrc: "/guanghua-bio-series/光华生物封面图.png",
+      description: "双向平衡系列，协同长效、使用灵活。"
     },
     {
       id: "daily-chemical",

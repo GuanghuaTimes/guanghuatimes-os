@@ -35,7 +35,7 @@ export function TripleAxeSeriesSection({
           {params.cc === "cn" ? "三板斧系列" : "Triple-Axe Series"}
         </div>
         <PageHeaderDescription className="text-lg text-gray-600 dark:text-gray-300">
-          {params.cc === "cn" ? "核心效能系列，专注于提升作物产量与品质" : "Core efficiency series focused on improving crop yield and quality"}
+          {params.cc === "cn" ? "功能经作系列，主打“专而精”并非“大而全”" : "Core efficiency series focused on improving crop yield and quality"}
         </PageHeaderDescription>
       </PageHeader>
 

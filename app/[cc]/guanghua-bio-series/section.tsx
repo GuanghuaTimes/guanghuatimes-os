@@ -35,7 +35,7 @@ export function GuanghuaBioSeriesSection({
           {params.cc === "cn" ? "光华生物系列" : "Guanghua Biotech Series"}
         </div>
         <PageHeaderDescription className="text-lg text-gray-600 dark:text-gray-300">
-          {params.cc === "cn" ? "光华生物科技系列产品" : "Guanghua Biotech Series Products"}
+          {params.cc === "cn" ? "双向平衡系列，协同长效、使用灵活" : "Guanghua Biotech Series Products"}
         </PageHeaderDescription>
       </PageHeader>
 

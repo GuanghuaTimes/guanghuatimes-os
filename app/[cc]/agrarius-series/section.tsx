@@ -35,7 +35,7 @@ export function AgrariusSeriesSection({
           {params.cc === "cn" ? "AGRARIUS系列" : "AGRARIUS Biotech Series"}
         </div>
         <PageHeaderDescription className="text-lg text-gray-600 dark:text-gray-300">
-          {params.cc === "cn" ? "AGRARIUS生物科技系列产品" : "AGRARIUS Biotech Series Products"}
+          {params.cc === "cn" ? "经济大田系列，营养全面、相互增效" : "AGRARIUS Biotech Series Products"}
         </PageHeaderDescription>
       </PageHeader>
 
