@@ -39,7 +39,7 @@ export const metadata = {
     creator: "@msrks",
   },
   icons: {
-    icon: "/icon.png",
+    icon: "/Logo.png",
   },
   manifest: absoluteUrl("/site.webmanifest"),
 };

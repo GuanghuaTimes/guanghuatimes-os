@@ -3,7 +3,7 @@
   "short_name": "LaoshiVillage",
   "icons": [
     {
-      "src": "/icon.png",
+      "src": "/Logo.png",
       "sizes": "32x32",
       "type": "image/png"
     }

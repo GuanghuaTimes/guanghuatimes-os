@@ -3,7 +3,7 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Image from "next/image";
 import { CC } from "../page";
 import { applicationCasesConfig } from "@/config/application-cases";
-import { allApplicationCases } from "@/.contentlayer/generated";
+import { applicationCaseReports } from "@/config/application-case-reports";
 import { CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { PlaceholderImage } from "@/components/placeholder-image";
 import Link from "next/link";
@@ -30,24 +30,25 @@ export default function Page({
 }) {
   const isCn = params.cc === "cn";
 
-  const cases = allApplicationCases
-    .filter((c: any) => c.published !== false)
-    .sort((a: any, b: any) => b.date.localeCompare(a.date));
+  const cases = [...applicationCaseReports].sort((a, b) =>
+    b.date.localeCompare(a.date)
+  );
 
-  const CaseCard = ({ caseItem, index }: { caseItem: any; index: number }) => {
-    const hasWechatLink = Boolean(
-      caseItem.wechatUrl &&
-      typeof caseItem.wechatUrl === 'string' &&
-      caseItem.wechatUrl.startsWith('http')
-    );
-
+  const CaseCard = ({
+    caseItem,
+    index,
+  }: {
+    caseItem: (typeof applicationCaseReports)[number];
+    index: number;
+  }) => {
+    const pdfUrl = `/api/application-case-pdf/${caseItem.pdfFile}#toolbar=0&navpanes=0&scrollbar=0`;
     const cardContent = (
       <article className="space-y-4 group cursor-pointer">
         <AspectRatio ratio={16 / 9} className="overflow-hidden relative">
           {caseItem.image ? (
             <Image
               src={caseItem.image}
-              alt={caseItem.title}
+              alt={isCn ? caseItem.titleCn : caseItem.title}
               fill
               sizes="(min-width: 1024px) 384px, (min-width: 768px) 288px, (min-width: 640px) 224px, 100vw"
               className="rounded-lg object-cover group-hover:scale-105 transition-transform"
@@ -60,26 +61,22 @@ export default function Page({
         <div className="space-y-2">
           <CardHeader className="space-y-2.5 p-0">
             <CardTitle className="line-clamp-1 dark:text-white">
-              {caseItem.title}
+              {isCn ? caseItem.titleCn : caseItem.title}
             </CardTitle>
             <CardDescription className="line-clamp-2 dark:text-gray-300">
-              {caseItem.description}
+              {isCn ? caseItem.descriptionCn : caseItem.description}
             </CardDescription>
           </CardHeader>
         </div>
       </article>
     );
 
-    if (hasWechatLink) {
-      return (
-        <a href={caseItem.wechatUrl} target="_blank" rel="noopener noreferrer">
-          {cardContent}
-        </a>
-      );
-    }
-
     return (
-      <Link href={`/${params.cc}/application-cases/${caseItem.slugAsParams}`}>
+      <Link
+        href={pdfUrl}
+        target="_blank"
+        rel="noreferrer"
+      >
         {cardContent}
       </Link>
     );
@@ -124,7 +121,7 @@ export default function Page({
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {cases.length > 0 ? (
-            cases.map((caseItem: any, index: number) => (
+            cases.map((caseItem, index) => (
               <CaseCard key={caseItem.slug} caseItem={caseItem} index={index} />
             ))
           ) : (

@@ -14,7 +14,6 @@ import { cn, formatDate } from "@/lib/utils";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { MdxPager } from "@/components/pagers/mdx-pager";
 import { Shell } from "@/components/shells/shell";
 
 interface PostPageProps {
@@ -93,7 +92,6 @@ export default async function PostPage({ params }: PostPageProps) {
       </div>
       <Mdx code={product.body.code} />
       <Separator className="my-4" />
-      <MdxPager currentItem={product} allItems={allRawMaterials} />
       <Link
         href={`/${params.cc}/raw-materials`}
         className={cn(

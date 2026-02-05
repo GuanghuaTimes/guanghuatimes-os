@@ -105,26 +105,6 @@ export const siteConfig = {
       ],
     },
     {
-      title:"Services",
-      titleCn:"服务",
-      items:[
-        {
-          title: "Service Introduction",
-          titleCn: "服务介绍",
-          href: "ecology-diversity",
-          description: "Service Introduction",
-          items: [],
-        },
-        {
-          title: "Contact & Call-back Access",
-          titleCn: "在线服务/咨询入口",
-          href: "library",
-          description: "Call-back & Direct Call Service Entry",
-          items: [],
-        },
-      ]
-    },
-    {
       title: "Application Cases",
       titleCn: "应用案例",
       items: [
@@ -165,6 +145,13 @@ export const siteConfig = {
           items: [],
         },
       ],
+    },
+    {
+      title: "ERP System",
+      titleCn: "ERP系统",
+      href: "http://ghpga.com",
+      external: true,
+      items: [],
     },
   ] satisfies MainNavItem[],
   footerNav: [

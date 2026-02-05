@@ -30,7 +30,16 @@ export function MainNav({ items, lang }: MainNavProps) {
   const disabledGroups = new Set(["Services", "Nature School"]);
   const isGroupDisabled = (groupTitle?: string) =>
     groupTitle ? disabledGroups.has(groupTitle) : false;
-    return (
+
+  const isExternalHref = (href?: string, external?: boolean) =>
+    Boolean(external || (href && /^https?:\/\//i.test(href)));
+
+  const resolveHref = (href?: string, external?: boolean) => {
+    if (!href) return href;
+    return isExternalHref(href, external) ? href : `/${lang}/${href}`;
+  };
+
+  return (
     <div className="hidden md:flex justify-between w-full text-lg">
       <Link
         href={`/${lang}`}
@@ -88,7 +97,13 @@ export function MainNav({ items, lang }: MainNavProps) {
                     <ListItem
                       key={item.title}
                       title={lang === "cn" ? item.titleCn : item.title}
-                      href={`/${lang}/${item.href}`}
+                      href={resolveHref(item.href, item.external)}
+                      target={isExternalHref(item.href, item.external)
+                        ? "_blank"
+                        : undefined}
+                      rel={isExternalHref(item.href, item.external)
+                        ? "noreferrer"
+                        : undefined}
                     >
                       {item.description}
                     </ListItem>
@@ -100,7 +115,7 @@ export function MainNav({ items, lang }: MainNavProps) {
           {items
             ?.filter((item) => item.title !== items[0]?.title)
             .map((item) =>
-              item?.items ? (
+              item?.items && item.items.length > 0 ? (
                 <NavigationMenuItem key={item.title}>
                   <NavigationMenuTrigger className="h-auto capitalize text-base">
                     {lang === "cn" ? item.titleCn : item.title}
@@ -110,7 +125,13 @@ export function MainNav({ items, lang }: MainNavProps) {
                       {item.href && !isGroupDisabled(item.title) && item.title !== "Contact Us" && item.title !== "News" && (
                         <li className="mb-2">
                           <Link
-                            href={`/${lang}/${item.href}`}
+                            href={resolveHref(item.href, item.external) ?? "#"}
+                            target={isExternalHref(item.href, item.external)
+                              ? "_blank"
+                              : undefined}
+                            rel={isExternalHref(item.href, item.external)
+                              ? "noreferrer"
+                              : undefined}
                             className="block px-4 py-2 rounded-md bg-green-50 hover:bg-green-100 dark:bg-green-900/20 dark:hover:bg-green-900/30 transition-colors"
                           >
                             <div className="flex items-center justify-between">
@@ -128,7 +149,13 @@ export function MainNav({ items, lang }: MainNavProps) {
                         subItem.items && subItem.items.length > 0 ? (
                           <li key={subItem.title} className="relative group/submenu">
                             <Link
-                              href={`/${lang}/${subItem.href}`}
+                              href={resolveHref(subItem.href, subItem.external) ?? "#"}
+                              target={isExternalHref(subItem.href, subItem.external)
+                                ? "_blank"
+                                : undefined}
+                              rel={isExternalHref(subItem.href, subItem.external)
+                                ? "noreferrer"
+                                : undefined}
                               className="flex items-center justify-between select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground"
                             >
                               <div>
@@ -162,7 +189,13 @@ export function MainNav({ items, lang }: MainNavProps) {
                                 ) : (
                                   <li key={nestedItem.title}>
                                     <Link
-                                      href={`/${lang}/${nestedItem.href}`}
+                                      href={resolveHref(nestedItem.href, nestedItem.external) ?? "#"}
+                                      target={isExternalHref(nestedItem.href, nestedItem.external)
+                                        ? "_blank"
+                                        : undefined}
+                                      rel={isExternalHref(nestedItem.href, nestedItem.external)
+                                        ? "noreferrer"
+                                        : undefined}
                                       className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground"
                                     >
                                       <div className="text-sm font-medium leading-none">
@@ -195,7 +228,13 @@ export function MainNav({ items, lang }: MainNavProps) {
                               <ListItem
                                 key={subItem.title}
                                 title={lang === "cn" ? subItem.titleCn : subItem.title}
-                                href={`/${lang}/${subItem.href}`}
+                                href={resolveHref(subItem.href, subItem.external)}
+                                target={isExternalHref(subItem.href, subItem.external)
+                                  ? "_blank"
+                                  : undefined}
+                                rel={isExternalHref(subItem.href, subItem.external)
+                                  ? "noreferrer"
+                                  : undefined}
                               >
                                 {subItem.description}
                               </ListItem>
@@ -206,23 +245,31 @@ export function MainNav({ items, lang }: MainNavProps) {
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
-              ) : (
+              ) :
                 item.href && !isGroupDisabled(item.title) && (
                   <NavigationMenuItem key={item.title}>
                     <Link
-                      href={`/${lang}/${item.href}`}
+                      href={resolveHref(item.href, item.external) ?? "#"}
                       legacyBehavior
                       passHref
                     >
                       <NavigationMenuLink
-                        className={cn(navigationMenuTriggerStyle(), "h-auto")}
+                        className={cn(
+                          navigationMenuTriggerStyle(),
+                          "h-auto text-base"
+                        )}
+                        target={isExternalHref(item.href, item.external)
+                          ? "_blank"
+                          : undefined}
+                        rel={isExternalHref(item.href, item.external)
+                          ? "noreferrer"
+                          : undefined}
                       >
                         {lang === "cn" ? item.titleCn : item.title}
                       </NavigationMenuLink>
                     </Link>
                   </NavigationMenuItem>
                 )
-              )
             )}
         </NavigationMenuList>
       </NavigationMenu>

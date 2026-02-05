@@ -279,22 +279,7 @@ export const RawMaterials = defineDocumentType(() => ({
   computedFields: baseComputedFields,
 }));
 
-export const ApplicationCase = defineDocumentType(() => ({
-  name: "ApplicationCase",
-  filePathPattern: `application-cases/**/*.mdx`,
-  contentType: "mdx",
-  fields: {
-    title: { type: "string", required: true },
-    description: { type: "string" },
-    date: { type: "date", required: true },
-    published: { type: "json" },
-    image: { type: "string", required: true },
-    wechatUrl: { type: "string" },
-  },
-  computedFields: baseComputedFields,
-}));
-
 export default makeSource({
   contentDirPath: "./content",
-  documentTypes: [Event, Page, Article, Announcement, Activity, AgrariusSeries, GuanghuaBioSeries, DailyChemicalSeries, TripleAxeSeries, RawMaterials, ApplicationCase],
+  documentTypes: [Event, Page, Article, Announcement, Activity, AgrariusSeries, GuanghuaBioSeries, DailyChemicalSeries, TripleAxeSeries, RawMaterials],
 });

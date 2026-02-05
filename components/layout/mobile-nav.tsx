@@ -36,6 +36,14 @@ export function MobileNav({ mainNavItems, lang }: MobileNavProps) {
   const isSupportUs = (groupTitle?: string) => groupTitle === "Support Us";
   const isAllowedSupportUsHref = (href?: string) => href === "map-navigation";
 
+  const isExternalHref = (href?: string, external?: boolean) =>
+    Boolean(external || (href && /^https?:\/\//i.test(href)));
+
+  const resolveHref = (href?: string, external?: boolean) => {
+    if (!href) return href;
+    return isExternalHref(href, external) ? href : `/${lang}/${href}`;
+  };
+
   return (
     <div className="flex md:hidden justify-between w-full">
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -72,82 +80,148 @@ export function MobileNav({ mainNavItems, lang }: MobileNavProps) {
             <div className="pl-1 pr-7">
               <Accordion
                 type="multiple"
-                defaultValue={mainNavItems.map((item) =>
-                  lang === "cn" ? item.titleCn : item.title
-                )}
+                defaultValue={mainNavItems
+                  .filter((item) => item.items && item.items.length > 0)
+                  .map((item) => (lang === "cn" ? item.titleCn : item.title))}
                 className="w-full"
               >
-                {mainNavItems?.map((item, index) => (
-                  <AccordionItem
-                    value={lang === "cn" ? item.titleCn : item.title}
-                    key={index}
-                  >
-                    <AccordionTrigger className="text-sm capitalize">
-                      {lang === "cn" ? item.titleCn : item.title}
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <div className="flex flex-col space-y-2">
-                        {item.items?.map((subItem, index) =>
-                          subItem.items && subItem.items.length > 0 ? (
-                            <Accordion type="single" collapsible key={index} className="w-full">
-                              <AccordionItem value={subItem.title} className="border-0">
-                                <div className="flex items-center justify-between">
-                                  <MobileLink
-                                    href={`/${lang}/${subItem.href}`}
-                                    segment={String(segment)}
-                                    setIsOpen={setIsOpen}
-                                    disabled={isGroupDisabled(item.title)}
-                                  >
-                                    {lang === "cn" ? subItem.titleCn : subItem.title}
-                                  </MobileLink>
-                                  <AccordionTrigger className="py-0 px-2" />
-                                </div>
-                                <AccordionContent>
-                                  <div className="flex flex-col space-y-2 ml-4 mt-2">
-                                    {subItem.items.map((nestedItem, nestedIndex) => (
-                                      <MobileLink
-                                        key={nestedIndex}
-                                        href={`/${lang}/${nestedItem.href}`}
-                                        segment={String(segment)}
-                                        setIsOpen={setIsOpen}
-                                        disabled={
-                                          isGroupDisabled(item.title) ||
-                                          (isSupportUs(item.title) && !isAllowedSupportUsHref(nestedItem.href))
-                                        }
-                                      >
-                                        {lang === "cn" ? nestedItem.titleCn : nestedItem.title}
-                                      </MobileLink>
-                                    ))}
-                                  </div>
-                                </AccordionContent>
-                              </AccordionItem>
-                            </Accordion>
-                          ) : subItem.href ? (
-                            <MobileLink
-                              key={index}
-                              href={`/${lang}/${subItem.href}`}
-                              segment={String(segment)}
-                              setIsOpen={setIsOpen}
-                              disabled={
-                                isGroupDisabled(item.title) ||
-                                (isSupportUs(item.title) && !isAllowedSupportUsHref(subItem.href))
-                              }
-                            >
-                              {lang === "cn" ? subItem.titleCn : subItem.title}
-                            </MobileLink>
-                          ) : (
-                            <div
-                              key={index}
-                              className="text-foreground/70 transition-colors"
-                            >
-                              {lang === "cn" ? subItem.titleCn : subItem.title}
-                            </div>
-                          )
-                        )}
+                {mainNavItems?.map((item, index) => {
+                  const hasChildren = item.items && item.items.length > 0;
+
+                  if (!hasChildren) {
+                    const href = resolveHref(item.href, item.external);
+                    if (!href) return null;
+
+                    const isExternal = isExternalHref(item.href, item.external);
+
+                    return (
+                      <div key={index} className="border-b py-4">
+                        <MobileLink
+                          href={href}
+                          target={isExternal ? "_blank" : undefined}
+                          rel={isExternal ? "noreferrer" : undefined}
+                          segment={String(segment)}
+                          setIsOpen={setIsOpen}
+                          disabled={isGroupDisabled(item.title)}
+                        >
+                          {lang === "cn" ? item.titleCn : item.title}
+                        </MobileLink>
                       </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
+                    );
+                  }
+
+                  return (
+                    <AccordionItem
+                      value={lang === "cn" ? item.titleCn : item.title}
+                      key={index}
+                    >
+                      <AccordionTrigger className="text-sm capitalize">
+                        {lang === "cn" ? item.titleCn : item.title}
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <div className="flex flex-col space-y-2">
+                          {item.items?.map((subItem, index) =>
+                            subItem.items && subItem.items.length > 0 ? (
+                              <Accordion type="single" collapsible key={index} className="w-full">
+                                <AccordionItem value={subItem.title} className="border-0">
+                                  <div className="flex items-center justify-between">
+                                    <MobileLink
+                                      href={resolveHref(subItem.href, subItem.external) ?? "#"}
+                                      target={
+                                        isExternalHref(subItem.href, subItem.external)
+                                          ? "_blank"
+                                          : undefined
+                                      }
+                                      rel={
+                                        isExternalHref(subItem.href, subItem.external)
+                                          ? "noreferrer"
+                                          : undefined
+                                      }
+                                      segment={String(segment)}
+                                      setIsOpen={setIsOpen}
+                                      disabled={isGroupDisabled(item.title)}
+                                    >
+                                      {lang === "cn" ? subItem.titleCn : subItem.title}
+                                    </MobileLink>
+                                    <AccordionTrigger className="py-0 px-2" />
+                                  </div>
+                                  <AccordionContent>
+                                    <div className="flex flex-col space-y-2 ml-4 mt-2">
+                                      {subItem.items.map((nestedItem, nestedIndex) => (
+                                        <MobileLink
+                                          key={nestedIndex}
+                                          href={resolveHref(nestedItem.href, nestedItem.external) ?? "#"}
+                                          target={
+                                            isExternalHref(
+                                              nestedItem.href,
+                                              nestedItem.external
+                                            )
+                                              ? "_blank"
+                                              : undefined
+                                          }
+                                          rel={
+                                            isExternalHref(
+                                              nestedItem.href,
+                                              nestedItem.external
+                                            )
+                                              ? "noreferrer"
+                                              : undefined
+                                          }
+                                          segment={String(segment)}
+                                          setIsOpen={setIsOpen}
+                                          disabled={
+                                            isGroupDisabled(item.title) ||
+                                            (isSupportUs(item.title) &&
+                                              !isAllowedSupportUsHref(nestedItem.href))
+                                          }
+                                        >
+                                          {lang === "cn"
+                                            ? nestedItem.titleCn
+                                            : nestedItem.title}
+                                        </MobileLink>
+                                      ))}
+                                    </div>
+                                  </AccordionContent>
+                                </AccordionItem>
+                              </Accordion>
+                            ) : subItem.href ? (
+                              <MobileLink
+                                key={index}
+                                href={resolveHref(subItem.href, subItem.external) ?? "#"}
+                                target={
+                                  isExternalHref(subItem.href, subItem.external)
+                                    ? "_blank"
+                                    : undefined
+                                }
+                                rel={
+                                  isExternalHref(subItem.href, subItem.external)
+                                    ? "noreferrer"
+                                    : undefined
+                                }
+                                segment={String(segment)}
+                                setIsOpen={setIsOpen}
+                                disabled={
+                                  isGroupDisabled(item.title) ||
+                                  (isSupportUs(item.title) &&
+                                    !isAllowedSupportUsHref(subItem.href))
+                                }
+                              >
+                                {lang === "cn" ? subItem.titleCn : subItem.title}
+                              </MobileLink>
+                            ) : (
+                              <div
+                                key={index}
+                                className="text-foreground/70 transition-colors"
+                              >
+                                {lang === "cn" ? subItem.titleCn : subItem.title}
+                              </div>
+                            )
+                          )}
+                        </div>
+                      </AccordionContent>
+                    </AccordionItem>
+                  );
+                })}
               </Accordion>
             </div>
           </ScrollArea>
@@ -177,6 +251,8 @@ interface MobileLinkProps extends React.PropsWithChildren {
   href: string;
   disabled?: boolean;
   segment: string;
+  target?: string;
+  rel?: string;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
@@ -185,11 +261,15 @@ function MobileLink({
   href,
   disabled,
   segment,
+  target,
+  rel,
   setIsOpen,
 }: MobileLinkProps) {
   return (
     <Link
       href={href}
+      target={target}
+      rel={rel}
       className={cn(
         "text-foreground/70 transition-colors hover:text-foreground",
         href.includes(segment) && "text-foreground",

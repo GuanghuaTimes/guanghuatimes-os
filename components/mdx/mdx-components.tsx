@@ -3,6 +3,7 @@ import { useMDXComponent } from "next-contentlayer/hooks";
 import { cn } from "@/lib/utils";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { PdfWithWatermark } from "@/components/pdf-with-watermark";
 import { Callout } from "@/components/mdx/callout";
 import { CodeBlock } from "@/components/mdx/code-block";
 import { MdxCard } from "@/components/mdx/mdx-card";
@@ -151,6 +152,7 @@ const components = {
   AspectRatio,
   Card: MdxCard,
   Callout,
+  PdfWithWatermark,
 };
 
 interface MdxProps {
