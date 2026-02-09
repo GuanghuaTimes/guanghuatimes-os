@@ -4,6 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import type { MainNavItem } from "@/types";
+import { useRouter } from "next/navigation";
 
 
 import { siteConfig } from "@/config/site";
@@ -27,9 +28,13 @@ interface MainNavProps {
 }
 
 export function MainNav({ items, lang }: MainNavProps) {
+  const router = useRouter();
   const disabledGroups = new Set(["Services", "Nature School"]);
   const isGroupDisabled = (groupTitle?: string) =>
     groupTitle ? disabledGroups.has(groupTitle) : false;
+
+  const [openValue, setOpenValue] = React.useState<string>("");
+  const closeTimerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const isExternalHref = (href?: string, external?: boolean) =>
     Boolean(external || (href && /^https?:\/\//i.test(href)));
@@ -37,6 +42,26 @@ export function MainNav({ items, lang }: MainNavProps) {
   const resolveHref = (href?: string, external?: boolean) => {
     if (!href) return href;
     return isExternalHref(href, external) ? href : `/${lang}/${href}`;
+  };
+
+  const navigateToGroup = (item: MainNavItem) => {
+    if (!item.href || isGroupDisabled(item.title)) return;
+    const url = resolveHref(item.href, item.external);
+    if (url) router.push(url);
+  };
+
+  const cancelClose = () => {
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+  };
+
+  const scheduleClose = () => {
+    cancelClose();
+    closeTimerRef.current = setTimeout(() => {
+      setOpenValue("");
+    }, 200);
   };
 
   return (
@@ -58,14 +83,29 @@ export function MainNav({ items, lang }: MainNavProps) {
         </span>
         <span className="sr-only">Home</span>
       </Link>
-      <NavigationMenu>
+      <NavigationMenu
+        value={openValue}
+        onValueChange={(next) => {
+          // Keep menus open on click: ignore click-triggered close while the cursor is still in the nav.
+          if (!next && openValue) return;
+          setOpenValue(next);
+        }}
+        onMouseEnter={cancelClose}
+        onMouseLeave={scheduleClose}
+      >
         <NavigationMenuList>
           {items?.[0]?.items ? (
-            <NavigationMenuItem>
-              <NavigationMenuTrigger className="h-auto text-base">
+            <NavigationMenuItem
+              value={items[0].title}
+              onMouseEnter={() => setOpenValue(items[0].title)}
+            >
+              <NavigationMenuTrigger
+                className="h-auto text-base"
+                onClick={() => navigateToGroup(items[0])}
+              >
                 {lang === "cn" ? items[0].titleCn : items[0].title}
               </NavigationMenuTrigger>
-              <NavigationMenuContent>
+              <NavigationMenuContent onMouseEnter={cancelClose} onMouseLeave={scheduleClose}>
                 <ul className="grid gap-3 p-6 md:w-[400px]  md:grid-cols-[.75fr_1fr]">
                   <li className="row-span-3">
                     <NavigationMenuLink asChild>
@@ -116,13 +156,20 @@ export function MainNav({ items, lang }: MainNavProps) {
             ?.filter((item) => item.title !== items[0]?.title)
             .map((item) =>
               item?.items && item.items.length > 0 ? (
-                <NavigationMenuItem key={item.title}>
-                  <NavigationMenuTrigger className="h-auto capitalize text-base">
+                <NavigationMenuItem
+                  key={item.title}
+                  value={item.title}
+                  onMouseEnter={() => setOpenValue(item.title)}
+                >
+                  <NavigationMenuTrigger
+                    className="h-auto capitalize text-base"
+                    onClick={() => navigateToGroup(item)}
+                  >
                     {lang === "cn" ? item.titleCn : item.title}
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent>
+                  <NavigationMenuContent onMouseEnter={cancelClose} onMouseLeave={scheduleClose}>
                     <ul className="grid w-[300px] gap-3 p-4 grid-cols-1">
-                      {item.href && !isGroupDisabled(item.title) && item.title !== "Contact Us" && item.title !== "News" && (
+                      {item.href && !isGroupDisabled(item.title) && item.title !== "Contact Us" && item.title !== "News" && item.title !== "Product Categories" && item.title !== "Application Cases" && (
                         <li className="mb-2">
                           <Link
                             href={resolveHref(item.href, item.external) ?? "#"}

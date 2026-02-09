@@ -30,11 +30,26 @@ export default function CompanyOverviewSection({ cc = "cn" }: { cc?: "cn" | "en"
               {cc === "cn" ? "主营业务" : "Core Business"}
             </Link>
           </h3>
-          <p className="text-gray-700 dark:text-gray-200 leading-relaxed">
-            {cc === "cn"
-              ? "公司主营PGA、AOS原料及特肥制剂，具备年产能原料6000吨，制剂10万吨，致力于成为世界一流的微生物发酵企业，为全球绿色农业提供增效应用解决方案。"
-              : "The company mainly produces PGA and AOS raw materials and special fertilizer formulations, with an annual production capacity of 6,000 tons of raw materials and 100,000 tons of formulations. We are committed to becoming a world-class microbial fermentation enterprise and providing efficiency-enhancing application solutions for global green agriculture."}
-          </p>
+          {cc === "cn" ? (
+            <>
+              <p className="text-gray-700 dark:text-gray-200 leading-relaxed">
+                公司主营PGA、AOS原料及特肥制剂，具备年产能原料6000吨，制剂10万吨，致力于成为世界一流的微生物发酵企业，为全球绿色农业提供增效应用解决方案。
+              </p>
+              <ul className="mt-3 space-y-2 text-gray-700 dark:text-gray-200 leading-relaxed">
+                <li>原料分子量、纯度、含量定制化服务；增效复配包定制化服务。</li>
+                <li>
+                  光华时代<sup>®</sup>目前除承接OEM订单外，还可根据客户需求进行ODM，制定制剂定制化加工方案。
+                </li>
+                <li>原料/制剂产品应用效果对比试验服务。</li>
+                <li>作物基础营养方案定制化服务。</li>
+                <li>作物“植保+营养”全程增产提质技术开发服务。</li>
+              </ul>
+            </>
+          ) : (
+            <p className="text-gray-700 dark:text-gray-200 leading-relaxed">
+              The company mainly produces PGA and AOS raw materials and special fertilizer formulations, with an annual production capacity of 6,000 tons of raw materials and 100,000 tons of formulations. We are committed to becoming a world-class microbial fermentation enterprise and providing efficiency-enhancing application solutions for global green agriculture.
+            </p>
+          )}
         </div>
         <div>
           <h3 className="text-xl font-semibold mb-4">

@@ -84,32 +84,6 @@ export default function Page({
 
   return (
     <>
-      {/* desktop */}
-      <div className="w-full max-w-[1400px] relative hidden sm:block">
-        <AspectRatio ratio={16 / 2}>
-          <Image
-            src={applicationCasesConfig.imgSrc}
-            alt=""
-            fill
-            className="object-cover"
-            priority
-          />
-        </AspectRatio>
-      </div>
-
-      {/* mobile */}
-      <div className="w-full max-w-[1400px] relative sm:hidden">
-        <AspectRatio ratio={2 / 1}>
-          <Image
-            src={applicationCasesConfig.imgSrc}
-            alt=""
-            fill
-            className="object-cover"
-            priority
-          />
-        </AspectRatio>
-      </div>
-
       <div className="container py-6 space-y-6">
         <h1 className="text-2xl md:text-4xl font-bold text-gray-900 dark:text-white">
           {isCn ? applicationCasesConfig.titleCn : applicationCasesConfig.title}

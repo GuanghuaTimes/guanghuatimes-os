@@ -17,6 +17,7 @@ export const siteConfig = {
     {
       title: "About",
       titleCn: "关于我们",
+      href: "about",
       items: [
         {
           title: "About",
@@ -58,6 +59,7 @@ export const siteConfig = {
     {
       title: "Product Categories",
       titleCn: "公司产品",
+      href: "products",
       items: [
         {
           title: "Raw Material Products",
@@ -107,6 +109,7 @@ export const siteConfig = {
     {
       title: "Application Cases",
       titleCn: "应用案例",
+      href: "application-cases",
       items: [
         {
           title: "All Cases",

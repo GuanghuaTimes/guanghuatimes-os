@@ -1,26 +1,30 @@
 'use client'
 
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { useRouter } from 'next/navigation'
+import * as DialogPrimitive from '@radix-ui/react-dialog'
+import { Button } from '@/components/ui/button'
 import CompanyOverviewSection from './company-overview/section'
 import TechnicalAdvantagesSection from './technical-advantages/section'
 import IntellectualPropertySection from './intellectual-property/section'
 import CollaborationProjectsSection from './collaboration-projects/section'
-import DemonstrationShowcaseSection from './demonstration-showcase/section'
 
 export default function AboutTabs({ cc = 'cn' }: { cc?: 'cn' | 'en' }) {
-  type Key = 'overview' | 'advantages' | 'ip' | 'projects' | 'showcase'
+  const router = useRouter()
+
+  type Key = 'overview' | 'advantages' | 'ip' | 'projects'
   const tabs = useMemo(
     () => [
       { key: 'overview' as Key, cn: '公司概况', en: 'Company Overview', Component: CompanyOverviewSection },
       { key: 'advantages' as Key, cn: '技术优势', en: 'Technical Advantages', Component: TechnicalAdvantagesSection },
       { key: 'ip' as Key, cn: '知识产权', en: 'Intellectual Property', Component: IntellectualPropertySection },
       { key: 'projects' as Key, cn: '合作项目', en: 'Collaboration Projects', Component: CollaborationProjectsSection },
-      { key: 'showcase' as Key, cn: '示范展示', en: 'Demonstration & Showcase', Component: DemonstrationShowcaseSection },
     ],
     []
   )
 
   const [active, setActive] = useState<Key>('overview')
+  const [showcaseConfirmOpen, setShowcaseConfirmOpen] = useState(false)
   const ActiveComp = tabs.find(t => t.key === active)?.Component ?? CompanyOverviewSection
 
   // animated underline indicator
@@ -30,7 +34,6 @@ export default function AboutTabs({ cc = 'cn' }: { cc?: 'cn' | 'en' }) {
     advantages: null,
     ip: null,
     projects: null,
-    showcase: null,
   })
   const [indicator, setIndicator] = useState<{ left: number; width: number }>({ left: 0, width: 0 })
 
@@ -60,7 +63,6 @@ export default function AboutTabs({ cc = 'cn' }: { cc?: 'cn' | 'en' }) {
       '#advantages': 'advantages',
       '#ip': 'ip',
       '#projects': 'projects',
-      '#showcase': 'showcase',
     }
     const applyFromHash = () => {
       const k = map[window.location.hash]
@@ -76,7 +78,6 @@ export default function AboutTabs({ cc = 'cn' }: { cc?: 'cn' | 'en' }) {
       advantages: '#advantages',
       ip: '#ip',
       projects: '#projects',
-      showcase: '#showcase',
     }
     const hash = map[active]
     if (hash) {
@@ -126,8 +127,46 @@ export default function AboutTabs({ cc = 'cn' }: { cc?: 'cn' | 'en' }) {
               </button>
             )
           })}
+
+          <button
+            type="button"
+            className="relative px-4 py-2 rounded-full text-sm md:text-base transition-colors whitespace-nowrap border bg-muted/40 text-muted-foreground hover:text-foreground hover:bg-muted border-transparent"
+            onClick={() => setShowcaseConfirmOpen(true)}
+          >
+            {cc === 'cn' ? '示范展示' : 'Demonstration & Showcase'}
+          </button>
         </div>
       </div>
+
+      <DialogPrimitive.Root open={showcaseConfirmOpen} onOpenChange={setShowcaseConfirmOpen}>
+        <DialogPrimitive.Portal>
+          <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-black/60" />
+          <DialogPrimitive.Content className="fixed left-1/2 top-1/2 z-50 w-[92vw] max-w-md -translate-x-1/2 -translate-y-1/2 rounded-lg border bg-background p-6 shadow-lg">
+            <DialogPrimitive.Title className="text-base font-semibold">
+              {cc === 'cn' ? '确认跳转' : 'Confirm navigation'}
+            </DialogPrimitive.Title>
+            <DialogPrimitive.Description className="mt-2 text-sm text-muted-foreground">
+              {cc === 'cn'
+                ? '即将跳转至「应用案例」页面，是否继续？'
+                : 'You are about to navigate to the Application Cases page. Continue?'}
+            </DialogPrimitive.Description>
+
+            <div className="mt-6 flex justify-end gap-2">
+              <Button variant="outline" onClick={() => setShowcaseConfirmOpen(false)}>
+                {cc === 'cn' ? '取消' : 'Cancel'}
+              </Button>
+              <Button
+                onClick={() => {
+                  setShowcaseConfirmOpen(false)
+                  router.push(`/${cc}/application-cases`)
+                }}
+              >
+                {cc === 'cn' ? '确认' : 'Confirm'}
+              </Button>
+            </div>
+          </DialogPrimitive.Content>
+        </DialogPrimitive.Portal>
+      </DialogPrimitive.Root>
 
       <div
         id={`panel-${active}`}
