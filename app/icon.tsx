@@ -1,7 +1,9 @@
 import { ImageResponse } from "next/server";
+import path from "path";
+import { readFile } from "fs/promises";
 
 // Route segment config
-export const runtime = "edge";
+export const runtime = "nodejs";
 
 // Image metadata
 export const size = {
@@ -11,19 +13,16 @@ export const size = {
 export const contentType = "image/png";
 
 // Image generation
-export default function Icon() {
+export default async function Icon() {
+  const filePath = path.join(process.cwd(), "public", "Logo.png");
+  const data = await readFile(filePath);
+  const base64 = data.toString("base64");
+  const src = `data:image/png;base64,${base64}`;
+
   return new ImageResponse(
     (
       // ImageResponse JSX element
-      <div
-        tw="flex items-center justify-center bg-black text-[24px] leading-8 text-white"
-        style={{
-          width: 32,
-          height: 32,
-        }}
-      >
-        G
-      </div>
+      <img src={src} width={size.width} height={size.height} />
     ),
     // ImageResponse options
     {
