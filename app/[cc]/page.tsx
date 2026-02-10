@@ -31,7 +31,7 @@ export default function LandingPage({
     <div className="grow flex flex-col items-center justify-center relative w-full">
       <CarouselComponent lang={params.cc!} mobile />
       <CarouselComponent lang={params.cc!} />
-      <div className="container relative">
+      <div className="container sm:px-8 relative">
         <div className="hidden md:grid grid-cols-4 my-2 gap-2">
           {homepageConfig.navs.map((m, i) => (
             <Link
@@ -57,15 +57,21 @@ export default function LandingPage({
           ))}
         </div>
       </div>
-      <Separator className="container hidden md:block my-2" />
+      <div className="container sm:px-8 hidden md:block my-2">
+        <Separator />
+      </div>
       <div className="w-full">
         <ReagentProductsSection params={{ cc: params.cc }} showReadMore={true} />
       </div>
-      <Separator className="container hidden md:block my-2" />
+      <div className="container sm:px-8 hidden md:block my-2">
+        <Separator />
+      </div>
       <div className="w-full">
         <RawMaterialsSection params={{ cc: params.cc }} limit={4} showReadMore={true} asHomepage={true} />
       </div>
-      <Separator className="container hidden md:block my-2" />
+      <div className="container sm:px-8 hidden md:block my-2">
+        <Separator />
+      </div>
       <div className="w-full">
         <DailyChemicalSeriesSection params={{ cc: params.cc }} limit={4} showReadMore={true} asHomepage={true} />
       </div>

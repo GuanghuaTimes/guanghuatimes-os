@@ -16,7 +16,7 @@ interface EventCardProps {
 
 export function EventCard({ event, i, lang }: EventCardProps) {
   const isExternalUrl = event.wechatUrl && event.wechatUrl.startsWith('http');
-  const href = event.wechatUrl ?? `/${lang}/${event.slug}`;
+  const href = event.wechatUrl ?? `/${lang}${event.slug}`;
 
   const cardContent = (
     <>

@@ -294,7 +294,14 @@ export function MainNav({ items, lang }: MainNavProps) {
                 </NavigationMenuItem>
               ) :
                 item.href && !isGroupDisabled(item.title) && (
-                  <NavigationMenuItem key={item.title}>
+                  <NavigationMenuItem
+                    key={item.title}
+                    onMouseEnter={() => {
+                      cancelClose();
+                      setOpenValue("");
+                    }}
+                    onFocus={() => setOpenValue("")}
+                  >
                     <Link
                       href={resolveHref(item.href, item.external) ?? "#"}
                       legacyBehavior

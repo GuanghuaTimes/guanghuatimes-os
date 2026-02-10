@@ -91,14 +91,18 @@ export function DailyChemicalSeriesSection({
     <Shell className={asHomepage ? "md:pb-10" : "md:pb-10 min-h-[calc(100vh-156px)]"}>
       <PageHeader>
         <div className="text-2xl md:text-4xl font-bold text-gray-900 dark:text-white">
-          {params.cc === "cn" ? "日化系列" : "Daily-Chemical Series"}
+          {params.cc === "cn" ? "日化产品" : "Daily-Chemical Series"}
         </div>
         <PageHeaderDescription className="text-lg text-gray-600 dark:text-gray-300">
-          {params.cc === "cn" ? "日化系列产品" : "Daily-Chemical Series Products"}
+          {params.cc === "cn" ? "日化产品" : "Daily-Chemical Series Products"}
         </PageHeaderDescription>
       </PageHeader>
 
-      {!asHomepage && <Separator className="my-6" />}
+      {asHomepage ? (
+        <Separator className="my-6 hidden md:block" />
+      ) : (
+        <Separator className="my-6" />
+      )}
 
       {asHomepage ? (
         <section className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-6">
@@ -132,7 +136,7 @@ export function DailyChemicalSeriesSection({
                 </svg>
               </div>
               <h3 className="text-xl font-medium text-gray-600 dark:text-gray-400 mb-2">暂无产品</h3>
-              <p className="text-gray-500 dark:text-gray-400">敬请期待更多日化系列产品</p>
+              <p className="text-gray-500 dark:text-gray-400">敬请期待更多日化产品</p>
             </div>
           )}
         </section>

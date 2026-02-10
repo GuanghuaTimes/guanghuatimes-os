@@ -59,14 +59,14 @@ export const productsConfig: ProductConfig = {
     },
     {
       id: "daily-chemical",
-      titleCn: "日化系列",
+      titleCn: "日化产品",
       titleEn: "Daily-Chemical",
       imgSrc: "/Daily-Chemical/日化封面.png",
       description: "提取天然精华，应用于健康日化产品。"
     },
     {
       id: "raw-materials",
-      titleCn: "原料系列",
+      titleCn: "原料产品",
       titleEn: "Raw Materials",
       imgSrc: "/product-images/raw-materials.jpg",
       description: "供应高品质生物农业基础原料。"

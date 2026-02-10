@@ -41,7 +41,7 @@ export default function ReagentProductsPage({ params }: { params: { cc: string }
     <Shell className="md:pb-10 min-h-[calc(100vh-156px)]">
       <PageHeader>
         <div className="text-2xl md:text-4xl font-bold text-gray-900 dark:text-white">
-          {isCn ? "制剂产品系列" : "Reagent Product Series"}
+          {isCn ? "制剂产品" : "Reagent Products"}
         </div>
         <PageHeaderDescription className="text-lg text-gray-600 dark:text-gray-300">
           {isCn 

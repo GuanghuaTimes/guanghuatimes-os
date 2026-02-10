@@ -159,6 +159,13 @@ export const siteConfig = {
   ] satisfies MainNavItem[],
   footerNav: [
     {
+      title: "About Us",
+      titleCn: "关于我们",
+      href: "about",
+      description: "Learn more about Guanghua Times",
+      descriptionCn: "了解公司与团队",
+    },
+    {
       title: "Products",
       titleCn: "产品中心",
       href: "products",
@@ -171,13 +178,6 @@ export const siteConfig = {
       href: "contact",
       description: "Contact information, online service and map navigation",
       descriptionCn: "联系方式、在线客服与地图导航",
-    },
-    {
-      title: "About Us",
-      titleCn: "关于我们",
-      href: "about",
-      description: "Learn more about Guanghua Times",
-      descriptionCn: "了解公司与团队",
     },
   ] satisfies FooterItem[],
 };

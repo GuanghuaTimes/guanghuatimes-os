@@ -25,8 +25,8 @@ export default function CarouselComponent({
   return (
     <Carousel
       className={
-        "w-full overflow-hidden px-2" +
-        (mobile ? " sm:hidden px-0" : " hidden sm:block")
+        "w-full overflow-hidden px-0" +
+        (mobile ? " sm:hidden" : " hidden sm:block")
       }
       plugins={[
         Autoplay({
@@ -34,14 +34,14 @@ export default function CarouselComponent({
         }),
       ]}
     >
-      <CarouselContent>
+      <CarouselContent className="!ml-0">
         {homepageConfig.carouselItems.map((item, i) => (
-          <CarouselItem key={i}>
-            <Card>
-              <CardContent className="flex items-center justify-center">
+          <CarouselItem key={i} className="pl-0">
+            <Card className="rounded-none border-0 shadow-none">
+              <CardContent className="flex items-center justify-center p-0">
                 <AspectRatio
                   ratio={!mobile ? 16 / 9 : 4 / 5}
-                  className="relative overflow-hidden"
+                  className="relative w-full overflow-hidden"
                 >
                   <div className="absolute inset-0 z-10 bg-black/20 flex justify-center items-center p-4">
                     <Link href={`${lang}${item.href}`}>

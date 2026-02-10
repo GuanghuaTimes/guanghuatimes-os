@@ -1,7 +1,9 @@
+const carouselImgVersion = "20260210";
+
 export const homepageConfig = {
   carouselItems: [
     {
-      imgSrc: "/banner1.jpg",
+      imgSrc: `/banner1.jpg?v=${carouselImgVersion}`,
       title: "Welcome to Guanghua Times",
       titleCn: "欢迎来到光华时代",
       description:
@@ -10,7 +12,7 @@ export const homepageConfig = {
       href: "/about",
     },
     {
-      imgSrc: "/banner2.jpg",
+      imgSrc: `/banner2.jpg?v=${carouselImgVersion}`,
       title: "Welcome to Guanghua Times",
       titleCn: "欢迎来到光华时代",
       description:
