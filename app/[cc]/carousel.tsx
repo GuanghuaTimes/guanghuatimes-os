@@ -24,6 +24,7 @@ export default function CarouselComponent({
 }) {
   return (
     <Carousel
+      opts={{ loop: true }}
       className={
         "w-full overflow-hidden px-0" +
         (mobile ? " sm:hidden" : " hidden sm:block")

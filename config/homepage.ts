@@ -24,25 +24,25 @@ export const homepageConfig = {
   ],
   navs: [
     {
-      imgSrc: "/8871718163756_.pic.jpg",
+      imgSrc: "/rukou.jpg",
       title: "Product Center",
       titleCn: "产品中心",
       href: "products",
     },
     {
-      imgSrc: "/8871718163756_.pic.jpg",
+      imgSrc: "/rukou.jpg",
       title: "News",
       titleCn: "新闻资讯",
       href: "news",
     },
     {
-      imgSrc: "/8871718163756_.pic.jpg",
+      imgSrc: "/rukou.jpg",
       title: "Contact Us",
       titleCn: "联系我们",
       href: "contact",
     },
     {
-      imgSrc: "/8871718163756_.pic.jpg",
+      imgSrc: "/rukou.jpg",
       title: "About Us",
       titleCn: "关于我们",
       href: "about",

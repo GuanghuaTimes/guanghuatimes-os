@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons";
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react";
@@ -13,6 +12,42 @@ type CarouselApi = UseEmblaCarouselType[1];
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
 type CarouselOptions = UseCarouselParameters[0];
 type CarouselPlugin = UseCarouselParameters[1];
+
+function CarouselArrowIcon({
+  direction,
+  className,
+}: {
+  direction: "left" | "right";
+  className?: string;
+}) {
+  return (
+    <svg
+      className={cn("block", className)}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      {direction === "left" ? (
+        <path
+          d="M15 18L9 12L15 6"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      ) : (
+        <path
+          d="M9 18L15 12L9 6"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      )}
+    </svg>
+  );
+}
 
 type CarouselProps = {
   opts?: CarouselOptions;
@@ -73,9 +108,15 @@ const Carousel = React.forwardRef<
         return;
       }
 
+      if (opts?.loop) {
+        setCanScrollPrev(true);
+        setCanScrollNext(true);
+        return;
+      }
+
       setCanScrollPrev(api.canScrollPrev());
       setCanScrollNext(api.canScrollNext());
-    }, []);
+    }, [opts?.loop]);
 
     const scrollPrev = React.useCallback(() => {
       api?.scrollPrev();
@@ -206,7 +247,7 @@ const CarouselPrevious = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        "absolute  h-8 w-8 rounded-full",
+        "absolute grid h-8 w-8 place-items-center rounded-full p-0",
         orientation === "horizontal"
           ? "left-12 top-1/2 -translate-y-1/2"
           : "top-12 left-1/2 -translate-x-1/2 rotate-90",
@@ -216,7 +257,7 @@ const CarouselPrevious = React.forwardRef<
       onClick={scrollPrev}
       {...props}
     >
-      <ArrowLeftIcon className="h-4 w-4" />
+      <CarouselArrowIcon direction="left" className="h-4 w-4" />
       <span className="sr-only">Previous slide</span>
     </Button>
   );
@@ -235,7 +276,7 @@ const CarouselNext = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        "absolute h-8 w-8 rounded-full",
+        "absolute grid h-8 w-8 place-items-center rounded-full p-0",
         orientation === "horizontal"
           ? "right-12 top-1/2 -translate-y-1/2"
           : "bottom-12 left-1/2 -translate-x-1/2 rotate-90",
@@ -245,7 +286,7 @@ const CarouselNext = React.forwardRef<
       onClick={scrollNext}
       {...props}
     >
-      <ArrowRightIcon className="h-4 w-4" />
+      <CarouselArrowIcon direction="right" className="h-4 w-4" />
       <span className="sr-only">Next slide</span>
     </Button>
   );

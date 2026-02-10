@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function CollaborationProjectsSection({ cc = "cn" }: { cc?: "cn" | "en" }) {
   return (
     <div id="collaboration-projects">
@@ -16,6 +18,19 @@ export default function CollaborationProjectsSection({ cc = "cn" }: { cc?: "cn" 
             : "Placeholder: Demonstration, promotion, and real-world applications."}
         </li>
       </ul>
+
+      <div className="mt-8">
+        <h3 className="text-xl font-semibold mb-3">
+          {cc === "cn" ? "合作企业" : "Cooperation Partners"}
+        </h3>
+        <Image
+          src="/text/hz1.png"
+          alt=""
+          width={1600}
+          height={900}
+          className="h-auto w-full max-w-4xl rounded-lg border object-contain bg-white"
+        />
+      </div>
     </div>
   );
 }
