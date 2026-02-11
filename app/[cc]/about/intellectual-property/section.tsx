@@ -2,10 +2,31 @@
 
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import Image from "next/image";
 
 export default function IntellectualPropertySection({ cc = "cn" }: { cc?: "cn" | "en" }) {
   const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null);
   const [mounted, setMounted] = useState(false);
+  const [visiblePatentCount, setVisiblePatentCount] = useState(7);
+
+  const inventionPatentFiles = [
+    "zscq01.jpg",
+    "zscq02.png",
+    "zscq03.png",
+    "zscq04.png",
+    "zscq05.png",
+    "zscq06.png",
+    "zscq07.png",
+    "zscq08.png",
+    "zscq09.png",
+    "zscq10.png",
+    "zscq11.png",
+    "zscq12.png",
+    "zscq13.png",
+    "zscq14.png",
+    "zscq15.png",
+    "zscq16.png",
+  ];
 
   useEffect(() => {
     setMounted(true);
@@ -237,30 +258,60 @@ export default function IntellectualPropertySection({ cc = "cn" }: { cc?: "cn" |
         </li>
         <li>
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-            {Array.from({ length: 7 }, (_, i) => i + 1).map((n) => (
+            {inventionPatentFiles.slice(0, visiblePatentCount).map((file, index) => (
               <button
-                key={n}
+                key={file}
                 type="button"
                 onClick={() =>
                   setLightbox({
-                    src: `/text/zscq0${n}.png`,
+                    src: `/text/专利证书/${file}`,
                     alt:
-                      cc === "cn" ? `发明专利 zscq0${n}` : `Invention patent zscq0${n}`,
+                      cc === "cn" ? `发明专利 zscq${String(index + 1).padStart(2, "0")}` : `Invention patent zscq${String(index + 1).padStart(2, "0")}`,
                   })
                 }
                 className="group relative block w-full overflow-hidden rounded-md border text-left"
                 title={cc === "cn" ? "点击查看大图" : "Click to view"}
               >
-                <img
-                  src={`/text/zscq0${n}.png`}
-                  alt={cc === "cn" ? `发明专利 zscq0${n}` : `Invention patent zscq0${n}`}
-                  className="block h-80 w-full bg-white object-contain sm:h-96"
-                />
+                <div className="relative h-80 w-full bg-white sm:h-96">
+                  <Image
+                    src={`/text/专利证书/${file}`}
+                    alt={
+                      cc === "cn"
+                        ? `发明专利 zscq${String(index + 1).padStart(2, "0")}`
+                        : `Invention patent zscq${String(index + 1).padStart(2, "0")}`
+                    }
+                    fill
+                    sizes="(min-width: 640px) 25vw, 50vw"
+                    quality={70}
+                    className="object-contain"
+                  />
+                </div>
                 <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/40 text-sm font-medium text-white opacity-0 transition-opacity group-hover:opacity-100">
                   点击查看大图
                 </div>
               </button>
             ))}
+
+            {visiblePatentCount < inventionPatentFiles.length ? (
+              <button
+                type="button"
+                onClick={() => setVisiblePatentCount(inventionPatentFiles.length)}
+                className="group relative block w-full overflow-hidden rounded-md border text-left"
+                title={cc === "cn" ? "点击查看更多" : "Click to view more"}
+              >
+                <div className="flex h-80 w-full flex-col items-center justify-center gap-2 bg-muted/30 px-4 text-center sm:h-96">
+                  <div className="text-base font-semibold">
+                    {cc === "cn" ? "点击查看更多专利证书" : "View more patent certificates"}
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    {cc === "cn" ? "点击后显示全部" : "Click to show all"}
+                  </div>
+                </div>
+                <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/40 text-sm font-medium text-white opacity-0 transition-opacity group-hover:opacity-100">
+                  {cc === "cn" ? "点击查看更多" : "View more"}
+                </div>
+              </button>
+            ) : null}
           </div>
         </li>
       </ul>

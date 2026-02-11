@@ -60,6 +60,8 @@ export default function CarouselComponent({
                     src={item.imgSrc}
                     alt=""
                     fill
+                    sizes="100vw"
+                    quality={75}
                     className="object-cover bg-black/10 object-center"
                   />
                 </AspectRatio>

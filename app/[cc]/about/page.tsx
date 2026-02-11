@@ -39,6 +39,8 @@ export default function Page({
             src={aboutConfig.imgSrc}
             alt=""
             fill
+            sizes="100vw"
+            quality={75}
             className="object-cover"
             priority
           />
@@ -52,6 +54,8 @@ export default function Page({
             src={aboutConfig.imgSrc}
             alt=""
             fill
+            sizes="100vw"
+            quality={75}
             className="object-cover"
             priority
           />
