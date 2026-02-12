@@ -7,6 +7,7 @@ import { PropsWithChildren, Suspense } from "react";
 // import { AudioPlayer } from "./audio-player";
 import LangToggle from "@/components/layout/lang-toggle";
 import { SiteFooter } from "@/components/layout/site-footer";
+import ChineseNewYearRain from "@/components/ChineseNewYearRain";
 
 export default function Layout({
   children,
@@ -14,6 +15,7 @@ export default function Layout({
 }: PropsWithChildren & { params: { cc: "en" | "cn" } }) {
   return (
     <div className="relative min-h-screen flex flex-col items-center ">
+      <ChineseNewYearRain cc={params.cc} />
       <header className="fixed sm:sticky top-0 z-50 w-full border-b bg-background/50 sm:bg-background">
         <div className="container h-8 flex items-center sm:h-12">
           <MainNav items={siteConfig.mainNav} lang={params.cc} />

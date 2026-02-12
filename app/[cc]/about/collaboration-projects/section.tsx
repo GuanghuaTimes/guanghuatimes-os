@@ -24,7 +24,7 @@ export default function CollaborationProjectsSection({ cc = "cn" }: { cc?: "cn" 
           {cc === "cn" ? "合作院校" : "Cooperation Universities"}
         </h3>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-          <div className="rounded-md border bg-white p-3">
+          <div className="bg-white p-3">
             <div className="relative h-28 w-full">
               <Image
                 src="/text/合作院校/海南大学.png"
@@ -35,12 +35,9 @@ export default function CollaborationProjectsSection({ cc = "cn" }: { cc?: "cn" 
                 className="object-contain"
               />
             </div>
-            <div className="mt-2 text-center text-sm font-medium">
-              {cc === "cn" ? "海南大学" : "Hainan University"}
-            </div>
           </div>
 
-          <div className="rounded-md border bg-white p-3">
+          <div className="bg-white p-3">
             <div className="relative h-28 w-full">
               <Image
                 src="/text/合作院校/华中农业大学.png"
@@ -51,28 +48,22 @@ export default function CollaborationProjectsSection({ cc = "cn" }: { cc?: "cn" 
                 className="object-contain"
               />
             </div>
-            <div className="mt-2 text-center text-sm font-medium">
-              {cc === "cn" ? "华中农业大学" : "Huazhong Agricultural University"}
-            </div>
           </div>
 
-          <div className="rounded-md border bg-white p-3">
+          <div className="bg-white p-3">
             <div className="relative h-28 w-full">
               <Image
-                src="/text/合作院校/湖北轻工业大学.png"
-                alt={cc === "cn" ? "湖北轻工业大学" : "Hubei University of Technology"}
+                src="/text/合作院校/武汉轻工大学.png"
+                alt={cc === "cn" ? "武汉轻工大学" : "Wuhan Polytechnic University"}
                 fill
                 sizes="(min-width: 640px) 25vw, 50vw"
                 quality={70}
                 className="object-contain"
               />
             </div>
-            <div className="mt-2 text-center text-sm font-medium">
-              {cc === "cn" ? "湖北轻工业大学" : "Hubei University of Technology"}
-            </div>
           </div>
 
-          <div className="rounded-md border bg-white p-3">
+          <div className="bg-white p-3">
             <div className="relative h-28 w-full">
               <Image
                 src="/text/合作院校/湖北大学.png"
@@ -83,9 +74,6 @@ export default function CollaborationProjectsSection({ cc = "cn" }: { cc?: "cn" 
                 className="object-contain"
               />
             </div>
-            <div className="mt-2 text-center text-sm font-medium">
-              {cc === "cn" ? "湖北大学" : "Hubei University"}
-            </div>
           </div>
         </div>
       </div>
@@ -94,13 +82,15 @@ export default function CollaborationProjectsSection({ cc = "cn" }: { cc?: "cn" 
         <h3 className="text-xl font-semibold mb-3">
           {cc === "cn" ? "合作企业" : "Cooperation Partners"}
         </h3>
-        <Image
-          src="/text/hz1.png"
-          alt=""
-          width={1600}
-          height={900}
-          className="h-auto w-full max-w-none object-contain bg-white"
-        />
+        <div className="mx-auto w-full max-w-4xl">
+          <Image
+            src="/text/hz1.png"
+            alt=""
+            width={1600}
+            height={900}
+            className="h-auto w-full object-contain bg-white"
+          />
+        </div>
       </div>
     </div>
   );
