@@ -96,45 +96,47 @@ export default function AboutTabs({ cc = 'cn' }: { cc?: 'cn' | 'en' }) {
   return (
     <section className="container my-8">
       <div role="tablist" aria-label="About Tabs" className="sticky top-16 z-10 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div ref={containerRef} className="relative flex gap-2 overflow-x-auto px-2 pb-3 border-b border-border">
-          <span
-            className="absolute bottom-0 h-[2px] bg-primary transition-all duration-300"
-            style={{ left: indicator.left, width: indicator.width }}
-          />
-          {tabs.map((t) => {
-            const isActive = t.key === active
-            return (
-              <button
-                key={t.key}
-                ref={(el) => (btnRefs.current[t.key] = el)}
-                role="tab"
-                aria-selected={isActive}
-                aria-controls={`panel-${t.key}`}
-                tabIndex={isActive ? 0 : -1}
-                onKeyDown={(e) => {
-                  if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-                    e.preventDefault()
-                    const idx = tabs.findIndex(x => x.key === active)
-                    const nextIdx = e.key === 'ArrowRight' ? (idx + 1) % tabs.length : (idx - 1 + tabs.length) % tabs.length
-                    setActive(tabs[nextIdx].key)
-                  }
-                }}
-                className={`relative px-4 py-2 rounded-full text-sm md:text-base transition-colors whitespace-nowrap border
-                  ${isActive ? 'bg-primary text-primary-foreground border-primary shadow-sm' : 'bg-muted/40 text-muted-foreground hover:text-foreground hover:bg-muted border-transparent'}`}
-                onClick={() => setActive(t.key)}
-              >
-                {cc === 'cn' ? t.cn : t.en}
-              </button>
-            )
-          })}
+        <div className="border-b border-border mx-6 md:mx-8">
+          <div ref={containerRef} className="relative flex gap-2 overflow-x-auto pb-3">
+            <span
+              className="absolute bottom-0 h-[2px] bg-primary transition-all duration-300"
+              style={{ left: indicator.left, width: indicator.width }}
+            />
+            {tabs.map((t) => {
+              const isActive = t.key === active
+              return (
+                <button
+                  key={t.key}
+                  ref={(el) => (btnRefs.current[t.key] = el)}
+                  role="tab"
+                  aria-selected={isActive}
+                  aria-controls={`panel-${t.key}`}
+                  tabIndex={isActive ? 0 : -1}
+                  onKeyDown={(e) => {
+                    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                      e.preventDefault()
+                      const idx = tabs.findIndex(x => x.key === active)
+                      const nextIdx = e.key === 'ArrowRight' ? (idx + 1) % tabs.length : (idx - 1 + tabs.length) % tabs.length
+                      setActive(tabs[nextIdx].key)
+                    }
+                  }}
+                  className={`relative px-4 py-2 rounded-full text-sm md:text-base transition-colors whitespace-nowrap border
+                    ${isActive ? 'bg-primary text-primary-foreground border-primary shadow-sm' : 'bg-muted/40 text-muted-foreground hover:text-foreground hover:bg-muted border-transparent'}`}
+                  onClick={() => setActive(t.key)}
+                >
+                  {cc === 'cn' ? t.cn : t.en}
+                </button>
+              )
+            })}
 
-          <button
-            type="button"
-            className="relative px-4 py-2 rounded-full text-sm md:text-base transition-colors whitespace-nowrap border bg-muted/40 text-muted-foreground hover:text-foreground hover:bg-muted border-transparent"
-            onClick={() => setShowcaseConfirmOpen(true)}
-          >
-            {cc === 'cn' ? '示范展示' : 'Demonstration & Showcase'}
-          </button>
+            <button
+              type="button"
+              className="relative px-4 py-2 rounded-full text-sm md:text-base transition-colors whitespace-nowrap border bg-muted/40 text-muted-foreground hover:text-foreground hover:bg-muted border-transparent"
+              onClick={() => setShowcaseConfirmOpen(true)}
+            >
+              {cc === 'cn' ? '示范展示' : 'Demonstration & Showcase'}
+            </button>
+          </div>
         </div>
       </div>
 

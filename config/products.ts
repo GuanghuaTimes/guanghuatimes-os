@@ -40,21 +40,21 @@ export const productsConfig: ProductConfig = {
       id: "sanbanfu",
       titleCn: "三板斧系列",
       titleEn: "Triple-Axe Series",
-      imgSrc: "/Triple-Axe-Series/三板斧封面图.png",
+      imgSrc: "/Triple-Axe-Series/三板斧封面图.jpg",
       description: "功能经作系列，主打“专而精”并非“大而全”"
     },
     {
       id: "agrarius",
       titleCn: "AGRARIUS系列",
       titleEn: "AGRARIUS Series",
-      imgSrc: "/agrarius-series/阿格瑞封面图.png",
+      imgSrc: "/agrarius-series/阿格瑞封面图.jpg",
       description: "经济大田系列，营养全面、相互增效。"
     },
     {
       id: "biotech",
       titleCn: "光华生物系列",
       titleEn: "Guanghua Biotech",
-      imgSrc: "/guanghua-bio-series/光华生物封面图.png",
+      imgSrc: "/guanghua-bio-series/光华生物封面图.jpg",
       description: "双向平衡系列，协同长效、使用灵活。"
     },
     {

@@ -13,16 +13,23 @@ function WalletIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 64 64" className={className} aria-hidden="true">
       <defs>
-        <linearGradient id="walletBody" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#8b5a2b" />
-          <stop offset="1" stopColor="#6f3f16" />
+        <linearGradient id="hongbaoRed" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#ff3b30" />
+          <stop offset="0.55" stopColor="#e60012" />
+          <stop offset="1" stopColor="#b8000f" />
+        </linearGradient>
+        <linearGradient id="hongbaoGold" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#fff1a8" />
+          <stop offset="0.5" stopColor="#ffd24d" />
+          <stop offset="1" stopColor="#f0a200" />
         </linearGradient>
       </defs>
-      <rect x="10" y="18" width="44" height="30" rx="6" fill="url(#walletBody)" />
-      <rect x="10" y="22" width="44" height="8" rx="4" fill="#a46b3a" opacity="0.9" />
-      <rect x="34" y="26" width="18" height="14" rx="3" fill="#2b2b2b" opacity="0.35" />
-      <circle cx="41" cy="33" r="2" fill="#ffd36b" />
-      <circle cx="46" cy="33" r="2" fill="#ffd36b" />
+      <rect x="12" y="14" width="40" height="36" rx="6" fill="url(#hongbaoRed)" />
+      <rect x="12" y="20" width="40" height="8" rx="4" fill="#ff5b4f" opacity="0.9" />
+      <rect x="12" y="30" width="40" height="3" rx="1.5" fill="#7a0010" opacity="0.35" />
+      <circle cx="32" cy="36" r="8" fill="url(#hongbaoGold)" />
+      <circle cx="32" cy="36" r="6" fill="#ffea84" opacity="0.55" />
+      <path d="M28.5 36h7" stroke="#b47400" strokeWidth="2.5" strokeLinecap="round" />
     </svg>
   );
 }
@@ -32,17 +39,23 @@ function IngotIcon({ className }: { className?: string }) {
     <svg viewBox="0 0 64 64" className={className} aria-hidden="true">
       <defs>
         <linearGradient id="ingotGold" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#ffe38a" />
-          <stop offset="0.6" stopColor="#f6c44e" />
-          <stop offset="1" stopColor="#eaa22c" />
+          <stop offset="0" stopColor="#fff4b8" />
+          <stop offset="0.35" stopColor="#ffd95a" />
+          <stop offset="0.7" stopColor="#ffb400" />
+          <stop offset="1" stopColor="#d68100" />
+        </linearGradient>
+        <linearGradient id="ingotHighlight" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#ffffff" stopOpacity="0.8" />
+          <stop offset="1" stopColor="#ffffff" stopOpacity="0" />
         </linearGradient>
       </defs>
       <path
         d="M14 26c4-8 12-12 18-12s14 4 18 12c2 4 3 8 3 12 0 8-6 14-14 14H25c-8 0-14-6-14-14 0-4 1-8 3-12z"
         fill="url(#ingotGold)"
       />
-      <ellipse cx="32" cy="28" rx="14" ry="6" fill="#fff" opacity="0.25" />
-      <path d="M22 38c3 2 7 3 10 3s7-1 10-3" stroke="#b87414" strokeWidth="3" strokeLinecap="round" fill="none" opacity="0.55" />
+      <ellipse cx="32" cy="27" rx="15" ry="7" fill="url(#ingotHighlight)" opacity="0.55" />
+      <path d="M22 38c3 2 7 3 10 3s7-1 10-3" stroke="#8a4d00" strokeWidth="3" strokeLinecap="round" fill="none" opacity="0.7" />
+      <path d="M18 32c2-6 8-10 14-10" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" opacity="0.25" />
     </svg>
   );
 }

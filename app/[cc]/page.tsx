@@ -3,10 +3,12 @@ import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import { RawMaterialsSection } from "./raw-materials/section";
-import { homepageConfig } from "@/config/homepage";
+import { carouselImgVersion, homepageConfig } from "@/config/homepage";
 import { ReagentProductsSection } from "./reagent-products/section";
 import { DailyChemicalSeriesSection } from "./daily-chemical-series/section";
 import CarouselComponent from "./carousel";
+import path from "path";
+import { readdir } from "fs/promises";
 
 export type CC = "en" | "cn";
 
@@ -20,17 +22,49 @@ export async function generateStaticParams(): Promise<PageProps["params"][]> {
   return [{ cc: "cn" }, { cc: "en" }];
 }
 
-export default function LandingPage({
+export default async function LandingPage({
   params = { cc: "cn" },
 }: {
   params: {
     cc?: CC;
   };
 }) {
+  const getCarouselItems = async () => {
+    try {
+      const bannerDir = path.join(process.cwd(), "public", "banner");
+      const files = await readdir(bannerDir);
+
+      const matches = files
+        .map((f) => {
+          const m = /^banner(\d+)\.(png|jpe?g|webp|avif)$/i.exec(f);
+          if (!m) return null;
+          return { file: f, index: Number(m[1]) };
+        })
+        .filter((x): x is { file: string; index: number } => Boolean(x))
+        .sort((a, b) => a.index - b.index);
+
+      if (matches.length === 0) return homepageConfig.carouselItems;
+
+      return matches.map((m) => ({
+        imgSrc: `/banner/${m.file}?v=${carouselImgVersion}`,
+        title: "Welcome to Guanghua Times",
+        titleCn: "欢迎来到光华时代",
+        description:
+          "Innovation-driven, quality creates the future; Technology empowers, service creates value!",
+        descriptionCn: "创新驱动，品质铸就未来；技术赋能，服务创造价值！",
+        href: "/about",
+      }));
+    } catch {
+      return homepageConfig.carouselItems;
+    }
+  };
+
+  const carouselItems = await getCarouselItems();
+
   return (
     <div className="grow flex flex-col items-center justify-center relative w-full">
-      <CarouselComponent lang={params.cc!} mobile />
-      <CarouselComponent lang={params.cc!} />
+      <CarouselComponent lang={params.cc!} mobile items={carouselItems} />
+      <CarouselComponent lang={params.cc!} items={carouselItems} />
       <div className="container sm:px-8 relative">
         <div className="hidden md:grid grid-cols-4 my-2 gap-2">
           {homepageConfig.navs.map((m, i) => (

@@ -6,7 +6,7 @@ export default function CompanyOverviewSection({ cc = "cn" }: { cc?: "cn" | "en"
       <div className="space-y-6">
         <div>
           <h3 className="text-xl font-semibold mb-2">
-            {cc === "cn" ? "成立起源" : "Establishment Origin"}
+            {cc === "cn" ? "生物起源" : "Establishment Origin"}
           </h3>
           <p className="text-gray-700 dark:text-gray-200 leading-relaxed">
             {cc === "cn"

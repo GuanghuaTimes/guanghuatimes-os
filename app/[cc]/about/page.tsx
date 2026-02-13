@@ -62,14 +62,16 @@ export default function Page({
         </AspectRatio>
       </div>
 
-      <div className="container flex flex-col lg:flex-row gap-6 my-6">
-        <PageHeaderHeading className="flex-none lg:max-w-[250px]">
-          {params.cc === "cn" ? aboutConfig.titleCn : aboutConfig.title}
-        </PageHeaderHeading>
-        <div className="md:text-lg">
-          {params.cc === "cn"
-            ? aboutConfig.descriptionCn
-            : aboutConfig.description}
+      <div className="container my-6">
+        <div className="flex flex-col lg:flex-row gap-6 px-6 md:px-8">
+          <PageHeaderHeading className="flex-none lg:max-w-[250px]">
+            {params.cc === "cn" ? aboutConfig.titleCn : aboutConfig.title}
+          </PageHeaderHeading>
+          <div className="md:text-lg">
+            {params.cc === "cn"
+              ? aboutConfig.descriptionCn
+              : aboutConfig.description}
+          </div>
         </div>
       </div>
 

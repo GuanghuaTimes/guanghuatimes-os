@@ -1,9 +1,9 @@
-const carouselImgVersion = "20260210";
+export const carouselImgVersion = "20260210";
 
 export const homepageConfig = {
   carouselItems: [
     {
-      imgSrc: `/banner1.jpg?v=${carouselImgVersion}`,
+      imgSrc: `/banner/banner1.jpg?v=${carouselImgVersion}`,
       title: "Welcome to Guanghua Times",
       titleCn: "欢迎来到光华时代",
       description:
@@ -12,13 +12,22 @@ export const homepageConfig = {
       href: "/about",
     },
     {
-      imgSrc: `/banner2.jpg?v=${carouselImgVersion}`,
+      imgSrc: `/banner/banner2.jpg?v=${carouselImgVersion}`,
       title: "Welcome to Guanghua Times",
       titleCn: "欢迎来到光华时代",
       description:
         "Innovation-driven, quality creates the future; Technology empowers, service creates value!",
       descriptionCn:
         "创新驱动，品质铸就未来；技术赋能，服务创造价值！",
+      href: "/about",
+    },
+    {
+      imgSrc: `/banner/banner4.jpg?v=${carouselImgVersion}`,
+      title: "Welcome to Guanghua Times",
+      titleCn: "欢迎来到光华时代",
+      description:
+        "Innovation-driven, quality creates the future; Technology empowers, service creates value!",
+      descriptionCn: "创新驱动，品质铸就未来；技术赋能，服务创造价值！",
       href: "/about",
     },
   ],
