@@ -101,13 +101,13 @@ export default async function LandingPage({
         <Separator />
       </div>
       <div className="w-full">
-        <RawMaterialsSection params={{ cc: params.cc }} limit={4} showReadMore={true} asHomepage={true} />
+        <RawMaterialsSection params={{ cc: params.cc }} limit={3} showReadMore={true} asHomepage={true} />
       </div>
       <div className="container sm:px-8 hidden md:block my-2">
         <Separator />
       </div>
       <div className="w-full">
-        <DailyChemicalSeriesSection params={{ cc: params.cc }} limit={4} showReadMore={true} asHomepage={true} />
+        <DailyChemicalSeriesSection params={{ cc: params.cc }} limit={3} showReadMore={true} asHomepage={true} />
       </div>
     </div>
   );

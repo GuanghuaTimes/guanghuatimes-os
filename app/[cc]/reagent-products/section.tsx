@@ -59,7 +59,7 @@ export function ReagentProductsSection({
 
       <Separator className="my-6 hidden md:block" />
 
-      <section className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-6">
+      <section className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 mt-6">
         {reagentCategories.map((product, i) => (
           <Link key={product.id} href={`/${params.cc}/${product.id}`}>
             <article className="space-y-4 group">
@@ -86,17 +86,30 @@ export function ReagentProductsSection({
             </article>
           </Link>
         ))}
-      </section>
-
-      {showReadMore && (
-        <div className="flex justify-center mt-8">
-          <Link href={`/${params.cc}/reagent-products`}>
-            <Button variant="outline" size="lg" className="text-lg">
-              {isCn ? "了解更多" : "Learn More"}
-            </Button>
+        {showReadMore && (
+          <Link href={`/${params.cc}/reagent-products`} className="group">
+            <article className="space-y-4">
+              <AspectRatio
+                ratio={1 / 1}
+                className="overflow-hidden relative bg-white dark:bg-slate-800 rounded-lg border border-dashed border-slate-300/70 dark:border-slate-600/70"
+              >
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6">
+                  <div className="text-lg font-semibold text-gray-900 dark:text-white">
+                    {isCn ? "了解更多" : "Learn More"}
+                  </div>
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="text-lg hover:bg-[#1464A3] hover:text-white"
+                  >
+                    {isCn ? "查看全部制剂系列产品" : "Explore"}
+                  </Button>
+                </div>
+              </AspectRatio>
+            </article>
           </Link>
-        </div>
-      )}
+        )}
+      </section>
     </Shell>
   );
 }

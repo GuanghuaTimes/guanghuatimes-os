@@ -105,7 +105,7 @@ export function DailyChemicalSeriesSection({
       )}
 
       {asHomepage ? (
-        <section className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-6">
+        <section className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 mt-6">
           {articles.length > 0 ? (
             articles.map((article: any, i: number) => (
               <VerticalCard key={article.slug} product={article} i={i} />
@@ -114,6 +114,29 @@ export function DailyChemicalSeriesSection({
             <div className="col-span-full text-center py-12 text-gray-500 dark:text-gray-400">
               {params.cc === "cn" ? "暂无产品" : "No products yet"}
             </div>
+          )}
+          {showReadMore && (
+            <Link href={`/${params.cc}/daily-chemical-series`} className="group">
+              <article className="space-y-4">
+                <AspectRatio
+                  ratio={1 / 1}
+                  className="overflow-hidden relative bg-white dark:bg-slate-800 rounded-lg border border-dashed border-slate-300/70 dark:border-slate-600/70"
+                >
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6">
+                    <div className="text-lg font-semibold text-gray-900 dark:text-white">
+                      {params.cc === "cn" ? "了解更多" : "Learn More"}
+                    </div>
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      className="text-lg hover:bg-[#1464A3] hover:text-white"
+                    >
+                      {params.cc === "cn" ? "查看全部日化产品" : "Explore"}
+                    </Button>
+                  </div>
+                </AspectRatio>
+              </article>
+            </Link>
           )}
         </section>
       ) : (
@@ -140,16 +163,6 @@ export function DailyChemicalSeriesSection({
             </div>
           )}
         </section>
-      )}
-
-      {showReadMore && (
-        <div className="flex justify-center mt-8">
-          <Link href={`/${params.cc}/daily-chemical-series`}>
-            <Button variant="outline" size="lg" className="text-lg">
-              {params.cc === "cn" ? "了解更多" : "Learn More"}
-            </Button>
-          </Link>
-        </div>
       )}
     </Shell>
   );

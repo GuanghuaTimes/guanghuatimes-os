@@ -15,6 +15,16 @@ import { CC } from "./page";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { homepageConfig } from "@/config/homepage";
 
+function getCarouselHref(lang: CC, imgSrc: string) {
+  const m = /\/banner\/(?:banner)?(\d+)\./i.exec(imgSrc);
+  const idx = m ? Number(m[1]) : NaN;
+
+  if (idx === 1) return `/${lang}/products`;
+  if (idx === 4) return `/${lang}/raw-material-products`;
+
+  return null;
+}
+
 export default function CarouselComponent({
   lang,
   mobile = false,
@@ -52,48 +62,44 @@ export default function CarouselComponent({
               <CardContent className="flex items-center justify-center p-0">
                 {!mobile ? (
                   <div className="relative w-full aspect-[5/2] overflow-hidden">
-                    <div className="absolute inset-0 z-10 bg-black/20 flex justify-center items-center p-4">
-                      <Link href={`${lang}${item.href}`}>
-                        <h1 className="hover:underline font-bold text-white text-center max-w-6xl text-xl md:text-3xl">
-                          {lang === "cn" ? item.titleCn : item.title}
-                          <br />
-                          <br />
-                          <span>
-                            {lang === "cn" ? item.descriptionCn : item.description}
-                          </span>
-                        </h1>
-                      </Link>
-                    </div>
+                    {getCarouselHref(lang, item.imgSrc) ? (
+                      <Link
+                        href={getCarouselHref(lang, item.imgSrc)!}
+                        className="absolute inset-0 z-10"
+                        aria-label={lang === "cn" ? "轮播图跳转" : "Carousel link"}
+                      />
+                    ) : null}
                     <Image
                       src={item.imgSrc}
                       alt=""
                       fill
                       sizes="100vw"
                       quality={75}
-                      className="object-contain bg-black/10 object-center"
+                      className={
+                        "object-contain object-center" +
+                        (getCarouselHref(lang, item.imgSrc) ? " cursor-pointer" : "")
+                      }
                     />
                   </div>
                 ) : (
                   <AspectRatio ratio={4 / 5} className="relative w-full overflow-hidden">
-                    <div className="absolute inset-0 z-10 bg-black/20 flex justify-center items-center p-4">
-                      <Link href={`${lang}${item.href}`}>
-                        <h1 className="hover:underline font-bold text-white text-center max-w-6xl text-lg leading-tight">
-                          {lang === "cn" ? item.titleCn : item.title}
-                          <br />
-                          <br />
-                          <span className="text-sm font-normal">
-                            {lang === "cn" ? item.descriptionCn : item.description}
-                          </span>
-                        </h1>
-                      </Link>
-                    </div>
+                    {getCarouselHref(lang, item.imgSrc) ? (
+                      <Link
+                        href={getCarouselHref(lang, item.imgSrc)!}
+                        className="absolute inset-0 z-10"
+                        aria-label={lang === "cn" ? "轮播图跳转" : "Carousel link"}
+                      />
+                    ) : null}
                     <Image
                       src={item.imgSrc}
                       alt=""
                       fill
                       sizes="100vw"
                       quality={75}
-                      className="object-cover bg-black/10 object-center"
+                      className={
+                        "object-cover object-center" +
+                        (getCarouselHref(lang, item.imgSrc) ? " cursor-pointer" : "")
+                      }
                     />
                   </AspectRatio>
                 )}
