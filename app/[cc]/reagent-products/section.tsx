@@ -21,7 +21,7 @@ export function ReagentProductsSection({
     {
       id: "triple-axe-series",
       title: isCn ? "三板斧系列" : "Triple-Axe Series",
-      image: "/Triple-Axe-Series/三板斧封面图.png",
+      image: "/Triple-Axe-Series/三板斧封面图.jpg",
       description: isCn
         ? "功能经作系列，主打“专而精”并非“大而全”"
         : "Core efficiency series focused on improving crop yield and quality with advanced biotech formulations.",
@@ -29,7 +29,7 @@ export function ReagentProductsSection({
     {
       id: "agrarius-series",
       title: isCn ? "AGRARIUS系列" : "AGRARIUS Series",
-      image: "/agrarius-series/阿格瑞封面图.png",
+      image: "/agrarius-series/阿格瑞封面图.jpg",
       description: isCn
         ? "经济大田系列，营养全面、相互增效。"
         : "Internationally leading organic water-soluble fertilizer with fast dissolution and soil conditioning properties.",
@@ -37,7 +37,7 @@ export function ReagentProductsSection({
     {
       id: "guanghua-bio-series",
       title: isCn ? "光华生物系列" : "Guanghua Biotech Series",
-      image: "/guanghua-bio-series/光华生物封面图.png",
+      image: "/guanghua-bio-series/光华生物封面图.jpg",
       description: isCn
         ? "双向平衡系列，协同长效、使用灵活。"
         : "Deeply empowered by biotechnology, providing significant crop improvement effects with microbial technology.",
