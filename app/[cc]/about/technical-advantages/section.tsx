@@ -91,21 +91,22 @@ export default function TechnicalAdvantagesSection({ cc = "cn" }: { cc?: "cn" | 
         <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
           {experts.map((e, idx) => (
             <div key={idx} className="rounded-xl border bg-card/50 p-4 shadow-sm">
-              <div className="flex items-center gap-3">
-                <div className="relative h-16 w-16 overflow-hidden rounded-full border bg-muted">
-                  <Image src={e.imgSrc} alt="" fill sizes="64px" className="object-cover" />
+              <div className="flex flex-col items-center text-center">
+                <div className="relative h-20 w-20 overflow-hidden rounded-full border bg-muted">
+                  <Image src={e.imgSrc} alt="" fill sizes="80px" className="object-cover" />
                 </div>
-                <div className="min-w-0">
-                  <div className="text-sm font-semibold text-primary truncate">
-                    {cc === "cn" ? e.orgTitleCn : ""}
-                  </div>
-                  <div className="text-base font-semibold truncate">
+
+                <div className="mt-3 w-full">
+                  <div className="text-xl font-semibold text-[#13609B]">
                     {cc === "cn" ? e.nameCn : ""}
+                  </div>
+                  <div className="mt-1 text-[#13609B] font-semibold leading-relaxed">
+                    {cc === "cn" ? e.orgTitleCn : ""}
                   </div>
                 </div>
               </div>
 
-              <ul className="mt-3 list-disc pl-5 space-y-1 text-sm text-gray-700 dark:text-gray-200">
+              <ul className="mt-3 list-disc pl-5 space-y-1 text-gray-700 dark:text-gray-200 leading-relaxed">
                 {(cc === "cn" ? e.bulletsCn : []).map((b, i) => (
                   <li key={i}>{b}</li>
                 ))}

@@ -3,7 +3,7 @@ export const aboutConfig = {
   titleCn: "关于我们",
   description: "Learn more about Guanghua Times",
   descriptionCn: "了解光华时代",
-  imgSrc: "/banner2.jpg",
+  imgSrc: "/about.jpg",
   navs: [
     {
       imgSrc: "/banner1.jpg",

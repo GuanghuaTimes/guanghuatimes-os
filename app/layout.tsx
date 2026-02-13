@@ -4,7 +4,6 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Analytics } from "@/components/analytics";
 import { siteConfig } from "@/config/site";
 import { PropsWithChildren } from "react";
-import { absoluteUrl } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -38,7 +37,7 @@ export const metadata = {
     images: [`${siteConfig.url}/og.jpg`],
     creator: "@msrks",
   },
-  manifest: absoluteUrl("/site.webmanifest"),
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({ children }: PropsWithChildren) {
