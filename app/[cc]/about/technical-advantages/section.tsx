@@ -90,7 +90,7 @@ export default function TechnicalAdvantagesSection({ cc = "cn" }: { cc?: "cn" | 
 
         <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
           {experts.map((e, idx) => (
-            <div key={idx} className="rounded-xl border bg-card/50 p-4 shadow-sm">
+            <div key={idx} className="rounded-xl border bg-card/50 p-4 shadow-[6px_6px_14px_rgba(0,0,0,0.12)] dark:shadow-[6px_6px_14px_rgba(0,0,0,0.35)]">
               <div className="flex flex-col items-center text-center">
                 <div className="relative h-20 w-20 overflow-hidden rounded-full border bg-muted">
                   <Image src={e.imgSrc} alt="" fill sizes="80px" className="object-cover" />

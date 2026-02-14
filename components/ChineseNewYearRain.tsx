@@ -127,6 +127,7 @@ export default function ChineseNewYearRain({
 }) {
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
+  const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => setMounted(true), []);
 
@@ -154,17 +155,25 @@ export default function ChineseNewYearRain({
       const size =
         kind === "ingot"
           ? 28 + Math.round(Math.random() * 24)
-          : 18 + Math.round(Math.random() * 18);
+          : 34 + Math.round(Math.random() * 22);
       const rotate = kind === "ingot" ? 0 : -20 + Math.random() * 40;
       const opacity = 0.75 + Math.random() * 0.25;
       return { i, left, delay, duration, size, rotate, opacity };
     });
   }, [kind, pathname]);
 
-  if (!mounted || !active) return null;
+  if (!mounted || !active || dismissed) return null;
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-[60] overflow-hidden">
+    <div className="fixed inset-0 z-[60] overflow-hidden pointer-events-none">
+      <button
+        type="button"
+        onClick={() => setDismissed(true)}
+        className="pointer-events-auto fixed bottom-4 right-4 rounded-full border bg-white/90 px-3 py-2 text-sm text-gray-800 shadow-sm backdrop-blur hover:bg-white dark:bg-slate-900/80 dark:text-gray-100"
+        aria-label={cc === "cn" ? "关闭春节特效" : "Close"}
+      >
+        {cc === "cn" ? "关闭节日插件" : "Close"}
+      </button>
       <style>{`
         @keyframes cny-rain-fall {
           0% { transform: translate3d(0, -120px, 0) rotate(var(--rot)); opacity: 0; }

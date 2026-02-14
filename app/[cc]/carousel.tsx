@@ -69,6 +69,11 @@ export default function CarouselComponent({
                         aria-label={lang === "cn" ? "轮播图跳转" : "Carousel link"}
                       />
                     ) : null}
+                    <Link
+                      href={`/${lang}/contact`}
+                      className="absolute z-20 left-[4%] bottom-[14%] h-10 w-36 bg-transparent"
+                      aria-label={lang === "cn" ? "联系我们" : "Contact Us"}
+                    />
                     <Image
                       src={item.imgSrc}
                       alt=""
@@ -82,7 +87,7 @@ export default function CarouselComponent({
                     />
                   </div>
                 ) : (
-                  <AspectRatio ratio={4 / 5} className="relative w-full overflow-hidden">
+                  <div className="relative w-full aspect-[18/7] overflow-hidden">
                     {getCarouselHref(lang, item.imgSrc) ? (
                       <Link
                         href={getCarouselHref(lang, item.imgSrc)!}
@@ -90,6 +95,11 @@ export default function CarouselComponent({
                         aria-label={lang === "cn" ? "轮播图跳转" : "Carousel link"}
                       />
                     ) : null}
+                    <Link
+                      href={`/${lang}/contact`}
+                      className="absolute z-20 left-[5%] bottom-[16%] h-[10px] w-10 translate-y-[3px] bg-transparent"
+                      aria-label={lang === "cn" ? "联系我们" : "Contact Us"}
+                    />
                     <Image
                       src={item.imgSrc}
                       alt=""
@@ -97,11 +107,11 @@ export default function CarouselComponent({
                       sizes="100vw"
                       quality={75}
                       className={
-                        "object-cover object-center" +
+                        "object-contain object-center" +
                         (getCarouselHref(lang, item.imgSrc) ? " cursor-pointer" : "")
                       }
                     />
-                  </AspectRatio>
+                  </div>
                 )}
               </CardContent>
             </Card>

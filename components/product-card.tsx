@@ -80,16 +80,16 @@ export function ProductCard({ product, i, lang, basePath = "/products", layout =
             </div>
 
             {/* 产品信息 */}
-            <div className="flex-1 p-4 md:p-5 flex flex-col">
-                <CardTitle className="text-lg md:text-xl font-bold text-green-700 dark:text-green-400 mb-2 group-hover:text-green-600 transition-colors">
+            <div className="flex-1 p-4 md:p-5 flex flex-col text-left">
+                <CardTitle className="w-full text-left text-lg md:text-xl font-bold text-green-700 dark:text-green-400 mb-2 group-hover:text-green-600 transition-colors break-keep whitespace-normal">
                     {product.title}
                 </CardTitle>
                 {product.description && (
-                    <CardDescription className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed line-clamp-3 md:line-clamp-none mb-3 flex-1 whitespace-pre-line">
+                    <CardDescription className="w-full text-left text-sm text-gray-600 dark:text-gray-300 leading-relaxed line-clamp-3 md:line-clamp-none mb-3 flex-1 whitespace-pre-line break-keep">
                         {formatDescription(product.description)}
                     </CardDescription>
                 )}
-                <div className="flex items-center text-green-600 dark:text-green-400 font-medium text-sm mt-auto">
+                <div className="w-full flex items-center justify-start text-green-600 dark:text-green-400 font-medium text-sm mt-auto">
                     <span className="mr-2">{lang === 'cn' ? '了解更多' : 'Learn More'}</span>
                     <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -100,7 +100,7 @@ export function ProductCard({ product, i, lang, basePath = "/products", layout =
     );
 
     const horizontalCardContent = (
-        <article className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} gap-6 items-center group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-700`}>
+        <article className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} gap-6 items-stretch md:items-center group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-700`}>
             {/* 产品图片 */}
             <div className="w-full md:w-[30%] flex-shrink-0">
                 <AspectRatio ratio={1/1} className="overflow-hidden bg-slate-50 dark:bg-slate-800">
@@ -120,16 +120,16 @@ export function ProductCard({ product, i, lang, basePath = "/products", layout =
             </div>
 
             {/* 产品信息 */}
-            <div className="flex-1 p-6 md:p-8">
-                <CardTitle className="text-xl md:text-2xl font-bold text-green-700 dark:text-green-400 mb-6 md:mb-3 group-hover:text-green-600 transition-colors">
+            <div className="flex-1 min-w-0 p-6 md:p-8 text-left">
+                <CardTitle className="w-full text-left text-xl md:text-2xl font-bold text-green-700 dark:text-green-400 mb-6 md:mb-3 group-hover:text-green-600 transition-colors break-keep whitespace-normal">
                     {product.title}
                 </CardTitle>
                 {product.description && (
-                    <CardDescription className="text-base text-gray-600 dark:text-gray-300 leading-relaxed line-clamp-3 md:line-clamp-none mb-4 whitespace-pre-line">
+                    <CardDescription className="w-full text-left text-base text-gray-600 dark:text-gray-300 leading-relaxed line-clamp-3 md:line-clamp-none mb-4 whitespace-pre-line break-keep">
                         {formatDescription(product.description)}
                     </CardDescription>
                 )}
-                <div className="flex items-center text-green-600 dark:text-green-400 font-medium">
+                <div className="w-full flex items-center justify-start text-green-600 dark:text-green-400 font-medium">
                     <span className="mr-2">{lang === 'cn' ? '了解更多' : 'Learn More'}</span>
                     <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
