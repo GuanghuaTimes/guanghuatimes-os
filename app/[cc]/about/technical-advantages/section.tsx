@@ -33,8 +33,18 @@ export default function TechnicalAdvantagesSection({ cc = "cn" }: { cc?: "cn" | 
       ],
     },
     {
+      imgSrc: "/text/专家/zj8.png",
+      orgTitleCn: "海南大学｜副教授 硕导",
+      nameCn: "丁琼",
+      bulletsCn: [
+        "海南大学生态与环境学院副教授，美国佛罗里达国际大学地球与环境系访问学者。",
+        "主要研究热带雨林微生物群落生态学，分子生态学。",
+        "先后主持多项国家自然科学地区科学基金，如“基于尖峰岭热带山地雨林大型固定样地的菌根共生网络结构及其形成机制研究”、“热带雨林土壤种子库小生境特质变化规律及其种子存活的关系研究”。",
+      ]
+    },
+    {
       imgSrc: "/text/专家/zj4.png",
-      orgTitleCn: "海南大学热带农林学院｜三亚南繁研究院 硕导",
+      orgTitleCn: "海南大学｜讲师 硕导",
       nameCn: "冯顺",
       bulletsCn: [
         "海南大学热带农林学院、三亚南繁研究院硕士研究生导师。",
@@ -44,7 +54,7 @@ export default function TechnicalAdvantagesSection({ cc = "cn" }: { cc?: "cn" | 
     },
     {
       imgSrc: "/text/专家/zj5.png",
-      orgTitleCn: "海南大学｜讲师 硕导",
+      orgTitleCn: "谢菲尔德大学｜讲师 硕导",
       nameCn: "单义翔",
       bulletsCn: [
         "主要从事植物光合生理与作物建模研究，聚焦光谱调控、作物水分状态及其对光合效率的影响。",
@@ -54,7 +64,7 @@ export default function TechnicalAdvantagesSection({ cc = "cn" }: { cc?: "cn" | 
     },
     {
       imgSrc: "/text/专家/zj6.png",
-      orgTitleCn: "河南省微生物学会｜理事",
+      orgTitleCn: "河南农业大学｜教授 研究生导师",
       nameCn: "杨森",
       bulletsCn: [
         "河南省微生物学会理事，河南省有机固废生物转化工程技术中心主任，河南省乡村有机固废低碳利用产业技术创新联盟理事长，黑水虻生物技术首席专家，授权发明专利软著等 20 余项。",

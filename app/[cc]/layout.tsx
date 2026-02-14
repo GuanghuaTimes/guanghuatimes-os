@@ -17,7 +17,7 @@ export default function Layout({
     <div className="relative min-h-screen flex flex-col items-center ">
       <ChineseNewYearRain cc={params.cc} />
       <header className="fixed sm:sticky top-0 z-50 w-full border-b bg-background/50 sm:bg-background">
-        <div className="container h-8 flex items-center sm:h-12">
+        <div className="container h-12 flex items-center">
           <MainNav items={siteConfig.mainNav} lang={params.cc} />
           <MobileNav
             mainNavItems={siteConfig.mainNav}
@@ -31,7 +31,7 @@ export default function Layout({
           <LangToggle />
         </div>
       </header>
-      <div className="pt-8 sm:pt-0 w-full">
+      <div className="pt-12 sm:pt-0 w-full">
         {children}
       </div>
       <footer className="hidden md:block w-full border-t bg-secondary ">

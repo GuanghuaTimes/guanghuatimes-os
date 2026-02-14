@@ -62,8 +62,8 @@ export function ProductCard({ product, i, lang, basePath = "/products", layout =
     const verticalCardContent = (
         <article className="flex flex-col group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-700 h-full">
             {/* 产品图片 */}
-            <div className="w-full">
-                <AspectRatio ratio={1/1} className="overflow-hidden bg-slate-50 dark:bg-slate-800">
+            <div className="w-full relative">
+                <AspectRatio ratio={1/1} className="relative overflow-hidden bg-slate-50 dark:bg-slate-800">
                     {product.image ? (
                         <Image
                             src={product.image}
@@ -102,8 +102,8 @@ export function ProductCard({ product, i, lang, basePath = "/products", layout =
     const horizontalCardContent = (
         <article className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} gap-6 items-stretch md:items-center group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-700`}>
             {/* 产品图片 */}
-            <div className="w-full md:w-[30%] flex-shrink-0">
-                <AspectRatio ratio={1/1} className="overflow-hidden bg-slate-50 dark:bg-slate-800">
+            <div className="w-full md:w-[30%] flex-shrink-0 relative">
+                <AspectRatio ratio={1/1} className="relative overflow-hidden bg-slate-50 dark:bg-slate-800">
                     {product.image ? (
                         <Image
                             src={product.image}

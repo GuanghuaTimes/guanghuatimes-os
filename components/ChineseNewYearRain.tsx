@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { usePathname } from "next/navigation";
+import { createPortal } from "react-dom";
 
 type RainKind = "wallet" | "ingot";
 
@@ -99,7 +100,18 @@ function IngotIcon({ className }: { className?: string }) {
 }
 
 function RainItem({ kind, size }: { kind: RainKind; size: number }) {
-  if (kind === "wallet") return <WalletIcon className="h-full w-full" />;
+  if (kind === "wallet") {
+    const walletSrc = encodeURI("/红包.svg");
+    return (
+      <img
+        src={walletSrc}
+        alt=""
+        className="h-full w-full"
+        draggable={false}
+        style={{ width: size, height: size }}
+      />
+    );
+  }
 
   const ingotSrc = encodeURI("/金元宝.svg");
 
@@ -166,14 +178,19 @@ export default function ChineseNewYearRain({
 
   return (
     <div className="fixed inset-0 z-[60] overflow-hidden pointer-events-none">
-      <button
-        type="button"
-        onClick={() => setDismissed(true)}
-        className="pointer-events-auto fixed bottom-4 right-4 rounded-full border bg-white/90 px-3 py-2 text-sm text-gray-800 shadow-sm backdrop-blur hover:bg-white dark:bg-slate-900/80 dark:text-gray-100"
-        aria-label={cc === "cn" ? "关闭春节特效" : "Close"}
-      >
-        {cc === "cn" ? "关闭节日插件" : "Close"}
-      </button>
+      {typeof document !== "undefined"
+        ? createPortal(
+            <button
+              type="button"
+              onClick={() => setDismissed(true)}
+              className="pointer-events-auto fixed bottom-4 right-4 z-[70] rounded-full border bg-white/90 px-3 py-2 text-sm text-gray-800 shadow-sm backdrop-blur hover:bg-white dark:bg-slate-900/80 dark:text-gray-100"
+              aria-label={cc === "cn" ? "关闭春节特效" : "Close"}
+            >
+              {cc === "cn" ? "关闭节日插件" : "Close"}
+            </button>,
+            document.body
+          )
+        : null}
       <style>{`
         @keyframes cny-rain-fall {
           0% { transform: translate3d(0, -120px, 0) rotate(var(--rot)); opacity: 0; }
