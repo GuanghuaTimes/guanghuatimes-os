@@ -89,15 +89,20 @@ export default function IntellectualPropertySection({ cc = "cn" }: { cc?: "cn" |
                 className="group relative flex h-full w-full flex-col overflow-hidden rounded-md border text-left"
                 title={cc === "cn" ? "点击查看大图" : "Click to view"}
               >
-                <img
-                  src="/text/bzzd01.png"
-                  alt={
-                    cc === "cn"
-                      ? "团体标准：《含聚谷氨酸大量元素水溶肥料》"
-                      : "Group standard: Poly-γ-glutamic acid large-element water-soluble fertilizer"
-                  }
-                  className="block h-80 w-full bg-white object-contain sm:h-96"
-                />
+                <div className="relative h-80 w-full bg-white sm:h-96">
+                  <Image
+                    src="/text/bzzd01.png"
+                    alt={
+                      cc === "cn"
+                        ? "团体标准：《含聚谷氨酸大量元素水溶肥料》"
+                        : "Group standard: Poly-γ-glutamic acid large-element water-soluble fertilizer"
+                    }
+                    fill
+                    sizes="(min-width: 640px) 25vw, 100vw"
+                    quality={70}
+                    className="object-contain"
+                  />
+                </div>
                 <div className="line-clamp-2 flex h-12 items-center justify-center overflow-hidden border-t px-3 text-center text-sm font-medium leading-snug">
                   {cc === "cn"
                     ? "《含聚谷氨酸大量元素水溶肥料》"
@@ -123,15 +128,20 @@ export default function IntellectualPropertySection({ cc = "cn" }: { cc?: "cn" |
                 className="group relative flex h-full w-full flex-col overflow-hidden rounded-md border text-left"
                 title={cc === "cn" ? "点击查看大图" : "Click to view"}
               >
-                <img
-                  src="/text/bzzd02.png"
-                  alt={
-                    cc === "cn"
-                      ? "团体标准：《含褐藻寡糖大量元素水溶肥料》"
-                      : "Group standard: Alginate oligosaccharide large-element water-soluble fertilizer"
-                  }
-                  className="block h-80 w-full bg-white object-contain sm:h-96"
-                />
+                <div className="relative h-80 w-full bg-white sm:h-96">
+                  <Image
+                    src="/text/bzzd02.png"
+                    alt={
+                      cc === "cn"
+                        ? "团体标准：《含褐藻寡糖大量元素水溶肥料》"
+                        : "Group standard: Alginate oligosaccharide large-element water-soluble fertilizer"
+                    }
+                    fill
+                    sizes="(min-width: 640px) 25vw, 100vw"
+                    quality={70}
+                    className="object-contain"
+                  />
+                </div>
                 <div className="line-clamp-2 flex h-12 items-center justify-center overflow-hidden border-t px-3 text-center text-sm font-medium leading-snug">
                   {cc === "cn"
                     ? "《含褐藻寡糖大量元素水溶肥料》"
@@ -168,15 +178,20 @@ export default function IntellectualPropertySection({ cc = "cn" }: { cc?: "cn" |
                 className="group relative flex h-full w-full flex-col overflow-hidden rounded-md border text-left"
                 title={cc === "cn" ? "点击查看大图" : "Click to view"}
               >
-                <img
-                  src="/text/bzzd03.png"
-                  alt={
-                    cc === "cn"
-                      ? "团体标准：《含聚谷氨酸复合肥料》"
-                      : "Group standard: Poly-γ-glutamic acid compound fertilizer"
-                  }
-                  className="block h-80 w-full bg-white object-contain sm:h-96"
-                />
+                <div className="relative h-80 w-full bg-white sm:h-96">
+                  <Image
+                    src="/text/bzzd03.png"
+                    alt={
+                      cc === "cn"
+                        ? "团体标准：《含聚谷氨酸复合肥料》"
+                        : "Group standard: Poly-γ-glutamic acid compound fertilizer"
+                    }
+                    fill
+                    sizes="(min-width: 640px) 25vw, 100vw"
+                    quality={70}
+                    className="object-contain"
+                  />
+                </div>
                 <div className="line-clamp-2 flex h-12 items-center justify-center overflow-hidden border-t px-3 text-center text-sm font-medium leading-snug">
                   {cc === "cn" ? "《含聚谷氨酸复合肥料》" : "Poly-γ-glutamic acid compound fertilizer"}
                 </div>
@@ -200,15 +215,20 @@ export default function IntellectualPropertySection({ cc = "cn" }: { cc?: "cn" |
                 className="group relative flex h-full w-full flex-col overflow-hidden rounded-md border text-left"
                 title={cc === "cn" ? "点击查看大图" : "Click to view"}
               >
-                <img
-                  src="/text/bzzd04.png"
-                  alt={
-                    cc === "cn"
-                      ? "团体标准：《含聚谷氨酸磷酸肥料》"
-                      : "Group standard: Poly-γ-glutamic acid phosphate fertilizer"
-                  }
-                  className="block h-80 w-full bg-white object-contain sm:h-96"
-                />
+                <div className="relative h-80 w-full bg-white sm:h-96">
+                  <Image
+                    src="/text/bzzd04.png"
+                    alt={
+                      cc === "cn"
+                        ? "团体标准：《含聚谷氨酸磷酸肥料》"
+                        : "Group standard: Poly-γ-glutamic acid phosphate fertilizer"
+                    }
+                    fill
+                    sizes="(min-width: 640px) 25vw, 100vw"
+                    quality={70}
+                    className="object-contain"
+                  />
+                </div>
                 <div className="line-clamp-2 flex h-12 items-center justify-center overflow-hidden border-t px-3 text-center text-sm font-medium leading-snug">
                   {cc === "cn" ? "《含聚谷氨酸磷酸肥料》" : "Poly-γ-glutamic acid phosphate fertilizer"}
                 </div>
@@ -232,15 +252,20 @@ export default function IntellectualPropertySection({ cc = "cn" }: { cc?: "cn" |
                 className="group relative flex h-full w-full flex-col overflow-hidden rounded-md border text-left"
                 title={cc === "cn" ? "点击查看大图" : "Click to view"}
               >
-                <img
-                  src="/text/bzzd05.png"
-                  alt={
-                    cc === "cn"
-                      ? "团体标准：《含多肽大量元素水溶肥料》"
-                      : "Group standard: Peptide-containing large-element water-soluble fertilizer"
-                  }
-                  className="block h-80 w-full bg-white object-contain sm:h-96"
-                />
+                <div className="relative h-80 w-full bg-white sm:h-96">
+                  <Image
+                    src="/text/bzzd05.png"
+                    alt={
+                      cc === "cn"
+                        ? "团体标准：《含多肽大量元素水溶肥料》"
+                        : "Group standard: Peptide-containing large-element water-soluble fertilizer"
+                    }
+                    fill
+                    sizes="(min-width: 640px) 25vw, 100vw"
+                    quality={70}
+                    className="object-contain"
+                  />
+                </div>
                 <div className="line-clamp-2 flex h-12 items-center justify-center overflow-hidden border-t px-3 text-center text-sm font-medium leading-snug">
                   {cc === "cn"
                     ? "《含多肽大量元素水溶肥料》"
@@ -337,13 +362,18 @@ export default function IntellectualPropertySection({ cc = "cn" }: { cc?: "cn" |
                 className="group relative flex h-full w-full flex-col overflow-hidden rounded-md border text-left"
                 title={cc === "cn" ? "点击查看大图" : "Click to view"}
               >
-                <img
-                  src="/text/shry01.png"
-                  alt={
-                    cc === "cn" ? "国家科学技术进步奖" : "National Science and Technology Progress Award"
-                  }
-                  className="block h-80 w-full bg-white object-contain sm:h-96"
-                />
+                <div className="relative h-80 w-full bg-white sm:h-96">
+                  <Image
+                    src="/text/shry01.png"
+                    alt={
+                      cc === "cn" ? "国家科学技术进步奖" : "National Science and Technology Progress Award"
+                    }
+                    fill
+                    sizes="(min-width: 640px) 25vw, 100vw"
+                    quality={70}
+                    className="object-contain"
+                  />
+                </div>
                 <div className="line-clamp-2 flex h-12 items-center justify-center overflow-hidden border-t px-3 text-center text-sm font-medium leading-snug">
                   {cc === "cn" ? "国家科学技术进步奖" : "National Science and Technology Progress Award"}
                 </div>
@@ -368,15 +398,20 @@ export default function IntellectualPropertySection({ cc = "cn" }: { cc?: "cn" |
                 className="group relative flex h-full w-full flex-col overflow-hidden rounded-md border text-left"
                 title={cc === "cn" ? "点击查看大图" : "Click to view"}
               >
-                <img
-                  src="/text/shry02.png"
-                  alt={
-                    cc === "cn"
-                      ? "湖北省科学技术发明奖"
-                      : "Hubei Provincial Science and Technology Invention Award"
-                  }
-                  className="block h-80 w-full bg-white object-contain sm:h-96"
-                />
+                <div className="relative h-80 w-full bg-white sm:h-96">
+                  <Image
+                    src="/text/shry02.png"
+                    alt={
+                      cc === "cn"
+                        ? "湖北省科学技术发明奖"
+                        : "Hubei Provincial Science and Technology Invention Award"
+                    }
+                    fill
+                    sizes="(min-width: 640px) 25vw, 100vw"
+                    quality={70}
+                    className="object-contain"
+                  />
+                </div>
                 <div className="line-clamp-2 flex h-12 items-center justify-center overflow-hidden border-t px-3 text-center text-sm font-medium leading-snug">
                   {cc === "cn" ? "湖北省科学技术发明奖" : "Hubei Provincial Science and Technology Invention Award"}
                 </div>
@@ -403,13 +438,18 @@ export default function IntellectualPropertySection({ cc = "cn" }: { cc?: "cn" |
                 className="group relative flex h-full w-full flex-col overflow-hidden rounded-md border text-left"
                 title={cc === "cn" ? "点击查看大图" : "Click to view"}
               >
-                <img
-                  src="/text/shry03.png"
-                  alt={
-                    cc === "cn" ? "中国烟草科学技术奖" : "China Tobacco Science and Technology Award"
-                  }
-                  className="block h-80 w-full bg-white object-contain sm:h-96"
-                />
+                <div className="relative h-80 w-full bg-white sm:h-96">
+                  <Image
+                    src="/text/shry03.png"
+                    alt={
+                      cc === "cn" ? "中国烟草科学技术奖" : "China Tobacco Science and Technology Award"
+                    }
+                    fill
+                    sizes="(min-width: 640px) 25vw, 100vw"
+                    quality={70}
+                    className="object-contain"
+                  />
+                </div>
                 <div className="line-clamp-2 flex h-12 items-center justify-center overflow-hidden border-t px-3 text-center text-sm font-medium leading-snug">
                   {cc === "cn" ? "中国烟草科学技术奖" : "China Tobacco Science and Technology Award"}
                 </div>
@@ -434,15 +474,20 @@ export default function IntellectualPropertySection({ cc = "cn" }: { cc?: "cn" |
                 className="group relative flex h-full w-full flex-col overflow-hidden rounded-md border text-left"
                 title={cc === "cn" ? "点击查看大图" : "Click to view"}
               >
-                <img
-                  src="/text/shry04.png"
-                  alt={
-                    cc === "cn"
-                      ? "全国生态农业科技创新协助联盟理事单位"
-                      : "National Ecological Agriculture Science and Technology Innovation Cooperation Alliance Council Member"
-                  }
-                  className="block h-80 w-full bg-white object-contain sm:h-96"
-                />
+                <div className="relative h-80 w-full bg-white sm:h-96">
+                  <Image
+                    src="/text/shry04.png"
+                    alt={
+                      cc === "cn"
+                        ? "全国生态农业科技创新协助联盟理事单位"
+                        : "National Ecological Agriculture Science and Technology Innovation Cooperation Alliance Council Member"
+                    }
+                    fill
+                    sizes="(min-width: 640px) 25vw, 100vw"
+                    quality={70}
+                    className="object-contain"
+                  />
+                </div>
                 <div className="line-clamp-2 flex h-12 items-center justify-center overflow-hidden border-t px-3 text-center text-sm font-medium leading-snug">
                   {cc === "cn"
                     ? "全国生态农业科技创新协助联盟理事单位"
@@ -469,15 +514,20 @@ export default function IntellectualPropertySection({ cc = "cn" }: { cc?: "cn" |
                 className="group relative flex h-full w-full flex-col overflow-hidden rounded-md border text-left"
                 title={cc === "cn" ? "点击查看大图" : "Click to view"}
               >
-                <img
-                  src="/text/shry05.png"
-                  alt={
-                    cc === "cn"
-                      ? "中华农业科技奖（优秀创新团队奖）（中国农业部颁发）"
-                      : "China Agricultural Science and Technology Award (Excellent Innovation Team Award) (Issued by Ministry of Agriculture)"
-                  }
-                  className="block h-80 w-full bg-white object-contain sm:h-96"
-                />
+                <div className="relative h-80 w-full bg-white sm:h-96">
+                  <Image
+                    src="/text/shry05.png"
+                    alt={
+                      cc === "cn"
+                        ? "中华农业科技奖（优秀创新团队奖）（中国农业部颁发）"
+                        : "China Agricultural Science and Technology Award (Excellent Innovation Team Award) (Issued by Ministry of Agriculture)"
+                    }
+                    fill
+                    sizes="(min-width: 640px) 25vw, 100vw"
+                    quality={70}
+                    className="object-contain"
+                  />
+                </div>
                 <div className="line-clamp-2 flex h-12 items-center justify-center overflow-hidden border-t px-3 text-center text-sm font-medium leading-snug">
                   {cc === "cn"
                     ? "中华农业科技奖（优秀创新团队奖）（中国农业部颁发）"
@@ -504,15 +554,20 @@ export default function IntellectualPropertySection({ cc = "cn" }: { cc?: "cn" |
                 className="group relative flex h-full w-full flex-col overflow-hidden rounded-md border text-left"
                 title={cc === "cn" ? "点击查看大图" : "Click to view"}
               >
-                <img
-                  src="/text/shry06.png"
-                  alt={
-                    cc === "cn"
-                      ? "中国生物刺激剂发展联盟理事单位"
-                      : "China Biostimulant Development Alliance Council Member"
-                  }
-                  className="block h-80 w-full bg-white object-contain sm:h-96"
-                />
+                <div className="relative h-80 w-full bg-white sm:h-96">
+                  <Image
+                    src="/text/shry06.png"
+                    alt={
+                      cc === "cn"
+                        ? "中国生物刺激剂发展联盟理事单位"
+                        : "China Biostimulant Development Alliance Council Member"
+                    }
+                    fill
+                    sizes="(min-width: 640px) 25vw, 100vw"
+                    quality={70}
+                    className="object-contain"
+                  />
+                </div>
                 <div className="line-clamp-2 flex h-12 items-center justify-center overflow-hidden border-t px-3 text-center text-sm font-medium leading-snug">
                   {cc === "cn" ? "中国生物刺激剂发展联盟理事单位" : "China Biostimulant Development Alliance Council Member"}
                 </div>
@@ -544,11 +599,16 @@ export default function IntellectualPropertySection({ cc = "cn" }: { cc?: "cn" |
                 >
                   关闭
                 </button>
-                <img
-                  src={lightbox.src}
-                  alt={lightbox.alt}
-                  className="block h-auto max-h-[85vh] w-auto max-w-[90vw]"
-                />
+                <div className="relative h-[85vh] w-[90vw]">
+                  <Image
+                    src={lightbox.src}
+                    alt={lightbox.alt}
+                    fill
+                    sizes="90vw"
+                    quality={85}
+                    className="object-contain"
+                  />
+                </div>
               </div>
             </div>,
             document.body

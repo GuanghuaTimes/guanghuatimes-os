@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Shell } from "@/components/shells/shell";
 import { PageHeader, PageHeaderDescription } from "@/components/page-header";
@@ -57,25 +57,25 @@ export default function NewsPage({ params = { cc: "cn" } }: PageProps) {
   });
   const [indicator, setIndicator] = useState<{ left: number; width: number }>({ left: 0, width: 0 });
 
-  const recalcIndicator = () => {
+  const recalcIndicator = useCallback(() => {
     const c = containerRef.current;
     const b = btnRefs.current[active];
     if (!c || !b) return;
     const cRect = c.getBoundingClientRect();
     const bRect = b.getBoundingClientRect();
     setIndicator({ left: bRect.left - cRect.left, width: bRect.width });
-  };
+  }, [active]);
 
   useEffect(() => {
     recalcIndicator();
     btnRefs.current[active]?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
-  }, [active]);
+  }, [active, recalcIndicator]);
 
   useEffect(() => {
     const onResize = () => recalcIndicator();
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
-  }, []);
+  }, [recalcIndicator]);
 
   // 监听路由变化
   const pathname = usePathname();

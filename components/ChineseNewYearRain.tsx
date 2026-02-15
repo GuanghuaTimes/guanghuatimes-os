@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { createPortal } from "react-dom";
 
@@ -103,12 +104,13 @@ function RainItem({ kind, size }: { kind: RainKind; size: number }) {
   if (kind === "wallet") {
     const walletSrc = encodeURI("/红包.svg");
     return (
-      <img
+      <Image
         src={walletSrc}
         alt=""
+        width={size}
+        height={size}
         className="h-full w-full"
         draggable={false}
-        style={{ width: size, height: size }}
       />
     );
   }
@@ -116,12 +118,13 @@ function RainItem({ kind, size }: { kind: RainKind; size: number }) {
   const ingotSrc = encodeURI("/金元宝.svg");
 
   return (
-    <img
+    <Image
       src={ingotSrc}
       alt=""
+      width={size}
+      height={size}
       className="h-full w-full"
       draggable={false}
-      style={{ width: size, height: size }}
     />
   );
 }
@@ -172,7 +175,7 @@ export default function ChineseNewYearRain({
       const opacity = 0.75 + Math.random() * 0.25;
       return { i, left, delay, duration, size, rotate, opacity };
     });
-  }, [kind, pathname]);
+  }, [kind]);
 
   if (!mounted || !active || dismissed) return null;
 

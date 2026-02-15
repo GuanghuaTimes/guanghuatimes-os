@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import * as DialogPrimitive from '@radix-ui/react-dialog'
 import { Button } from '@/components/ui/button'
@@ -37,24 +37,24 @@ export default function AboutTabs({ cc = 'cn' }: { cc?: 'cn' | 'en' }) {
   })
   const [indicator, setIndicator] = useState<{ left: number; width: number }>({ left: 0, width: 0 })
 
-  const recalcIndicator = () => {
+  const recalcIndicator = useCallback(() => {
     const c = containerRef.current
     const b = btnRefs.current[active]
     if (!c || !b) return
     const cRect = c.getBoundingClientRect()
     const bRect = b.getBoundingClientRect()
     setIndicator({ left: bRect.left - cRect.left, width: bRect.width })
-  }
+  }, [active])
   useEffect(() => {
     recalcIndicator()
     // ensure active tab visible
     btnRefs.current[active]?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' })
-  }, [active])
+  }, [active, recalcIndicator])
   useEffect(() => {
     const onResize = () => recalcIndicator()
     window.addEventListener('resize', onResize)
     return () => window.removeEventListener('resize', onResize)
-  }, [])
+  }, [recalcIndicator])
 
   // sync with URL hash (deep-linkable tabs)
   useEffect(() => {
