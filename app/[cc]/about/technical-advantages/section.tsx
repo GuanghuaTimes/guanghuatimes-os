@@ -54,7 +54,7 @@ export default function TechnicalAdvantagesSection({ cc = "cn" }: { cc?: "cn" | 
     },
     {
       imgSrc: "/text/专家/zj5.png",
-      orgTitleCn: "谢菲尔德大学｜讲师 硕导",
+      orgTitleCn: "谢菲尔德大学｜博士后",
       nameCn: "单义翔",
       bulletsCn: [
         "主要从事植物光合生理与作物建模研究，聚焦光谱调控、作物水分状态及其对光合效率的影响。",
