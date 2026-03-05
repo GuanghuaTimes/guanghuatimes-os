@@ -22,16 +22,7 @@ export default function TechnicalAdvantagesSection({ cc = "cn" }: { cc?: "cn" | 
         "2006 年至今先后主持国家自然科学基金面上项目 5 项、主持柑桔黄龙病脱毒和病原分子检测的多项横向课题。",
       ],
     },
-    {
-      imgSrc: "/text/专家/zj3.png",
-      orgTitleCn: "湖北华中农业大学｜副教授 硕导",
-      nameCn: "魏雪团",
-      bulletsCn: [
-        "主要研究碱胁迫增强 PGA 酸“从头合成”的关键效应基因研究、代谢工程改造强化地衣芽孢杆菌合成 PGA、微生物群落结构和多样性分析研究等。",
-        "华农硕彦计划青年英才 A 岗获得者。",
-        "生物化工青年学者工作委员会委员、国家自然科学基金通讯评审专家，获授权发明专利 10 余项。",
-      ],
-    },
+
     {
       imgSrc: "/text/专家/zj8.png",
       orgTitleCn: "海南大学｜副教授 硕导",

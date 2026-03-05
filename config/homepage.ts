@@ -33,25 +33,25 @@ export const homepageConfig = {
   ],
   navs: [
     {
-      imgSrc: "/rukou.jpg",
+      imgSrc: "/rukou1.png",
       title: "Product Center",
       titleCn: "产品中心",
       href: "products",
     },
     {
-      imgSrc: "/rukou.jpg",
+      imgSrc: "/rukou2.png",
       title: "News",
       titleCn: "新闻资讯",
       href: "news",
     },
     {
-      imgSrc: "/rukou.jpg",
+      imgSrc: "/rukou3.png",
       title: "Contact Us",
       titleCn: "联系我们",
       href: "contact",
     },
     {
-      imgSrc: "/rukou.jpg",
+      imgSrc: "/rukou4.png",
       title: "About Us",
       titleCn: "关于我们",
       href: "about",
