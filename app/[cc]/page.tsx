@@ -65,32 +65,7 @@ export default async function LandingPage({
     <div className="grow flex flex-col items-center justify-center relative w-full">
       <CarouselComponent lang={params.cc!} mobile items={carouselItems} />
       <CarouselComponent lang={params.cc!} items={carouselItems} />
-      <div className="container sm:px-8 relative">
-        <div className="hidden md:grid grid-cols-4 my-2 gap-2">
-          {homepageConfig.navs.map((m, i) => (
-            <Link
-              href={`/${params.cc}/${m.href}`}
-              className="col-span-1 relative group overflow-hidden"
-              key={i}
-            >
-              <div className="absolute inset-0 z-10 bg-black/30 flex justify-center items-center">
-                <h1 className="text-xl font-bold text-white text-center p-2">
-                  {params.cc === "cn" ? m.titleCn : m.title}
-                </h1>
-              </div>
-              <AspectRatio ratio={16 / 13}>
-                <Image
-                  src={m.imgSrc}
-                  alt=""
-                  fill
-                  className="object-cover group-hover:scale-105"
-                  priority
-                />
-              </AspectRatio>
-            </Link>
-          ))}
-        </div>
-      </div>
+
       <div className="container sm:px-8 hidden md:block my-2">
         <Separator />
       </div>

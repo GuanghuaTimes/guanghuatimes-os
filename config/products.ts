@@ -68,7 +68,7 @@ export const productsConfig: ProductConfig = {
       id: "raw-materials",
       titleCn: "原料产品",
       titleEn: "Raw Materials",
-      imgSrc: "/product-images/raw-materials.jpg",
+      imgSrc: "/raw-materials/原料封面.jpg",
       description: "供应高品质生物农业基础原料。"
     }
   ],

@@ -7,7 +7,7 @@ const categoryLinks: Record<string, string> = {
   agrarius: "agrarius-series",
   biotech: "guanghua-bio-series",
   "daily-chemical": "daily-chemical-series",
-  "raw-materials": "articles",
+  "raw-materials": "raw-materials",
 };
 
 export default function ProductsPage({ params }: { params: { cc: string } }) {
