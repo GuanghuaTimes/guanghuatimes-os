@@ -58,22 +58,7 @@ export function SiteFooter({ lang }: SiteFooterProps) {
   return (
     <footer className="w-full bg-[#235283] text-gray-300 py-8">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-          <div className="space-y-2 text-sm">
-            <p>
-              <span className="text-gray-400">电&nbsp;&nbsp;话</span>
-              <span className="ml-4 text-white">400-067-6027</span>
-            </p>
-            <p>
-              <span className="text-gray-400">邮&nbsp;&nbsp;箱</span>
-              <span className="ml-4 text-white">pga@ghpga.com</span>
-            </p>
-            <p>
-              <span className="text-gray-400">地&nbsp;&nbsp;址</span>
-              <span className="ml-4 text-white">海南省海口市龙华区龙昆北路景瑞大厦A座621</span>
-            </p>
-          </div>
-          
+        <div className="flex justify-center md:justify-end items-center">
           <div className="flex items-center gap-4">
             {socialLinks.map((social) => (
               <div

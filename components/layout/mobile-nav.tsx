@@ -64,7 +64,7 @@ export function MobileNav({ mainNavItems, lang }: MobileNavProps) {
               onClick={() => setIsOpen(false)}
             >
               <Image
-                src="/Logo.png"
+                src="/nav-logo.svg"
                 alt={lang === "cn" ? siteConfig.nameCn : siteConfig.name}
                 width={24}
                 height={24}
@@ -232,7 +232,7 @@ export function MobileNav({ mainNavItems, lang }: MobileNavProps) {
         className="mr-auto flex items-center space-x-2 md:hidden min-w-20 ml-2"
       >
         <Image
-          src="/Logo.png"
+          src="/nav-logo.svg"
           alt={lang === "cn" ? siteConfig.nameCn : siteConfig.name}
           width={24}
           height={24}

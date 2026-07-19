@@ -72,7 +72,7 @@ export function MainNav({ items, lang }: MainNavProps) {
       >
         {/*<Palmtree className="size-6" />*/}
           <Image
-              src="/Logo.png"  // 你的logo文件路径
+              src="/nav-logo.svg"  // 你的logo文件路径
               alt={lang === "cn" ? siteConfig.nameCn : siteConfig.name}
               width={24}
               height={24}
@@ -115,7 +115,7 @@ export function MainNav({ items, lang }: MainNavProps) {
                       >
                         {/*<Palmtree className="size-6" />*/}
                           <Image
-                              src="/Logo.png"  // 你的logo文件路径
+                              src="/nav-logo.svg"  // 你的logo文件路径
                               alt={lang === "cn" ? siteConfig.nameCn : siteConfig.name}
                               width={24}
                               height={24}
